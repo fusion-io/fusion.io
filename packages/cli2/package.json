@@ -1,0 +1,26 @@
+{
+  "name": "@fusion.io/cli",
+  "version": "2.5.0-rc1",
+  "description": "> TODO: description",
+  "author": "rikky <son.levuthai@gmail.com>",
+  "homepage": "https://github.com/fusion-io/fusion.io#readme",
+  "license": "ISC",
+  "main": "lib/cli.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion-io/fusion.io.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fusion-io/fusion.io/issues"
+  }
+}
