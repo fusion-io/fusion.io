@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc3",
+  "version": "2.5.0-rc4",
   "description": "> TODO: description",
   "publishConfig": {
     "access": "public"
