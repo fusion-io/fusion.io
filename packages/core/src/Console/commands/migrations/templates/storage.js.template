@@ -1,0 +1,19 @@
+export default class {{className}} {
+
+    async up(schema) {
+        await schema.createTable('{{tableName}}', table => {
+            table.increments();
+            table.string('key').notNullable();
+            table.text('value').notNullable();
+            table.text('tags').notNullable();
+            table.integer('ttl').notNullable();
+            table.timestamp('expiredAt').notNullable();
+            table.timestamp('createdAt').notNullable();
+            table.timestamp('updatedAt');
+        });
+    }
+
+    async down(schema) {
+        await schema.dropTable('{{tableName}}');
+    }
+}

@@ -4,8 +4,11 @@
   "description": "Framework for the Geeks by the Geeks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "lerna run tsc && lerna publish"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^3.16.1"
+  }
 }

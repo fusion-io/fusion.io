@@ -1,0 +1,14 @@
+export default class {{className}} {
+
+    async up(schema) {
+        await schema.alterTable('{{tableName}}', table => {
+            // TODO alter your table
+        });
+    }
+
+    async down(schema) {
+        await schema.alterTable('{{tableName}}', table => {
+            // TODO undo the change
+        });
+    }
+}

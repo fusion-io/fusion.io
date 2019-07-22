@@ -1,0 +1,14 @@
+export default class {{className}} {
+
+    async up(schema) {
+        await schema.createTable('{{tableName}}', table => {
+            table.increments();
+
+            // TODO define your columns
+        });
+    }
+
+    async down(schema) {
+        await schema.dropTable('{{tableName}}');
+    }
+}

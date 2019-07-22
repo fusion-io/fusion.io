@@ -1,0 +1,10 @@
+export default class {{className}} {
+
+    async up(schema) {
+        // TODO
+    }
+
+    async down(schema) {
+        // TODO
+    }
+}

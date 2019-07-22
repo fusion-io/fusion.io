@@ -1,0 +1,30 @@
+{
+  "name": "@fusion.io/authenticate",
+  "version": "2.5.0-rc1",
+  "description": "> TODO: description",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rikky <son.levuthai@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "typescript": "^3.5.3"
+  },
+  "homepage": "https://github.com/fusion-io/fusion.io#readme",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion-io/fusion.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fusion-io/fusion.io/issues"
+  }
+}
