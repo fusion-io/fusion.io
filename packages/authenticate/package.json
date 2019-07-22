@@ -2,6 +2,9 @@
   "name": "@fusion.io/authenticate",
   "version": "2.5.0-rc2",
   "description": "> TODO: description",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -26,5 +29,6 @@
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
-  }
+  },
+  "gitHead": "6385344182e3e2a371b51e3a83a685c4c42226a4"
 }
