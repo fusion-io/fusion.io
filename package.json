@@ -6,9 +6,12 @@
   "scripts": {
     "publish": "lerna run tsc && lerna publish"
   },
-  "author": "",
+  "author": "rikky <son.levuthai@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/request": "^2.48.2",
     "lerna": "^3.16.1"
   }
 }
