@@ -1,4 +1,4 @@
-const Container = require('./../Container');
+const {Container} = require('./../index');
 const chai      = require('chai');
 const assert    = chai.assert;
 

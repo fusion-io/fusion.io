@@ -12,6 +12,8 @@
     "@types/express": "^4.17.0",
     "@types/jsonwebtoken": "^8.3.2",
     "@types/request": "^2.48.2",
-    "lerna": "^3.16.1"
+    "chai": "^4.2.0",
+    "lerna": "^3.16.1",
+    "mocha": "^6.2.0"
   }
 }
