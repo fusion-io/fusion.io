@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "6385344182e3e2a371b51e3a83a685c4c42226a4",
+  "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5",
   "dependencies": {
     "@fusion.io/container": "^2.5.0-rc7"
   }
