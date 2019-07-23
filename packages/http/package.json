@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/http",
-  "version": "2.5.0-rc7.0",
+  "version": "2.5.0-rc8",
   "description": "The core http services for the Geeks, by the Geeks",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -26,7 +26,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc7.0",
+    "@fusion.io/core": "^2.5.0-rc8",
     "koa-router": "^7.4.0"
   },
   "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5"

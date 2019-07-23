@@ -1,12 +1,12 @@
 {
   "packages": [
     "packages/authenticate",
+    "packages/container",
     "packages/core",
-    "packages/http",
     "packages/database",
-    "packages/utils",
+    "packages/http",
     "packages/test-app",
-    "packages/container"
+    "packages/utils"
   ],
-  "version": "2.5.0-rc7.0"
+  "version": "2.5.0-rc8"
 }
