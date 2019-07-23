@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc7",
+  "version": "2.5.0-rc7.0",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
