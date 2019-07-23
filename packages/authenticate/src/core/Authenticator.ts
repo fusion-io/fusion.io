@@ -55,17 +55,33 @@ export default class Authenticator {
      * @return {mount}
      */
     public guard(gateway: string) {
-        const protocol = this.getOrFail(gateway).protocol;
 
-        if ('function' !== typeof (protocol as Mountable).mount) {
-            throw new Error(
-                `The protocol [${protocol.constructor.name}] of the gateway [${gateway}]` +
-                ` does not support mounting to a framework.`
-            );
+        // First we'll wrap exposed function. By doing this way, the logic for checking
+        // the Gateway existence will be done in the mounted context.
+        // Not the initial setup context.
+        return (...arg: any[]) => {
+
+            // Now we are actually inside the context.
+            // we check for the protocol of the gateway
+            const protocol = this.getOrFail(gateway).protocol;
+
+            if ('function' !== typeof (protocol as Mountable).mount) {
+                throw new Error(
+                    `The protocol [${protocol.constructor.name}] of the gateway [${gateway}]` +
+                    ` does not support mounting to a framework.`
+                );
+            }
+
+            // Create a consumer function which actually run the authentication process
+            const consumer = (context: Object) => this.authenticate(gateway, context);
+
+            // Get give the consumer to the protocol
+            // and get back the mount function.
+            const mountFunction = (protocol as Mountable).mount(consumer);
+
+            // Lastly, we'll trigger the mountFunction here here
+            return mountFunction(...arg);
         }
-        return (protocol as Mountable).mount((context: Object) => {
-            return this.authenticate(gateway, context);
-        });
     }
 
     /**

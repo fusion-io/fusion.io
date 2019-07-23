@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.6.8",
+    "jsonwebtoken": "^8.5.1",
     "typescript": "^3.5.3"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
