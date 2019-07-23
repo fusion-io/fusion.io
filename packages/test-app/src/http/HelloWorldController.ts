@@ -1,13 +1,17 @@
-import {Controller, route} from "@fusion.io/http";
+import {get, Controller, inject, singleton, authenticator} from "@fusion.io/core";
 import {Context} from "koa";
-import {singleton} from "@fusion.io/container";
+import HelloWorldService from "./HelloWorldService";
+import SayHelloMiddleware from "./SayHelloMiddleware";
 
 @singleton()
 export default class HelloWorldController extends Controller {
-    @route('get', '/')
-    index(context: Context) {
+
+    @inject(HelloWorldService)
+    @get('/', SayHelloMiddleware, authenticator.guard('token'))
+    index(context: Context, next: Function, service: HelloWorldService) {
         context.body = {
-            hello: 'world'
+            hello: 'world',
+            message: service.run()
         }
     }
 }

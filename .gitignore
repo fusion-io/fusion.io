@@ -4,4 +4,4 @@ npm-debug.log
 packages/*/lib
 packages/*/node_modules
 .idea
-test-app
+packages/test-app/*

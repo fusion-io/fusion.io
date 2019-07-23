@@ -1,24 +1,11 @@
 import Controller from "./Controller";
 import Router from "./Router";
-import {
-    route
-} from "./decorators";
+
 
 export const router = new Router();
-
 export {
     Controller,
-    Router,
-    route
+    Router
 }
 
-
-export default {
-    initial: () => {
-
-    },
-
-    bootstrap: () => {
-
-    }
-}
+export * from "./decorators";

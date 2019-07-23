@@ -1,4 +1,4 @@
-import {Application} from "@fusion.io/core";
+import { Application } from "@fusion.io/core";
 import modules from "./modules";
 import Koa from "koa";
 import {router} from "@fusion.io/http";

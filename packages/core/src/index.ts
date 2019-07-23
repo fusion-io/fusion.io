@@ -1,3 +1,7 @@
+export * from "@fusion.io/container";
+export * from "@fusion.io/authenticate/lib/core";
+export * from "@fusion.io/http";
+
 export type Bootstrapper = {
     initial     : Function,
     bootstrap   : Function
