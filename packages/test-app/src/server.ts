@@ -1,8 +1,7 @@
 import {container} from "@fusion.io/core";
-import {plasma as http, Router} from "@fusion.io/http";
+import {plasma as http, Router, Kernel} from "@fusion.io/http";
 import {plasma as app} from "./app";
 import {Tokamak} from "@fusion.io/core";
-import Koa from "koa";
 
 const application = new Tokamak({});
 
@@ -12,8 +11,7 @@ application
     .start()
 ;
 
-const server = new Koa();
-
+const server = container.make<Kernel>(Kernel);
 const router = container.make<Router>(Router);
 
 server.use(router.routes());

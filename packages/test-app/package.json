@@ -28,7 +28,9 @@
   "dependencies": {
     "@fusion.io/core": "^2.5.0-rc9",
     "@fusion.io/http": "^2.5.0-rc9",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
     "koa": "^2.7.0"
   }
 }
