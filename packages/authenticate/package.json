@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc5",
+  "version": "2.5.0-rc6",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -33,6 +33,6 @@
   },
   "gitHead": "6385344182e3e2a371b51e3a83a685c4c42226a4",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc5"
+    "@fusion.io/container": "^2.5.0-rc6"
   }
 }
