@@ -1,6 +1,6 @@
 import {Context} from "koa";
 import {MiddlewareConstructor} from "./Middleware";
-import {DependencyKey} from "@fusion.io/container";
+import {DependencyKey} from "@fusion.io/core";
 
 /**
  * The metadata about routing of the controller

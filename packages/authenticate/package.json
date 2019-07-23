@@ -33,6 +33,7 @@
   },
   "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc7"
+    "@fusion.io/container": "^2.5.0-rc7",
+    "utils": "^0.3.1"
   }
 }

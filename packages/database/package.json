@@ -1,7 +1,7 @@
 {
-  "name": "@fusion.io/http",
+  "name": "@fusion.io/database",
   "version": "2.5.0-rc7.0",
-  "description": "The core http services for the Geeks, by the Geeks",
+  "description": "Database Manager for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "ISC",
@@ -26,8 +26,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc7.0",
-    "koa-router": "^7.4.0"
-  },
-  "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5"
+    "@fusion.io/utils": "^2.5.0-rc7.0",
+    "knex": "^0.19.0"
+  }
 }

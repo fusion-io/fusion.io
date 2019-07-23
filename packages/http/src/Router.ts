@@ -1,6 +1,6 @@
 import KoaRouter from "koa-router";
 import Controller, { ControllerConstructor } from "./Controller";
-import { container } from "@fusion.io/container";
+import {container, singleton} from "@fusion.io/core";
 import { middlewareResolver } from "./Middleware";
 
 
@@ -12,6 +12,7 @@ export type GroupCallback = (router: Router) => any;
 /**
  * We'll extends Koa
  */
+@singleton()
 export default class Router extends KoaRouter {
 
     /**

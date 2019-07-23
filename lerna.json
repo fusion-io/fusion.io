@@ -2,7 +2,11 @@
   "packages": [
     "packages/authenticate",
     "packages/core",
-    "packages/http"
+    "packages/http",
+    "packages/database",
+    "packages/utils",
+    "packages/test-app",
+    "packages/container"
   ],
   "version": "2.5.0-rc7.0"
 }

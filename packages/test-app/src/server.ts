@@ -1,13 +1,20 @@
-import { Application } from "@fusion.io/core";
-import modules from "./modules";
+import {container} from "@fusion.io/core";
+import {plasma as http, Router} from "@fusion.io/http";
+import {plasma as app} from "./app";
+import {Tokamak} from "@fusion.io/core";
 import Koa from "koa";
-import {router} from "@fusion.io/http";
 
+const application = new Tokamak({});
 
-const application = new Application();
+application
+    .fuse(http)
+    .fuse(app)
+    .start()
+;
+
 const server = new Koa();
 
+const router = container.make<Router>(Router);
 
-application.bootstrap(modules);
 server.use(router.routes());
 server.listen(3000);

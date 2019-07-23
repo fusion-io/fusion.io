@@ -30,8 +30,7 @@
   },
   "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5",
   "dependencies": {
-    "@fusion.io/authenticate": "^2.5.0-rc7.0",
     "@fusion.io/container": "^2.5.0-rc7",
-    "@fusion.io/http": "^2.5.0-rc7.0"
+    "@fusion.io/utils": "^2.5.0-rc7"
   }
 }

@@ -1,5 +1,5 @@
 import { Context, Middleware as KoaMiddleware } from "koa";
-import { container } from "@fusion.io/container";
+import { container } from "@fusion.io/core";
 import {MiddlewareConstructor, Middleware} from "./Middleware";
 
 /**
