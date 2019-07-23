@@ -1,6 +1,8 @@
 {
   "packages": [
-    "packages/*"
+    "packages/authenticate",
+    "packages/core",
+    "packages/http"
   ],
-  "version": "2.5.0-rc6"
+  "version": "2.5.0-rc7"
 }

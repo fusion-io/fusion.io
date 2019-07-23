@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/container",
-  "version": "2.5.0-rc6",
+  "version": "2.5.0-rc7",
   "description": "> TODO: description",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/model",
-  "version": "2.5.0-rc6",
+  "version": "2.5.0-rc7",
   "description": "> TODO: description",
   "publishConfig": {
     "access": "public"
@@ -29,8 +29,8 @@
   },
   "gitHead": "6385344182e3e2a371b51e3a83a685c4c42226a4",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc6",
-    "@fusion.io/core": "^2.5.0-rc6",
-    "@fusion.io/http": "^2.5.0-rc6"
+    "@fusion.io/container": "^2.5.0-rc7",
+    "@fusion.io/core": "^2.5.0-rc7",
+    "@fusion.io/http": "^2.5.0-rc7"
   }
 }
