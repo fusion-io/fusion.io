@@ -1,5 +1,20 @@
 import Container from "./Container";
-import {DependencyKey} from "./types";
+import {
+    DependencyKey,
+    FactoryFunction,
+    TYPE_BINDING,
+    TYPE_SINGLETON,
+    TYPE_VALUE
+} from "./types";
+
+
+export {
+    DependencyKey,
+    FactoryFunction,
+    TYPE_BINDING,
+    TYPE_SINGLETON,
+    TYPE_VALUE
+}
 
 /**
  * Making a singleton Container
@@ -21,66 +36,45 @@ export {
 /**
  * Bind a Symbol to the container
  */
-exports.bind = (...dependencies: any[]) => (Symbol: any) => {
-
-    const Target = class extends Symbol{
-        static get dependencies() {
-            return dependencies;
-        }
-    };
-
+export const bind = (...dependencies: any[]) => (Target: any) => {
+    Target.dependencies = dependencies;
     container.autoBind(Target);
 };
 
 /**
  * Bind a Symbol to the container as a singleton
  */
-exports.singleton = (...dependencies: any[]) => (Symbol: any) => {
-    const Target = class extends Symbol{
-        static get dependencies() {
-            return dependencies;
-        }
-    };
-
+export const singleton = (...dependencies: any[]) => (Target: any) => {
+    Target.dependencies = dependencies;
     container.autoSingleton(Target);
 };
 
 /**
  * Bind a Symbol to the container as an Concrete of given Abstract
  */
-exports.bindInversion = (AbstractSymbol: any, ...dependencies: any[]) => (Symbol: any) => {
-    const Target = class extends Symbol{
-        static get dependencies() {
-            return dependencies;
-        }
-    };
-
+export const bindInversion = (AbstractSymbol: any, ...dependencies: any[]) => (Target: any) => {
+    Target.dependencies = dependencies;
     container.bindInversion(AbstractSymbol, Target);
 };
 
 /**
  * Bind a Symbol to the container as an Concrete of given Abstract as a singleton
  */
-exports.singletonInversion = (AbstractSymbol: any, ...dependencies: any[]) => (Symbol: any) => {
-    const Target = class extends Symbol{
-        static get dependencies() {
-            return dependencies;
-        }
-    };
-
+export const singletonInversion = (AbstractSymbol: any, ...dependencies: any[]) => (Target: any) => {
+    Target.dependencies = dependencies;
     container.singletonInversion(AbstractSymbol, Target);
 };
 
 /**
  * Method decorator for injecting dependencies in to a class method
  */
-exports.inject = (...dependencies: any[]) => (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+export const inject = (...dependencies: any[]) => (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
     const originValue = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
         const deps = dependencies.map((d: DependencyKey) => container.make(d));
 
-        return originValue.apply(this, [...args, ...deps])
+        return originValue.apply(this, [...args, ...deps]);
     }
 };
 

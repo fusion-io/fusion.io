@@ -2,7 +2,6 @@ import {
     DependencyKey,
     BindingReceipts,
     FactoryFunction,
-    HavingDependencies,
     TYPE_BINDING,
     TYPE_SINGLETON,
     TYPE_VALUE
@@ -56,7 +55,7 @@ export default class Container {
      * @param key
      * @param customArguments
      */
-    make(key: DependencyKey, ...customArguments: any[]) {
+    make<T>(key: DependencyKey|any, ...customArguments: any[]): T {
 
         if (this.resolved.has(key)) {
             return this.resolved.get(key);
@@ -81,7 +80,7 @@ export default class Container {
      *
      * @param Symbol
      */
-    autoBind(Symbol: HavingDependencies) {
+    autoBind(Symbol: DependencyKey) {
         return this.bind(Symbol, () => this.autoResolve(Symbol));
     }
 
@@ -89,7 +88,7 @@ export default class Container {
      *
      * @param Symbol
      */
-    autoSingleton(Symbol: HavingDependencies) {
+    autoSingleton(Symbol: DependencyKey) {
         return this.singleton(Symbol, () => this.autoResolve(Symbol));
     }
 
@@ -97,14 +96,14 @@ export default class Container {
      *
      * @param Symbol
      */
-    autoResolve(Symbol: HavingDependencies) {
+    autoResolve(Symbol: DependencyKey) {
         const symbolDependencies = Symbol['dependencies'];
 
         if (!symbolDependencies) {
             throw new Error('E_CONTAINER: Could not resolve the automatically, the Symbol');
         }
 
-        const dependencies = Symbol['dependencies'].map(dependency => this.make(dependency));
+        const dependencies = Symbol['dependencies'].map((dependency: DependencyKey) => this.make(dependency));
 
         return new Symbol(...dependencies);
     }
@@ -114,7 +113,7 @@ export default class Container {
      * @param AbstractSymbol
      * @param ConcreteSymbol
      */
-    bindInversion(AbstractSymbol: DependencyKey, ConcreteSymbol: HavingDependencies) {
+    bindInversion(AbstractSymbol: DependencyKey, ConcreteSymbol: DependencyKey) {
         return this.bind(AbstractSymbol, () => this.autoResolve(ConcreteSymbol));
     }
 
@@ -123,7 +122,7 @@ export default class Container {
      * @param AbstractSymbol
      * @param ConcreteSymbol
      */
-    singletonInversion(AbstractSymbol: DependencyKey, ConcreteSymbol: HavingDependencies) {
+    singletonInversion(AbstractSymbol: DependencyKey, ConcreteSymbol: DependencyKey) {
         return this.singleton(AbstractSymbol, () => this.autoResolve(ConcreteSymbol));
     }
 
@@ -134,7 +133,7 @@ export default class Container {
      * @param customArguments
      */
     invoke(key: DependencyKey, methodName: string, ...customArguments: any[]) {
-        return this.make(key)[methodName](...customArguments);
+        return this.make<any>(key)[methodName](...customArguments);
     }
 
     /**

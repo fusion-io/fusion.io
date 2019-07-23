@@ -1,9 +1,4 @@
-export type HavingDependencies = {
-    new (...dependencies: any[]) : any
-    dependencies: DependencyKey[]
-}
-
-export type DependencyKey = HavingDependencies | string;
+export type DependencyKey = Object|string|any;
 
 export type BindingReceipts<FactoryFunction> = {
     factory: FactoryFunction,
