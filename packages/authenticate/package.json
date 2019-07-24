@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc9",
+  "version": "2.5.0-rc11",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -14,11 +14,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rikky <son.levuthai@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.6.8",
-    "jsonwebtoken": "^8.5.1",
-    "typescript": "^3.5.3"
+    "jsonwebtoken": "^8.5.1"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [
@@ -33,7 +32,6 @@
   },
   "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc7",
-    "utils": "^0.3.1"
+    "@fusion.io/container": "^2.5.0-rc11"
   }
 }

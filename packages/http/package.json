@@ -1,10 +1,13 @@
 {
   "name": "@fusion.io/http",
   "version": "2.5.0-rc11",
-  "description": "The core http services for the Geeks, by the Geeks",
+  "description": "The HTTP layer for the Geeks, by the Geeks",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
-  "license": "ISC",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {

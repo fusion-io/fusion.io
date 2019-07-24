@@ -1,13 +1,13 @@
 {
   "name": "@fusion.io/container",
-  "version": "2.5.0-rc7",
-  "description": "> TODO: description",
+  "version": "2.5.0-rc11",
+  "description": "Depedency Container for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
   },
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -23,6 +23,7 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "build": "tsc && tsc -m es6 --outDir lib-esm",
     "mocha": "mocha"
   },
   "bugs": {

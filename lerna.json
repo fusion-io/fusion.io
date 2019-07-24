@@ -5,7 +5,6 @@
     "packages/core",
     "packages/database",
     "packages/http",
-    "packages/test-app",
     "packages/utils",
     "packages/validation"
   ],
