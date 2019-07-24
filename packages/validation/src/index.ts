@@ -1,7 +1,6 @@
 import Form from "./Form";
 import Rule from "./Rule";
 import RuleSet from "./RuleSet";
-import ValidationResult from "./ValidationResult";
 import Validator from "./Validator";
 import { rules } from "./decorator";
 import nativeValidators from "validator";
@@ -11,7 +10,6 @@ export {
     RuleSet,
     Rule,
     Validator,
-    ValidationResult,
     rules
 }
 

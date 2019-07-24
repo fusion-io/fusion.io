@@ -31,6 +31,7 @@
     "@types/lodash.mapvalues": "^4.6.6",
     "@types/lodash.values": "^4.3.6",
     "@types/validator": "^10.11.2",
+    "immutable": "^4.0.0-rc.12",
     "lodash.get": "^4.4.2",
     "lodash.mapvalues": "^4.6.0",
     "lodash.values": "^4.3.0",
