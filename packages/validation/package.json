@@ -36,5 +36,6 @@
     "lodash.mapvalues": "^4.6.0",
     "lodash.values": "^4.3.0",
     "validator": "^11.1.0"
-  }
+  },
+  "gitHead": "35264f35e5ba2dda7c40cd44796b835ec6624462"
 }

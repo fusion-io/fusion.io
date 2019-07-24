@@ -28,5 +28,6 @@
   "dependencies": {
     "@fusion.io/core": "^2.5.0-rc10",
     "knex": "^0.19.0"
-  }
+  },
+  "gitHead": "35264f35e5ba2dda7c40cd44796b835ec6624462"
 }
