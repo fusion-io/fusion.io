@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/http",
-  "version": "2.5.0-rc12",
+  "version": "2.5.0-rc13",
   "description": "The HTTP layer for the Geeks, by the Geeks",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -29,7 +29,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc12",
+    "@fusion.io/core": "^2.5.0-rc13",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0"
   },
