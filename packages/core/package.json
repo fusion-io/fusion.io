@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/core",
-  "version": "2.5.0-rc10",
+  "version": "2.5.0-rc11",
   "description": "> TODO: description",
   "publishConfig": {
     "access": "public"
@@ -31,6 +31,6 @@
   "gitHead": "35264f35e5ba2dda7c40cd44796b835ec6624462",
   "dependencies": {
     "@fusion.io/container": "^2.5.0-rc7",
-    "@fusion.io/utils": "^2.5.0-rc10"
+    "@fusion.io/utils": "^2.5.0-rc11"
   }
 }
