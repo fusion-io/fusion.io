@@ -6,7 +6,8 @@
     "packages/database",
     "packages/http",
     "packages/test-app",
-    "packages/utils"
+    "packages/utils",
+    "packages/validation"
   ],
   "version": "2.5.0-rc9"
 }

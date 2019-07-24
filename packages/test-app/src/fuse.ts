@@ -1,5 +1,6 @@
 import {plasma as http} from "@fusion.io/http";
 import {plasma as database} from "@fusion.io/database";
+import {plasma as validation} from "@fusion.io/validation";
 import {plasma as app} from "./app";
 import {Tokamak} from "@fusion.io/core";
 
@@ -23,5 +24,6 @@ const application = new Tokamak({
 export default application
     .fuse(database)
     .fuse(http)
+    .fuse(validation)
     .fuse(app)
 ;

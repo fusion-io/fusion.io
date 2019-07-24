@@ -13,7 +13,6 @@ declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
 export const route = (method: availableMethods, url: string, ...middlewares: MiddlewareConstructor[]) => {
 
     return (target: Controller, action: string) => {
-
         // @ts-ignore
         target.constructor.routes.push({method, url, action, middlewares});
     }

@@ -1,10 +1,10 @@
 {
-  "name": "@fusion.io/test-app",
+  "name": "@fusion.io/validation",
   "version": "2.5.0-rc9",
-  "description": "> TODO: description",
+  "description": "The Validation for the Geeks, by the Geeks",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -27,12 +27,13 @@
   },
   "dependencies": {
     "@fusion.io/core": "^2.5.0-rc9",
-    "@fusion.io/http": "^2.5.0-rc9",
-    "@fusion.io/database": "^2.5.0-rc9",
-    "@fusion.io/validation": "^2.5.0-rc9",
-    "jsonwebtoken": "^8.5.1"
-  },
-  "devDependencies": {
-    "koa": "^2.7.0"
+    "@types/lodash.get": "^4.4.6",
+    "@types/lodash.mapvalues": "^4.6.6",
+    "@types/lodash.values": "^4.3.6",
+    "@types/validator": "^10.11.2",
+    "lodash.get": "^4.4.2",
+    "lodash.mapvalues": "^4.6.0",
+    "lodash.values": "^4.3.0",
+    "validator": "^11.1.0"
   }
 }
