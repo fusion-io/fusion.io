@@ -30,7 +30,6 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc11",
     "@types/lodash.get": "^4.4.6",
     "@types/lodash.mapvalues": "^4.6.6",
     "@types/lodash.values": "^4.3.6",
