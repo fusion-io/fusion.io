@@ -1,21 +1,9 @@
-import {Router, Controller, get} from "@fusion.io/http";
-import {singleton} from "@fusion.io/core";
-import {Context} from "koa";
-
-@singleton()
-class HelloController extends Controller {
-
-    @get('/')
-    index(context: Context) {
-        context.body = {
-            hello: 'world'
-        }
-    }
-}
+import {Router} from "@fusion.io/http";
+import HelloController from "./controllers/HelloController";
+import {DatabaseManager} from "@fusion.io/database";
 
 export const plasma = {
-    dependencies: [Router],
-
+    dependencies: [Router, DatabaseManager],
     bootstrapper: (router: Router) => {
         router.controller(HelloController);
     }

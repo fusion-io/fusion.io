@@ -20,7 +20,7 @@ export default class Router extends KoaRouter {
      *
      * @param Constructor
      */
-    public controller(Constructor: ControllerConstructor) {
+    public controller(Constructor: ControllerConstructor): Router {
         const controller: Controller     = container.make<Controller>(Constructor);
         const controllerLevelMiddlewares = Constructor.middlewares.map(middleware => middlewareResolver.resolve(middleware));
 

@@ -1,5 +1,1 @@
-import Manager from "./Manager";
-
-export {
-    Manager
-};
+export * from "./Manager";

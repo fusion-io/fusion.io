@@ -1,13 +1,17 @@
+import DatabaseManager from "./DatabaseManager";
 declare type DatabaseConfig = {
     use: string,
     connections: any
 }
 
+export {
+    DatabaseManager
+}
+
 export const plasma = {
-    dependencies: ['config'],
+    dependencies: ['config', DatabaseManager],
 
-    bootstrapper: ({database}: {database: DatabaseConfig}) => {
+    bootstrapper: () => {
 
-        console.log(database);
     }
 };
