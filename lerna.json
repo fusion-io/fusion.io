@@ -6,10 +6,9 @@
     "packages/core",
     "packages/database",
     "packages/http",
+    "packages/lepton",
     "packages/utils",
-    "packages/validation",
-
-    "packages/lepton"
+    "packages/validation"
   ],
-  "version": "2.5.0-rc14"
+  "version": "2.5.0-rc15"
 }
