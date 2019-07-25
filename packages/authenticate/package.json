@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc17",
+  "version": "2.5.0-rc18",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc17"
+    "@fusion.io/core": "^2.5.0-rc18"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [
@@ -30,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "658154f59c304a2acdbc89d033c3edc7e751a2c5"
+  "gitHead": "224065dec8159b5d4b84385245f88c2d767073fa"
 }

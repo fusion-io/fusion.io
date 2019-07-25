@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/core",
-  "version": "2.5.0-rc17",
+  "version": "2.5.0-rc18",
   "description": "Fusion Core. Better App Bootstrap for better Geeks.",
   "publishConfig": {
     "access": "public"
@@ -29,9 +29,9 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "35264f35e5ba2dda7c40cd44796b835ec6624462",
+  "gitHead": "224065dec8159b5d4b84385245f88c2d767073fa",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc17",
-    "@fusion.io/utils": "^2.5.0-rc17"
+    "@fusion.io/container": "^2.5.0-rc18",
+    "@fusion.io/utils": "^2.5.0-rc18"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/utils",
-  "version": "2.5.0-rc17",
+  "version": "2.5.0-rc18",
   "description": "Utilities for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -28,5 +28,6 @@
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
-  }
+  },
+  "gitHead": "224065dec8159b5d4b84385245f88c2d767073fa"
 }
