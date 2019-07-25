@@ -17,7 +17,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc15"
+    "@fusion.io/core": "^2.5.0-rc16"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [

@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@fusion.io/authenticate": "^2.5.0-rc16",
-    "@fusion.io/core": "^2.5.0-rc15",
-    "@fusion.io/http": "^2.5.0-rc15",
-    "@fusion.io/validation": "^2.5.0-rc15",
+    "@fusion.io/core": "^2.5.0-rc16",
+    "@fusion.io/http": "^2.5.0-rc16",
+    "@fusion.io/validation": "^2.5.0-rc16",
     "@types/nunjucks": "^3.1.1",
     "i18next": "^17.0.6",
     "i18next-sync-fs-backend": "^1.1.1",
