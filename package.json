@@ -1,6 +1,6 @@
 {
   "name": "fusion.io",
-  "version": "2.5.0-rc13",
+  "version": "2.5.0-rc14",
   "description": "Framework for the Geeks by the Geeks",
   "main": "index.js",
   "scripts": {

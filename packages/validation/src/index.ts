@@ -70,6 +70,8 @@ const ChrisOharaValidators: { [key: string] : string } = {
 
 export const plasma = {
 
+    compose: () => { },
+
     boot: () => {
         const validator = container.make<Validator>(Validator);
 

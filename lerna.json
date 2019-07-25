@@ -7,7 +7,9 @@
     "packages/database",
     "packages/http",
     "packages/utils",
-    "packages/validation"
+    "packages/validation",
+
+    "packages/lepton"
   ],
   "version": "2.5.0-rc14"
 }

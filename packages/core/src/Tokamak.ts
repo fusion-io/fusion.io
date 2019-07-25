@@ -17,9 +17,8 @@ declare type Plasma = {
      * Bootstrap the application after the service
      * has been composed
      *
-     * @param dependencies
      */
-    boot?(...dependencies: any[]): void
+    boot?(): void
 }
 
 /**
@@ -32,6 +31,7 @@ export default class Tokamak {
 
     /**
      * Supported plasma
+     *
      */
     private plasmas:Plasma[] = [];
 
@@ -51,6 +51,8 @@ export default class Tokamak {
     fuse(plasma: Plasma) {
         this.plasmas.push(plasma);
 
+        plasma.compose(this);
+
         return this;
     }
 
@@ -59,7 +61,6 @@ export default class Tokamak {
      *
      */
     start() {
-        this.plasmas.forEach(plasma => plasma.compose(this));
         this.plasmas.forEach(plasma => plasma.boot && plasma.boot());
 
         return this;

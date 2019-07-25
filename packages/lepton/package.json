@@ -1,6 +1,6 @@
 {
-  "name": "@fusion.io/server-plasma",
-  "version": "2.5.0-rc13",
+  "name": "@fusion.io/lepton",
+  "version": "2.5.0-rc14",
   "description": "The HTTP Server framework for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -18,9 +18,21 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
+    "tsc": "rm -rf lib && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
+  },
+  "dependencies": {
+    "@fusion.io/authenticate": "^2.5.0-rc14",
+    "@fusion.io/core": "^2.5.0-rc14",
+    "@fusion.io/http": "^2.5.0-rc14",
+    "@fusion.io/validation": "^2.5.0-rc14",
+    "@types/nunjucks": "^3.1.1",
+    "i18next": "^17.0.6",
+    "i18next-sync-fs-backend": "^1.1.1",
+    "nunjucks": "^3.2.0",
+    "winston": "^3.2.1"
   }
 }

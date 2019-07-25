@@ -3,6 +3,7 @@ import Authenticator from "./Authenticator";
 import Gateway from "./Gateway";
 import IdentityProviderChain from "./IdentityProviderChain";
 import UnAuthenticated from "./UnAuthenticated"
+import {container} from "@fusion.io/core";
 
 export {
     Aborted,
@@ -15,3 +16,10 @@ export {
 export const authenticator = new Authenticator();
 
 export * from "./Contracts";
+
+
+export const plasma = {
+    compose: () => {
+        container.value(Authenticator, authenticator);
+    }
+};

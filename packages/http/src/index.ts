@@ -11,5 +11,5 @@ export {
 export * from "./decorators";
 
 export const plasma = {
-    compose: () => {    }
+    compose: () => { }
 };
