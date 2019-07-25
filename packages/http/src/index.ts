@@ -11,6 +11,5 @@ export {
 export * from "./decorators";
 
 export const plasma = {
-    dependencies: [],
-    bootstrapper: () => { }
+    compose: () => {    }
 };

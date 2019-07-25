@@ -4,6 +4,7 @@ import RuleSet from "./RuleSet";
 import Validator from "./Validator";
 import { rules } from "./decorator";
 import nativeValidators from "validator";
+import {container} from "@fusion.io/core";
 
 export {
     Form,
@@ -69,8 +70,9 @@ const ChrisOharaValidators: { [key: string] : string } = {
 
 export const plasma = {
 
-    dependencies: [Validator],
-    bootstrapper: (validator: Validator) => {
+    boot: () => {
+        const validator = container.make<Validator>(Validator);
+
         for (let nativeName in ChrisOharaValidators) {
             if (ChrisOharaValidators.hasOwnProperty(nativeName)) {
                 let desiredName = ChrisOharaValidators[nativeName];

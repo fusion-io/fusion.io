@@ -1,6 +1,7 @@
 {
   "packages": [
     "packages/authenticate",
+    "packages/authenticate-gateways",
     "packages/container",
     "packages/core",
     "packages/database",

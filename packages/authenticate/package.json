@@ -5,19 +5,19 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "rm -rf lib && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^12.6.8",
-    "jsonwebtoken": "^8.5.1"
+  "dependencies": {
+    "@fusion.io/core": "^2.5.0-rc13"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [

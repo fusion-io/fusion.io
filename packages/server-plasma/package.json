@@ -1,15 +1,11 @@
 {
-  "name": "@fusion.io/database",
+  "name": "@fusion.io/server-plasma",
   "version": "2.5.0-rc13",
-  "description": "Database Manager for the Geeks, by the Geeks.",
+  "description": "The HTTP Server framework for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/index",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -22,15 +18,9 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
-    "tsc": "rm -rf lib && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
-  },
-  "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc13",
-    "knex": "^0.19.0"
-  },
-  "gitHead": "35264f35e5ba2dda7c40cd44796b835ec6624462"
+  }
 }
