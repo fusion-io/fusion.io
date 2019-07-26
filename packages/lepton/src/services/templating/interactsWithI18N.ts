@@ -1,4 +1,4 @@
-import {Environment} from "nunjucks";
+import {Environment, runtime} from "nunjucks";
 import {container} from "@fusion.io/core";
 import {I18N} from "../../serviceLocator";
 
@@ -6,6 +6,13 @@ import {I18N} from "../../serviceLocator";
  * Shape of the i18next
  */
 declare type WithT = { t: (key: string, interp: any) => string };
+
+/**
+ * A renderable object
+ */
+declare type Renderable = {
+    render: () => string
+}
 
 /**
  * Adding service related filters
@@ -27,5 +34,10 @@ export default (view: Environment) => {
         , true);
 
     // Render | Embedded filter
-    // TODO
+    view.addFilter('render', (maybeRenderable: Renderable, callback) =>
+            Promise.resolve(maybeRenderable.render())
+                .then((html: string) => {
+                    callback(null, new runtime.SafeString(html))
+                }).catch(error => callback(error))
+    , true);
 };

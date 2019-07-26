@@ -19,5 +19,8 @@
 
     <small>{{date}}</small>
 
+    {{model|render|confidential('****')}}
+
+    {{url('/foo/bar/:username', username="rikky")}}
 </body>
 </html>
