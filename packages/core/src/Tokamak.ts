@@ -4,7 +4,7 @@ import { container } from "@fusion.io/container";
  * Plasma is just a simple service composer.
  *
  */
-declare type Plasma = {
+export declare type Plasma = {
 
     /**
      * Composes the app
