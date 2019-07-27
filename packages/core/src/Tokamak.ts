@@ -48,7 +48,7 @@ export default class Tokamak {
      *
      * @param plasma
      */
-    fuse(plasma: Plasma) {
+    public fuse(plasma: Plasma) {
         this.plasmas.push(plasma);
 
         plasma.compose(this);
@@ -60,7 +60,7 @@ export default class Tokamak {
      * Start this Tokamak
      *
      */
-    start() {
+    public start() {
         this.plasmas.forEach(plasma => plasma.boot && plasma.boot());
 
         return this;

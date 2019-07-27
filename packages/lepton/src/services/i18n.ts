@@ -12,6 +12,8 @@ export const plasma = {
 
         const { i18n } = container.make(Config);
 
-        container.value(I18N, i18next.use(SyncBackend).init({...i18n, initImmediate: false}));
+        i18next.use(SyncBackend).init({...i18n, initImmediate: false});
+
+        container.value(I18N, i18next);
     }
 };

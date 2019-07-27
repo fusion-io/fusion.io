@@ -36,6 +36,7 @@
     "i18next": "^17.0.6",
     "i18next-sync-fs-backend": "^1.1.1",
     "nunjucks": "^3.2.0",
+    "youch": "^2.0.10",
     "winston": "^3.2.1"
   },
   "gitHead": "224065dec8159b5d4b84385245f88c2d767073fa"

@@ -1,5 +1,4 @@
-import {Context} from "koa";
-import {MiddlewareConstructor} from "./Middleware";
+import {Context, Middleware} from "koa";
 import {DependencyKey} from "@fusion.io/core";
 
 /**
@@ -16,7 +15,7 @@ export type RouteDefinition = {
  * Shape of the Constructor of the controller
  */
 export type ControllerConstructor = {
-    middlewares: (MiddlewareConstructor|Function)[],
+    middlewares: Middleware[],
     routes: RouteDefinition[],
     dependencies: DependencyKey[]
 }
@@ -30,7 +29,7 @@ export default abstract class Controller {
     /**
      * List of the middlewares
      */
-    public static middlewares: (MiddlewareConstructor|Function)[] = [];
+    public static middlewares: Function[] = [];
 
     /**
      * List of the routes

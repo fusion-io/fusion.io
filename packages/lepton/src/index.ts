@@ -8,6 +8,8 @@ import {plasma as logging} from "./services/logger";
 import {plasma as translation} from "./services/i18n";
 import {plasma as templating, renderable} from "./services/templating";
 
+import HandleError from "./handleError";
+
 
 // Service dependencies
 export * from "@fusion.io/core";
@@ -34,10 +36,8 @@ export const plasma = {
         const kernel    = container.make<Kernel>(Kernel);
         const { http }  = container.make('config');
 
-        kernel.on('error',(error) => {
-            console.error(error);
-        });
         kernel.keys = http.keys;
+        kernel.use(HandleError);
     }
 };
 

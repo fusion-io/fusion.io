@@ -1,5 +1,4 @@
 import Controller from "./Controller";
-import {MiddlewareConstructor} from "./Middleware";
 
 declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
 
@@ -10,7 +9,7 @@ declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
  * @param url
  * @param middlewares
  */
-export const route = (method: availableMethods, url: string, ...middlewares: MiddlewareConstructor[]) => {
+export const route = (method: availableMethods, url: string, ...middlewares: Function[]) => {
 
     return (target: Controller, action: string) => {
         // @ts-ignore
@@ -24,7 +23,7 @@ export const route = (method: availableMethods, url: string, ...middlewares: Mid
  * @param url
  * @param middlewares
  */
-export const get    = (url: string, ...middlewares: (MiddlewareConstructor|Function|any)[]) => route('get', url, ...middlewares);
+export const get    = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
 
 /**
  * Decorates a post route
@@ -32,7 +31,7 @@ export const get    = (url: string, ...middlewares: (MiddlewareConstructor|Funct
  * @param url
  * @param middlewares
  */
-export const post   = (url: string, ...middlewares: (MiddlewareConstructor|Function|any)[]) => route('get', url, ...middlewares);
+export const post   = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
 
 /**
  * Decorates a put route
@@ -40,7 +39,7 @@ export const post   = (url: string, ...middlewares: (MiddlewareConstructor|Funct
  * @param url
  * @param middlewares
  */
-export const put    = (url: string, ...middlewares: (MiddlewareConstructor|Function|any)[]) => route('get', url, ...middlewares);
+export const put    = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
 
 /**
  * Decorates a patch route
@@ -48,7 +47,7 @@ export const put    = (url: string, ...middlewares: (MiddlewareConstructor|Funct
  * @param url
  * @param middlewares
  */
-export const patch  = (url: string, ...middlewares: (MiddlewareConstructor|Function|any)[]) => route('get', url, ...middlewares);
+export const patch  = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
 
 /**
  * Decorates a delete route
@@ -56,4 +55,4 @@ export const patch  = (url: string, ...middlewares: (MiddlewareConstructor|Funct
  * @param url
  * @param middlewares
  */
-export const del    = (url: string, ...middlewares: (MiddlewareConstructor|Function|any)[]) => route('get', url, ...middlewares);
+export const del    = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);

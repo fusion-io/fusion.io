@@ -4,7 +4,6 @@
     "packages/authenticate-gateways",
     "packages/container",
     "packages/core",
-    "packages/database",
     "packages/http",
     "packages/lepton",
     "packages/utils",

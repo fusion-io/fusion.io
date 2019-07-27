@@ -3,10 +3,17 @@ import {Tokamak, Kernel, Router, container, plasma, renderable} from "./index";
 import {Context} from "koa";
 
 const app = new Tokamak({
+    debug: true,
     http: {
         keys: []
     },
-    view: process.cwd() + '/view'
+    view: process.cwd() + '/view',
+    i18n: {
+
+    },
+    database: {
+
+    }
 });
 
 @renderable('renderable')

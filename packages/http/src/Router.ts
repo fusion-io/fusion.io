@@ -1,8 +1,6 @@
 import KoaRouter from "koa-router";
 import Controller, { ControllerConstructor } from "./Controller";
 import {container, singleton} from "@fusion.io/core";
-import { middlewareResolver } from "./Middleware";
-
 
 /**
  * Shape of the Route Group factory
@@ -22,13 +20,13 @@ export default class Router extends KoaRouter {
      */
     public controller(Constructor: ControllerConstructor): Router {
         const controller: Controller     = container.make<Controller>(Constructor);
-        const controllerLevelMiddlewares = Constructor.middlewares.map(middleware => middlewareResolver.resolve(middleware));
+        const controllerLevelMiddlewares = Constructor.middlewares;
 
         const routes    = Constructor.routes;
 
         routes.forEach(route => {
 
-            const actionLevelMiddlewares = route.middlewares.map(mw => middlewareResolver.resolve(mw));
+            const actionLevelMiddlewares = route.middlewares;
 
             // @ts-ignore
             return this[route.method](

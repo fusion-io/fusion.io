@@ -1,4 +1,5 @@
 import Container from "./Container";
+import Manager from "./Manager";
 import {
     DependencyKey,
     FactoryFunction,
@@ -30,7 +31,8 @@ export const container = new Container();
  * @type {Container}
  */
 export {
-    Container
+    Container,
+    Manager
 };
 
 /**
