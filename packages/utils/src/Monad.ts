@@ -1,7 +1,7 @@
 /**
  * The Monad interface
  */
-export interface Monad<T> {
+export interface Monad {
 
     /**
      * Monad is nothing special but a class that can execute
@@ -14,14 +14,14 @@ export interface Monad<T> {
 /**
  * Monad always needs an execution
  */
-export type MonadConstructor<T> = {
-    new(execution: T): Monad<T>
+export type MonadConstructor = {
+    new(execution: Function): Monad
 }
 
 /**
  * A simple monad that just executes the given execution
  */
-export class SillyMonad implements Monad<Function> {
+export class SillyMonad implements Monad {
 
     /**
      *
@@ -46,9 +46,9 @@ export class SillyMonad implements Monad<Function> {
  * @param initial
  * @param monads
  */
-export const compose = (initial: Function, ...monads: MonadConstructor<Function>[]): Monad<Function> => {
+export const compose = (initial: Function, ...monads: MonadConstructor[]): Monad => {
 
-    return monads.reduce((composed: Monad<Function>, Current: MonadConstructor<Function>) => {
+    return monads.reduce((composed: Monad, Current: MonadConstructor) => {
 
         return new Current((...args: any[]) => composed.execute(...args));
     }, new SillyMonad(initial));

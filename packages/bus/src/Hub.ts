@@ -1,4 +1,4 @@
-import {container, Manager} from "@fusion.io/core"
+import {container, Manager, singleton} from "@fusion.io/core"
 import {Message, MessageConstructor} from "./Message";
 import {EventEmitter} from "events";
 import Bus from "./Bus";
@@ -23,6 +23,7 @@ export type MessageConsumer = (message: Message|any) => Promise<any>;
  * Hub is the central place for managing buses
  *
  */
+@singleton()
 export default class Hub extends Manager<Bus> {
 
     private eventEmitter = new EventEmitter();
