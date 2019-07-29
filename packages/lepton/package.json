@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/lepton",
-  "version": "2.5.0-rc20",
+  "version": "2.5.0-rc21",
   "description": "The HTTP Server framework for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -28,16 +28,16 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/authenticate": "^2.5.0-rc20",
-    "@fusion.io/core": "^2.5.0-rc20",
-    "@fusion.io/http": "^2.5.0-rc20",
-    "@fusion.io/validation": "^2.5.0-rc20",
+    "@fusion.io/authenticate": "^2.5.0-rc21",
+    "@fusion.io/core": "^2.5.0-rc21",
+    "@fusion.io/http": "^2.5.0-rc21",
+    "@fusion.io/validation": "^2.5.0-rc21",
     "@types/nunjucks": "^3.1.1",
     "i18next": "^17.0.6",
     "i18next-sync-fs-backend": "^1.1.1",
     "nunjucks": "^3.2.0",
-    "youch": "^2.0.10",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "youch": "^2.0.10"
   },
   "gitHead": "224065dec8159b5d4b84385245f88c2d767073fa"
 }

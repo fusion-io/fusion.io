@@ -2,14 +2,14 @@
   "packages": [
     "packages/authenticate",
     "packages/authenticate-gateways",
+    "packages/bus",
     "packages/container",
     "packages/core",
     "packages/http",
     "packages/lepton",
+    "packages/queue",
     "packages/utils",
-    "packages/validation",
-    "packages/bus",
-    "packages/queue"
+    "packages/validation"
   ],
-  "version": "2.5.0-rc20"
+  "version": "2.5.0-rc21"
 }
