@@ -5,6 +5,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "MIT",
+  "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
   },

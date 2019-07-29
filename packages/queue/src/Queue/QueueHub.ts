@@ -1,4 +1,4 @@
-import Hub from "../Hub";
+import {Hub} from "@fusion.io/bus";
 import {singleton} from "@fusion.io/core";
 
 /**
