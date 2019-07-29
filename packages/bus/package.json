@@ -1,0 +1,36 @@
+{
+  "name": "@fusion.io/bus",
+  "version": "2.5.0-rc20",
+  "description": "The Message transportater for the Geeks, by the Geeks.",
+  "author": "rikky <son.levuthai@gmail.com>",
+  "homepage": "https://github.com/fusion-io/fusion.io#readme",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion-io/fusion.io.git"
+  },
+  "scripts": {
+    "tsc": "rm -rf lib && tsc",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fusion-io/fusion.io/issues"
+  },
+  "dependencies": {
+    "@fusion.io/core": "^2.5.0-rc20"
+  },
+  "devDependencies": {
+    "pubnub": "^4.24.4",
+    "socket.io-client": "^2.2.0"
+  }
+}
