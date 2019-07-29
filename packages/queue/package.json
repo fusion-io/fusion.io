@@ -21,6 +21,7 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
+    "tsc": "rm -rf lib && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
