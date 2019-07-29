@@ -1,0 +1,33 @@
+{
+  "name": "@fusion.io/queue",
+  "version": "2.5.0-rc20",
+  "description": "Queue service for the Geeks, by the Geeks.",
+  "author": "rikky <son.levuthai@gmail.com>",
+  "homepage": "https://github.com/fusion-io/fusion.io#readme",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion-io/fusion.io.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fusion-io/fusion.io/issues"
+  },
+  "dependencies": {
+    "@fusion.io/core": "^2.5.0-rc20",
+    "@fusion.io/bus": "^2.5.0-rc20"
+  }
+}
