@@ -36,7 +36,7 @@ export class SillyMonad implements Monad {
      */
     async execute (...args: any[]): Promise<any> {
 
-        return await this.execution(...args);
+        return this.execution(...args);
     };
 }
 

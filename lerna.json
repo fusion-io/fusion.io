@@ -6,10 +6,14 @@
     "packages/container",
     "packages/core",
     "packages/http",
-    "packages/lepton",
+    "packages/proton",
     "packages/queue",
     "packages/utils",
-    "packages/validation"
+    "packages/validation",
+    "packages/knex",
+    "packages/cli",
+    "packages/redis",
+    "packages/storage"
   ],
   "version": "2.5.0-rc21"
 }

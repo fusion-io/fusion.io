@@ -1,4 +1,4 @@
-import {container, Manager, singleton} from "@fusion.io/core"
+import {Manager, singleton} from "@fusion.io/core"
 import {Message, MessageConstructor} from "./Message";
 import {EventEmitter} from "events";
 import Bus from "./Bus";
@@ -26,6 +26,9 @@ export type MessageConsumer = (message: Message|any) => Promise<any>;
 @singleton()
 export default class Hub extends Manager<Bus> {
 
+    /**
+     *
+     */
     private eventEmitter = new EventEmitter();
 
     /**
@@ -33,7 +36,7 @@ export default class Hub extends Manager<Bus> {
      * @param transportables
      */
     constructor(private transportables = new Map<string, MessageConstructor>()) {
-        super(container, "fusion.hub.bus");
+        super();
     }
 
     /**
