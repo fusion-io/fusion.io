@@ -31,16 +31,17 @@ export const plasma = {
 
         hubManager
             .supporting('local', () => new LocalEvent())
-            .supporting('mqtt', ({ topic }) => {
-                const client = checkForServices('services.mqtt');
-                return new MQTT(client, topic)
+            .supporting('mqtt', ({ topic, serviceLocation = 'services.mqtt' }) => {
+                const client = checkForServices(serviceLocation);
+                return new MQTT(client, topic);
             })
-            .supporting('pubnub', ({channel}) => {
-                const client = checkForServices('services.pubnub');
+            .supporting('pubnub', ({channel, serviceLocation = 'services.pubnub'}) => {
+                const client:any = checkForServices(serviceLocation);
+                client.subscribe({ channels: [channel] });
                 return new Pubnub(client, channel)
             })
-            .supporting('socket.io', () => {
-                const socket = checkForServices('services.socket.io');
+            .supporting('socket.io', ({serviceLocation = 'services.socket.io'}) => {
+                const socket = checkForServices(serviceLocation);
                 return new SocketIO(socket);
             })
             .supporting('delegated', ({sender, listener}) => new Delegated(sender, listener))

@@ -18,8 +18,10 @@ export default class Pubnub implements Bus {
      */
     listen(callback: Function): void {
         this.sdk.addListener({
-            message: (message: any) => {
-                callback(message);
+            message: (incoming: any) => {
+                if (incoming.channel === this.channel) {
+                    callback(incoming.message);
+                }
             }
         })
     }

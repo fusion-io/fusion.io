@@ -22,8 +22,8 @@ export default {
     },
     logger: {
         level: 'info',
-        format: winston.format.json(),
-        defaultMeta: { service: 'user-service' },
+        format: winston.format.simple(),
+        defaultMeta: { service: 'fusion.proton' },
         transports: [
             new winston.transports.File({ filename: __dirname + '/../storage/logs/error.log', level: 'error' }),
             new winston.transports.File({ filename: __dirname + '/../storage/logs/combined.log' })

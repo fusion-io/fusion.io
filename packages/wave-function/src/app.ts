@@ -11,7 +11,7 @@ new Tokamak(config)
     .fuse(bus)
     .fuse(database)
     .fuse({
-        compose(app: Tokamak): void {
+        compose(): void {
             const PubNub = require("pubnub");
             const { services: { pubnub } } = container.make('config');
 
@@ -46,4 +46,7 @@ new Tokamak(config)
     })
     .start()
 ;
-// const pubnub = container.make<any>('services.pubnub');
+
+const kernel = container.make<Kernel>(Kernel);
+
+kernel.listen(process.env.PORT || 2512);
