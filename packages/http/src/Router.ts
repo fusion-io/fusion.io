@@ -1,5 +1,5 @@
 import KoaRouter from "koa-router";
-import Controller, { ControllerConstructor } from "./Controller";
+import Controller, {ControllerConstructor, RouteDefinition} from "./Controller";
 import {container, singleton} from "@fusion.io/core";
 
 /**
@@ -18,13 +18,13 @@ export default class Router extends KoaRouter {
      *
      * @param Constructor
      */
-    public controller(Constructor: ControllerConstructor): Router {
+    public controller(Constructor: ControllerConstructor|any): Router {
         const controller: Controller     = container.make<Controller>(Constructor);
         const controllerLevelMiddlewares = Constructor.middlewares;
 
         const routes    = Constructor.routes;
 
-        routes.forEach(route => {
+        routes.forEach((route: RouteDefinition) => {
 
             const actionLevelMiddlewares = route.middlewares;
 

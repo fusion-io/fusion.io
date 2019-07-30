@@ -13,7 +13,9 @@
     "packages/knex",
     "packages/cli",
     "packages/redis",
-    "packages/storage"
+    "packages/storage",
+
+    "packages/wave-function"
   ],
   "version": "2.5.0-rc21"
 }

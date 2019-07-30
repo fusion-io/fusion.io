@@ -29,7 +29,7 @@ export default abstract class Controller {
     /**
      * List of the middlewares
      */
-    public static middlewares: Function[] = [];
+    public static middlewares: Middleware[] = [];
 
     /**
      * List of the routes

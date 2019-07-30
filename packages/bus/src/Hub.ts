@@ -49,7 +49,7 @@ export default class Hub extends Manager<Bus> {
 
         if (!this.canTransport(message.constructor as MessageConstructor)) {
             throw new HubError(`Could not publish this message. ` +
-            `Register the message before publish it by calling [.register(MessageConstructor)]`)
+            `Register the message before publish it by calling [.transportable(MessageConstructor)]`)
         }
 
         return this.adapter(via).send({type: message.constructor.name, payload: message.toPayload()});

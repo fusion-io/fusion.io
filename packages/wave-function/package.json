@@ -1,14 +1,11 @@
 {
-  "name": "@fusion.io/bus",
+  "name": "@fusion.io/wave-function",
   "version": "2.5.0-rc21",
-  "description": "The Message transporter for the Geeks, by the Geeks.",
+  "description": "This is just the test app for the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "MIT",
-  "main": "lib/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
+  "main": "lib/wave-function.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -21,17 +18,16 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
-    "tsc": "rm -rf lib && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc21"
-  },
-  "devDependencies": {
+    "@fusion.io/proton": "^2.5.0-rc21",
+    "@fusion.io/bus": "^2.5.0-rc21",
+    "@fusion.io/integrations-knex": "^2.5.0-rc21",
     "pubnub": "^4.24.4",
-    "socket.io-client": "^2.2.0"
+    "winston": "^3.2.1"
   }
 }

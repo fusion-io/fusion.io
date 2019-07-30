@@ -29,7 +29,7 @@ export default class Pubnub implements Bus {
      * @param payload
      */
     async send(payload: any) {
-        this.sdk.publish({
+        return this.sdk.publish({
             message: payload,
             channel: this.channel,
             meta: {

@@ -9,7 +9,7 @@ export default class DatabaseManager extends Manager<knex> {
      * @param connection
      */
     connection(connection?: string) {
-        this.adapter(connection);
+        return this.adapter(connection);
     }
 
     /**
