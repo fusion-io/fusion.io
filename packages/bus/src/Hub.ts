@@ -43,16 +43,28 @@ export default class Hub extends Manager<Bus> {
      * Publishes/Sends a message
      *
      * @param message The message
-     * @param via The bus that will be used for transportation
+     * @param via The channels that will be used for transportation
+     * @param over The bus that will be sent
      */
-    public dispatch(message: Message, via?: string) {
+    public dispatch(message: Message, via?: string|string[], over?: string) {
 
         if (!this.canTransport(message.constructor as MessageConstructor)) {
             throw new HubError(`Could not publish this message. ` +
             `Register the message before publish it by calling [.transportable(MessageConstructor)]`)
         }
 
-        return this.adapter(via).send({type: message.constructor.name, payload: message.toPayload()});
+        let viaChannel = via || [];
+
+        if ('string' === typeof viaChannel) {
+            viaChannel = [viaChannel];
+        }
+
+        const channels = [...message.channels(), ...viaChannel];
+
+        return this
+            .adapter(over)
+            .send({type: message.constructor.name, payload: message.toPayload()}, channels)
+        ;
     }
 
     /**
@@ -78,21 +90,22 @@ export default class Hub extends Manager<Bus> {
      * Pull for messages in a certain bus
      *
      * @param consumer
-     * @param at
+     * @param on
+     * @param over
      */
-    public onMessage(consumer: MessageConsumer, at?: string) {
-        this.adapter(at).listen((messagePayload: HubPayload) => {
-            if (this.isHubPayload(messagePayload)) {
+    public onMessage(consumer: MessageConsumer, on: string, over?: string) {
+        this.adapter(over).listen((messagePayload: HubPayload) => {
 
-                const message = (this.transportables.get(messagePayload.type) as MessageConstructor)
-                    .fromPayload(messagePayload.payload)
-                ;
-
-                return consumer(message);
-            } else {
-                this.eventEmitter.emit('ALIEN_MESSAGE', messagePayload)
+            if (!this.isHubPayload(messagePayload)) {
+                return this.eventEmitter.emit('ALIEN_MESSAGE', messagePayload);
             }
-        });
+
+            const message = (this.transportables.get(messagePayload.type) as MessageConstructor)
+                .fromPayload(messagePayload.payload)
+            ;
+
+            return consumer(message);
+        }, on);
     }
 
     /**

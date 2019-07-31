@@ -12,12 +12,12 @@ export default class QueueWorker {
     constructor(private executor: Monad, private event: EventEmitter = new EventEmitter()) { }
 
     workOn(queue: QueueHub, bus?: string) {
-        queue.onMessage((job: Job|any) => {
-            return this.execute(job)
-                .then(() => this.event.emit('job.finished', job))
-                .catch(error => this.event.emit('job.failed', error, job))
-            ;
-        }, bus);
+        // queue.onMessage((job: Job|any) => {
+        //     return this.execute(job)
+        //         .then(() => this.event.emit('job.finished', job))
+        //         .catch(error => this.event.emit('job.failed', error, job))
+        //     ;
+        // }, bus);
     }
 
     execute(job: Job) {

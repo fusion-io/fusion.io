@@ -5,26 +5,13 @@ import Bus from "../Bus";
  */
 export default class Delegated implements Bus {
 
-    /**
-     *
-     * @param sender
-     * @param listener
-     */
-    constructor(private sender: Function, private listener: Function) { }
+    constructor(private listener: Function, private sender: Function) { }
 
-    /**
-     *
-     * @param callback
-     */
-    listen(callback: Function): void {
-        this.listener(callback);
+    listen(callback: Function, on: string): void {
+        this.listener(callback, on);
     }
 
-    /**
-     *
-     * @param payload
-     */
-    send(payload: any): Promise<void> {
-        return this.sender(payload)
+    send(payload: any, via: string[]): Promise<void> {
+        return this.sender(payload, via);
     }
 }

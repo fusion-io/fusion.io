@@ -4,13 +4,15 @@ export default interface Bus {
      * Sending a payload through out this bus
      *
      * @param payload
+     * @param via
      */
-    send(payload: any): Promise<void>
+    send(payload: any, via: string[]): Promise<void>
 
     /**
      * Listening for the incoming message.
      *
      * @param callback
+     * @param on
      */
-    listen(callback: Function): void
+    listen(callback: Function, on: string): void
 }

@@ -10,5 +10,6 @@ export type MessageConstructor = {
  * The message instance
  */
 export type Message = {
-    toPayload(): any
+    toPayload(): any,
+    channels():string[]
 }

@@ -8,25 +8,30 @@ export default class MQTT implements Bus {
     /**
      *
      * @param client
-     * @param topic
      */
-    constructor(private client: any, private topic: string) { }
+    constructor(private client: any) { }
 
     /**
      *
      * @param callback
+     * @param on
      */
-    listen(callback: Function): void {
-        this.client.on('message', (topic: string, payload: any) => {
-            callback(payload);
+    listen(callback: Function, on: string): void {
+        this.client.on((topic: string, payload: any) => {
+            if (topic === on) {
+                callback(payload, JSON.parse(payload));
+            }
         })
     }
 
     /**
      *
      * @param payload
+     * @param via
      */
-    async send(payload: any) {
-        this.client.publish(this.topic, payload);
+    async send(payload: any, via: string[]) {
+        via.forEach(channel => {
+            this.client.publish(channel, JSON.stringify(payload));
+        });
     }
 }

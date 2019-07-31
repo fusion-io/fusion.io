@@ -15,16 +15,21 @@ export default class LocalEvent implements Bus {
     /**
      *
      * @param callback
+     * @param on
      */
-    listen(callback: Function) {
-        this.event.on('fusion.message', payload => callback(payload));
+    listen(callback: Function, on: string) {
+        this.event.on(`fusion.${on}`, payload => callback(payload));
     }
 
     /**
      *
      * @param payload
+     * @param via
      */
-    async send(payload: any) {
-        this.event.emit('fusion.message', payload);
+    async send(payload: any, via: string[]) {
+
+        via.forEach(channel => {
+            this.event.emit(`fusion.${channel}`, payload);
+        });
     }
 }

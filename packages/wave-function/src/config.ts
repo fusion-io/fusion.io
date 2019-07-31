@@ -41,9 +41,6 @@ export default {
             },
             pubnub: {
                 driver: "pubnub",
-                options: {
-                    channel: "fusion"
-                }
             }
         }
     }

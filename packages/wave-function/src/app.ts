@@ -41,7 +41,7 @@ new Tokamak(config)
 
             hub.onMessage(async message => {
                 console.log(message);
-            })
+            }, 'fusion.message')
         }
     })
     .start()

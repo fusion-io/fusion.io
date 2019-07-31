@@ -8,35 +8,40 @@ export default class Pubnub implements Bus {
     /**
      *
      * @param sdk
-     * @param channel
      */
-    constructor(private sdk: any, private channel: string) { }
+    constructor(private sdk: any) { }
 
     /**
      *
      * @param callback
+     * @param on
      */
-    listen(callback: Function): void {
+    listen(callback: Function, on: string): void {
         this.sdk.addListener({
             message: (incoming: any) => {
-                if (incoming.channel === this.channel) {
+                if (incoming.channel === on) {
                     callback(incoming.message);
                 }
             }
-        })
+        });
+        this.sdk.subscribe({channels: [on]});
     }
 
     /**
      *
      * @param payload
+     * @param via
      */
-    async send(payload: any) {
-        return this.sdk.publish({
+    async send(payload: any, via: string[]) {
+
+        const publishPromises = via.map(channel => this.sdk.publish({
             message: payload,
-            channel: this.channel,
+            channel: channel,
             meta: {
                 service: "fusion.bus"
             }
-        });
+        }));
+
+        await Promise.all(publishPromises);
     }
 }
