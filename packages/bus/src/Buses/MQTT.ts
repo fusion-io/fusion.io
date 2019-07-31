@@ -17,11 +17,14 @@ export default class MQTT implements Bus {
      * @param on
      */
     listen(callback: Function, on: string): void {
-        this.client.on((topic: string, payload: any) => {
-            if (topic === on) {
-                callback(payload, JSON.parse(payload));
-            }
-        })
+
+        this.client.subscribe(on, () => {
+            this.client.on('message', (topic: string, payload: any) => {
+                if (topic === on) {
+                    callback(JSON.parse(payload.toString()));
+                }
+            })
+        });
     }
 
     /**

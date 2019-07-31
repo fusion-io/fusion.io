@@ -11,11 +11,24 @@ new Tokamak(config)
     .fuse(bus)
     .fuse(database)
     .fuse({
-        compose(): void {
+        compose(app: Tokamak): void {
             const PubNub = require("pubnub");
             const { services: { pubnub } } = container.make('config');
 
             container.value('services.pubnub', new PubNub(pubnub))
+        }
+    })
+    .fuse({
+        compose(app: Tokamak): void {
+            const mqtt = require("mqtt");
+            const { services: { mqtt: { host }} } = container.make('config');
+
+            container.value("services.mqtt", mqtt.connect(host))
+        }
+    })
+    .fuse({
+        compose(): void {
+
         },
         boot(): void {
             const kernel = container.make<Kernel>(Kernel);
@@ -41,7 +54,7 @@ new Tokamak(config)
 
             hub.onMessage(async message => {
                 console.log(message);
-            }, 'fusion.message')
+            }, 'fusion.message');
         }
     })
     .start()

@@ -27,6 +27,7 @@
     "@fusion.io/proton": "^2.5.0-rc21",
     "@fusion.io/bus": "^2.5.0-rc21",
     "@fusion.io/integrations-knex": "^2.5.0-rc21",
+    "mqtt": "^3.0.0",
     "pubnub": "^4.24.4",
     "winston": "^3.2.1"
   }

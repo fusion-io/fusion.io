@@ -3,6 +3,9 @@ import winston from "winston";
 export default {
     debug: true,
     services: {
+        mqtt: {
+            host: 'mqtt://test.mosquitto.org'
+        },
         pubnub: {
             publishKey: "pub-c-9b3aaf95-e915-42e1-8db4-18ec7b67269e",
             subscribeKey: "sub-c-e15be580-4479-11e8-8bb7-3ab51ec5ed79"
@@ -33,14 +36,17 @@ export default {
         keys: []
     },
     hub: {
-        default: "pubnub",
+        default: "mqtt",
 
         adapters: {
             local: {
                 driver: "local"
             },
             pubnub: {
-                driver: "pubnub",
+                driver: "pubnub"
+            },
+            mqtt: {
+                driver: "mqtt"
             }
         }
     }
