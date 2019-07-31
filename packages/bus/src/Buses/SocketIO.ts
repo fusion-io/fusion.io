@@ -2,6 +2,9 @@ import Bus from "../Bus";
 
 /**
  * Using Socket.IO client as the bus transport
+ *
+ * For socket.io client, we could not control
+ * how we can subscribe a channel.
  */
 export default class SocketIO implements Bus {
 
