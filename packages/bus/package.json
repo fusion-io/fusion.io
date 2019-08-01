@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/bus",
-  "version": "2.5.0-rc23",
+  "version": "2.5.0-rc24",
   "description": "The Message transporter for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -28,10 +28,11 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc23"
+    "@fusion.io/core": "^2.5.0-rc24"
   },
   "devDependencies": {
     "pubnub": "^4.24.4",
     "socket.io-client": "^2.2.0"
-  }
+  },
+  "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
 }

@@ -12,8 +12,7 @@
     "packages/redis",
     "packages/storage",
     "packages/utils",
-    "packages/validation",
-    "packages/wave-function"
+    "packages/validation"
   ],
-  "version": "2.5.0-rc23"
+  "version": "2.5.0-rc24"
 }
