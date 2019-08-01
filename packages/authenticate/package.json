@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "2.5.0-rc22",
+  "version": "2.5.0-rc23",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc22"
+    "@fusion.io/core": "^2.5.0-rc23"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [

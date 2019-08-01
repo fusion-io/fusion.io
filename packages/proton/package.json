@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/proton",
-  "version": "2.5.0-rc22",
+  "version": "2.5.0-rc23",
   "description": "The HTTP Server framework for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -28,10 +28,10 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/authenticate": "^2.5.0-rc22",
-    "@fusion.io/core": "^2.5.0-rc22",
-    "@fusion.io/http": "^2.5.0-rc22",
-    "@fusion.io/validation": "^2.5.0-rc22",
+    "@fusion.io/authenticate": "^2.5.0-rc23",
+    "@fusion.io/core": "^2.5.0-rc23",
+    "@fusion.io/http": "^2.5.0-rc23",
+    "@fusion.io/validation": "^2.5.0-rc23",
     "@types/nunjucks": "^3.1.1",
     "i18next": "^17.0.6",
     "i18next-sync-fs-backend": "^1.1.1",

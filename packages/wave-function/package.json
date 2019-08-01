@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/wave-function",
-  "version": "2.5.0-rc22",
+  "version": "2.5.0-rc23",
   "description": "This is just the test app for the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -24,9 +24,9 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/bus": "^2.5.0-rc22",
-    "@fusion.io/integrations-knex": "^2.5.0-rc22",
-    "@fusion.io/proton": "^2.5.0-rc22",
+    "@fusion.io/bus": "^2.5.0-rc23",
+    "@fusion.io/integrations-knex": "^2.5.0-rc23",
+    "@fusion.io/proton": "^2.5.0-rc23",
     "mqtt": "^3.0.0",
     "pubnub": "^4.24.4",
     "winston": "^3.2.1"
