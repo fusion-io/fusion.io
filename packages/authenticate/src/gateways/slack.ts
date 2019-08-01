@@ -1,32 +1,39 @@
-import {Gateway, IdentityProvider, IdentityProviderChain} from "@fusion.io/authenticate";
+import Gateway from "../Gateway";
+import {IdentityProvider} from "../Contracts";
+import IdentityProviderChain from "../IdentityProviderChain";
 import {ExpressOAuth2, KoaOAuth2} from "../protocols";
 
 declare type Credential = {
     access_token: string,
-    user: string
+    user: Object,
+    team: Object
 }
 
 /**
  * @implements IdentityProvider
  */
-class InstagramIDP implements IdentityProvider {
-    async provide({access_token, user}: Credential) {
-
-        return { access_token, profile: user };
+class SlackIDP implements IdentityProvider {
+    async provide({ access_token, user, team }: Credential) {
+        return { access_token, profile: user,  team } ;
     }
 }
 
 export const createGateway = (framework: string, options: any, provider: IdentityProvider) => {
 
     if (framework !== 'koa' && framework !== 'express') {
-        throw new Error(`Instagram gateway does not support framework [${framework}]`);
+        throw new Error(`Slack gateway does not support framework [${framework}]`);
     }
 
-    options = { ...options, host: 'https://api.instagram.com', path: '/oauth/authorize' };
+    options = {
+        ...options,
+        host: 'https://slack.com',
+        path: '/oauth/authorize',
+        tokenPath: 'https://slack.com/api/oauth.access'
+    };
 
     const Protocol         = 'express' === framework ? ExpressOAuth2 : KoaOAuth2;
     const protocol         = new Protocol(options);
-    const identityProvider = new IdentityProviderChain([new InstagramIDP(), provider]);
+    const identityProvider = new IdentityProviderChain([new SlackIDP(), provider]);
 
     return new Gateway(protocol, identityProvider);
 };

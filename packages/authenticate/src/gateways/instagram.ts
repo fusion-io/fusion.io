@@ -1,42 +1,34 @@
-import {Gateway, IdentityProvider, IdentityProviderChain, UnAuthenticated} from "@fusion.io/authenticate";
+import Gateway from "../Gateway";
+import {IdentityProvider} from "../Contracts";
+import IdentityProviderChain from "../IdentityProviderChain"
 import {ExpressOAuth2, KoaOAuth2} from "../protocols";
-import jwt, {DecodeOptions} from "jsonwebtoken";
 
 declare type Credential = {
     access_token: string,
-    id_token: string
+    user: string
 }
 
 /**
  * @implements IdentityProvider
  */
-class GoogleIDP implements IdentityProvider {
-    constructor(private readonly clientSecret: string) {
-    }
+class InstagramIDP implements IdentityProvider {
+    async provide({access_token, user}: Credential) {
 
-    async provide({access_token, id_token}: Credential) {
-
-        try {
-            const profile = jwt.decode(id_token, (this.clientSecret as DecodeOptions));
-
-            return { access_token, id_token, profile };
-        } catch (error) {
-            throw new UnAuthenticated(`Invalid id token. Reason: ${error.message}`);
-        }
+        return { access_token, profile: user };
     }
 }
 
 export const createGateway = (framework: string, options: any, provider: IdentityProvider) => {
 
     if (framework !== 'koa' && framework !== 'express') {
-        throw new Error(`Google gateway does not support framework [${framework}]`);
+        throw new Error(`Instagram gateway does not support framework [${framework}]`);
     }
 
-    options = { ...options, tokenPath: 'https://oauth2.googleapis.com/token', host: 'https://accounts.google.com', path: '/o/oauth2/v2/auth' };
+    options = { ...options, host: 'https://api.instagram.com', path: '/oauth/authorize' };
 
     const Protocol         = 'express' === framework ? ExpressOAuth2 : KoaOAuth2;
     const protocol         = new Protocol(options);
-    const identityProvider = new IdentityProviderChain([new GoogleIDP(options['ua']), provider]);
+    const identityProvider = new IdentityProviderChain([new InstagramIDP(), provider]);
 
     return new Gateway(protocol, identityProvider);
 };

@@ -1,4 +1,6 @@
-import {Gateway, IdentityProvider, IdentityProviderChain} from "@fusion.io/authenticate";
+import Gateway from "../Gateway";
+import {IdentityProvider} from "../Contracts";
+import IdentityProviderChain from "../IdentityProviderChain"
 import {ExpressOAuth2, KoaOAuth2, callAPI} from "../protocols";
 
 declare type Credential = {
@@ -55,6 +57,6 @@ export const createExpressGateway = (options: any, provider: IdentityProvider) =
  * @param provider
  * @return {Gateway}
  */
-export const reateKoaGateway = (options: any, provider: IdentityProvider) => {
+export const createKoaGateway = (options: any, provider: IdentityProvider) => {
     return createGateway('koa', options, provider);
 };

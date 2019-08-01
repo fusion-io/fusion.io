@@ -1,4 +1,5 @@
-import {ContextConsumer, Mountable, Protocol, UnAuthenticated} from "@fusion.io/authenticate";
+import {ContextConsumer, Mountable, Protocol} from "../Contracts";
+import UnAuthenticated from "../UnAuthenticated";
 import {SocketContext} from "./Contracts";
 
 /**

@@ -1,4 +1,5 @@
-import {Protocol, UnAuthenticated} from "@fusion.io/authenticate";
+import {Protocol} from "../Contracts";
+import UnAuthenticated from "../UnAuthenticated";
 import {HttpContext} from "./Contracts";
 
 /**

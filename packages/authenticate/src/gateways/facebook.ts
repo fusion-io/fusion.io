@@ -1,4 +1,6 @@
-import {Gateway, IdentityProvider, IdentityProviderChain} from "@fusion.io/authenticate";
+import Gateway from "../Gateway";
+import {IdentityProvider} from "../Contracts";
+import IdentityProviderChain from "../IdentityProviderChain"
 import {ExpressOAuth2, KoaOAuth2, callAPI} from "../protocols";
 
 declare type Credential = {
@@ -11,8 +13,7 @@ declare type Credential = {
  */
 class FacebookIdentityProvider implements IdentityProvider {
 
-    constructor(private readonly graphAPIVersion = '3.3') {
-    }
+    constructor(private readonly graphAPIVersion = '3.3') { }
 
     public async provide({access_token}: Credential) {
         const response = await callAPI({

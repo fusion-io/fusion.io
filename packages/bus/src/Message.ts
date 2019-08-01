@@ -3,7 +3,8 @@
  */
 export type MessageConstructor = {
     new(...args: any[]): Message,
-    fromPayload(payload: any): Message
+    fromPayload(payload: any): Message,
+    name: string
 }
 
 /**

@@ -1,9 +1,10 @@
-import {Protocol, UnAuthenticated} from "@fusion.io/authenticate";
+import {Protocol} from "../Contracts";
+import UnAuthenticated from "../UnAuthenticated";
+
 
 export default class HeadlessLocal implements Protocol {
 
-    constructor(private options = {usernameField: 'username', passwordField: 'password'}) {
-    }
+    constructor(private options = {usernameField: 'username', passwordField: 'password'}) { }
 
     public async resolve(context: any) {
         const usernameField = this.options['usernameField'] || 'username';

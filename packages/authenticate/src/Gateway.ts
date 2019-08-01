@@ -7,9 +7,7 @@ import UnAuthenticated from "./UnAuthenticated";
 export default class Gateway {
 
 
-    constructor(public protocol: MountableProtocol, public provider: IdentityProvider) {
-
-    }
+    constructor(public protocol: MountableProtocol, public provider: IdentityProvider) { }
 
     /**
      * Perform the authentication process with a given context.

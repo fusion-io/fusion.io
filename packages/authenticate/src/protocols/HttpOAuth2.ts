@@ -1,4 +1,6 @@
-import {StateVerifier, Aborted, UnAuthenticated, Protocol} from "@fusion.io/authenticate";
+import {StateVerifier, Protocol} from "../Contracts";
+import Aborted from "../Aborted";
+import UnAuthenticated from "../UnAuthenticated";
 import querystring from 'querystring';
 import request from "request";
 import util from "util";
@@ -15,9 +17,7 @@ const callAPI = util.promisify(request);
  */
 class SillyStateVerifier implements StateVerifier {
 
-    constructor(private state: string) {
-
-    }
+    constructor(private state: string) { }
 
     public async makeState() {
         return this.state;

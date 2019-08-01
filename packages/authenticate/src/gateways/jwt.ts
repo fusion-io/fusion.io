@@ -1,11 +1,10 @@
 import jwt from 'jsonwebtoken';
 import util from 'util';
 
-import {
-    UnAuthenticated,
-    Gateway,
-    IdentityProviderChain, IdentityProvider
-} from "@fusion.io/authenticate";
+import Gateway from "../Gateway";
+import {IdentityProvider} from "../Contracts";
+import IdentityProviderChain from "../IdentityProviderChain";
+import UnAuthenticated from "../UnAuthenticated";
 
 import {
     SocketIOToken,
@@ -22,8 +21,7 @@ declare type Credential = {token: string};
  */
 class JWTIdentityProvider implements IdentityProvider {
 
-    constructor(private readonly privateKey: string) {
-    }
+    constructor(private readonly privateKey: string) { }
 
     async provide({token}: Credential) {
         try {

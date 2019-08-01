@@ -1,4 +1,5 @@
-import {ContextConsumer, Aborted} from "@fusion.io/authenticate";
+import {ContextConsumer} from "../Contracts";
+import Aborted from "../Aborted";
 
 export function mountExpress<T extends {new(...args:any[]):{}}> (Protocol:T) {
     return class extends Protocol {

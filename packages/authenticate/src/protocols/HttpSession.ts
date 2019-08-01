@@ -1,4 +1,5 @@
-import {Protocol, UnAuthenticated} from "@fusion.io/authenticate";
+import {Protocol} from "../Contracts";
+import UnAuthenticated from "../UnAuthenticated";
 import {HttpContext} from "./Contracts";
 
 /**
@@ -6,8 +7,7 @@ import {HttpContext} from "./Contracts";
  */
 export default class HttpSession implements Protocol {
 
-    constructor(private readonly sessionKey = 'credential') {
-    }
+    constructor(private readonly sessionKey = 'credential') { }
 
     public async resolve({session, httpContext: {request}} : { session: any, httpContext: HttpContext }) {
 
