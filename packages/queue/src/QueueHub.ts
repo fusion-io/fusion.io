@@ -1,5 +1,5 @@
-import {Hub} from "@fusion.io/bus";
-import {singleton} from "@fusion.io/core";
+import { Hub } from "@fusion.io/bus";
+import { singleton } from "@fusion.io/core";
 
 /**
  * Queue is a special case of Hub. Where the message will run

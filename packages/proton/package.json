@@ -30,13 +30,11 @@
   "dependencies": {
     "@fusion.io/authenticate": "^2.5.0-rc24",
     "@fusion.io/core": "^2.5.0-rc24",
-    "@fusion.io/http": "^2.5.0-rc24",
     "@fusion.io/validation": "^2.5.0-rc24",
-    "@types/nunjucks": "^3.1.1",
-    "i18next": "^17.0.6",
-    "i18next-sync-fs-backend": "^1.1.1",
-    "nunjucks": "^3.2.0",
-    "winston": "^3.2.1",
+    "@fusion.io/localization": "^2.5.0-rc24",
+    "@fusion.io/integrations-knex": "^2.5.0-rc24",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
     "youch": "^2.0.10"
   },
   "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"

@@ -1,46 +1,109 @@
 // Native supported services
 
-import {container, Tokamak} from "@fusion.io/core";
-import {plasma as http, Kernel} from "@fusion.io/http";
-import {plasma as validation} from "@fusion.io/validation";
-import {plasma as authentication} from "@fusion.io/authenticate";
-import {plasma as logging} from "./services/logger";
-import {plasma as translation} from "./services/i18n";
-import {plasma as templating, renderable} from "./services/templating";
+import ProtonPlasma from "./Plasma";
+import {
+    DependencyKey,
+    PlasmaConstructor,
+    Plasma,
+    Tokamak,
+    tokamak,
+    bind,
+    singleton,
+    bindInversion,
+    singletonInversion,
+    inject
+} from "@fusion.io/core";
 
-import HandleError from "./handleError";
 
+import {
+    Form,
+    Rule,
+    RuleSet,
+    Validator,
+    rules
+} from "@fusion.io/validation";
 
-// Service dependencies
-export * from "@fusion.io/core";
-export * from "@fusion.io/http"
-export * from "@fusion.io/validation";
-export * from "@fusion.io/authenticate";
+import {
+    Aborted,
+    Authenticator,
+    Gateway,
+    IdentityProviderChain,
+    UnAuthenticated,
+    authenticator,
+    ContextConsumer,
+    Mountable,
+    Protocol,
+    MountableProtocol,
+    IdentityProvider,
+    Credential,
+    Identity,
+    StateVerifier
+} from "@fusion.io/authenticate";
 
-// Plasma for this framework
-export const plasma = {
-
-    compose: (tokamak: Tokamak) => {
-        tokamak
-            .fuse(http)
-            .fuse(validation)
-            .fuse(authentication)
-            .fuse(logging)
-            .fuse(translation)
-            .fuse(templating)
-        ;
-    },
-
-    boot: () => {
-
-        const kernel    = container.make<Kernel>(Kernel);
-        const { http }  = container.make('config');
-
-        kernel.keys = http.keys;
-        kernel.use(HandleError);
-    }
-};
+import { Locale, Preset } from "@fusion.io/localization";
+import { DatabaseManager } from "@fusion.io/integrations-knex";
+import { Kernel, Router, Controller, get, del, patch, put, post, route } from "./http";
+import { renderable } from "./templating";
 
 export {
-    renderable
+
+    // Core package re-export
+    DependencyKey,
+    PlasmaConstructor,
+    Plasma,
+    Tokamak,
+    tokamak,
+    bind,
+    singleton,
+    bindInversion,
+    singletonInversion,
+    inject,
+
+
+    // Validation package re-export
+    Form,
+    Rule,
+    RuleSet,
+    Validator,
+    rules,
+
+    // Authentication package re-export
+
+    Aborted,
+    Authenticator,
+    Gateway,
+    IdentityProviderChain,
+    UnAuthenticated,
+    authenticator,
+    ContextConsumer,
+    Mountable,
+    Protocol,
+    MountableProtocol,
+    IdentityProvider,
+    Credential,
+    Identity,
+    StateVerifier,
+
+    // Localization package re-export
+    Locale,
+    Preset,
+
+    // Database package re-export
+    DatabaseManager,
+
+    // Http package re-export
+    Kernel,
+    Router,
+    Controller,
+    get,
+    del,
+    patch,
+    put,
+    post,
+    route,
+
+    // View package re-export
+    renderable,
+
+    ProtonPlasma
 }

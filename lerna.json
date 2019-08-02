@@ -5,14 +5,13 @@
     "packages/cli",
     "packages/container",
     "packages/core",
-    "packages/http",
     "packages/knex",
     "packages/proton",
     "packages/queue",
-    "packages/redis",
-    "packages/storage",
     "packages/utils",
-    "packages/validation"
+    "packages/validation",
+    "packages/localization",
+    "packages/wave-function"
   ],
   "version": "2.5.0-rc24"
 }

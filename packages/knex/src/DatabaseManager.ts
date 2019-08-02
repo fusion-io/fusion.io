@@ -1,4 +1,4 @@
-import {Manager, singleton, AdapterConfiguration} from "@fusion.io/core";
+import { Manager, singleton } from "@fusion.io/core";
 import knex from "knex";
 
 @singleton()
@@ -15,10 +15,9 @@ export default class DatabaseManager extends Manager<knex> {
     /**
      * Install an adapter via its driver and configuration
      *
-     * @param driver
      * @param options
      */
-    public installAdapter({driver, options} : AdapterConfiguration): knex {
+    public installAdapter(options: any): knex {
         return knex(options);
     }
 }

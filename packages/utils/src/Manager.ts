@@ -25,7 +25,7 @@ export type ManagerConfiguration = {
 export type Driver<Adapter> = (options: any) => Adapter
 
 /**
- * Manager is a service which can manages the adapters and its related drivers.
+ * Manager is a service which can manages the adapters and its supported drivers.
  */
 export class Manager<Adapter> {
     /**

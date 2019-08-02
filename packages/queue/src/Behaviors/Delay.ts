@@ -1,4 +1,4 @@
-import {Monad} from "@fusion.io/core";
+import { Monad } from "@fusion.io/core";
 
 export default class Delay implements Monad {
 

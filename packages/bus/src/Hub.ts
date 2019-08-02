@@ -1,6 +1,6 @@
-import {Manager, singleton} from "@fusion.io/core"
-import {Message, MessageConstructor} from "./Message";
-import {EventEmitter} from "events";
+import { Manager, singleton } from "@fusion.io/core"
+import { Message, MessageConstructor } from "./Message";
+import { EventEmitter } from "events";
 import Bus from "./Bus";
 
 /**

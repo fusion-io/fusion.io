@@ -3,7 +3,7 @@ import Authenticator from "./Authenticator";
 import Gateway from "./Gateway";
 import IdentityProviderChain from "./IdentityProviderChain";
 import UnAuthenticated from "./UnAuthenticated"
-import {container} from "@fusion.io/core";
+import {tokamak as container} from "@fusion.io/core";
 
 export {
     Aborted,

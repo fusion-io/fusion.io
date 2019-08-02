@@ -1,7 +1,7 @@
-import {Monad} from "@fusion.io/core";
-import {EventEmitter} from "events";
+import { Monad } from "@fusion.io/core";
+import { EventEmitter } from "events";
 import QueueHub from "./QueueHub";
-import {Message} from "@fusion.io/bus";
+import { Message } from "@fusion.io/bus";
 
 export type Job = Message & {
     run(...args: any[]): Promise<void>

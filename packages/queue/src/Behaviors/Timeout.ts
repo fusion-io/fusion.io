@@ -1,4 +1,4 @@
-import {Monad} from "@fusion.io/core";
+import { Monad } from "@fusion.io/core";
 import WorkerError from "../WorkerError";
 
 export default class Timeout implements Monad {

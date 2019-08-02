@@ -1,5 +1,5 @@
 import Bus from "../Bus";
-import {EventEmitter} from "events";
+import { EventEmitter } from "events";
 
 /**
  * Local event bus

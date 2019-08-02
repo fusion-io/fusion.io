@@ -1,5 +1,5 @@
-import RuleSetMap, {RuleSetMapValidationResult} from "./RuleSetMap";
-import {EventEmitter} from "events";
+import RuleSetMap, { RuleSetMapValidationResult } from "./RuleSetMap";
+import { EventEmitter } from "events";
 import Immutable from "immutable";
 
 const EVENT_WILL_CHANGE = 'form.value.change.will';
@@ -60,7 +60,7 @@ export default class Form {
      * @param defaultState
      * @param autoCommit
      */
-    constructor(private rulesMap: RuleSetMap, private defaultState: any = { }, autoCommit: boolean = true) {
+    public constructor(private rulesMap: RuleSetMap, private defaultState: any = { }, autoCommit: boolean = true) {
         this.dataState      = Immutable.Map<string, any>(defaultState);
         this.dirtyDataState = this.dataState;
         this.updatePromise  = Promise.resolve(defaultState);
@@ -74,7 +74,7 @@ export default class Form {
      *
      * @param payload
      */
-    assign(payload: any) {
+    public assign(payload: any) {
 
         this.dirtyDataState = this.dirtyDataState.merge(payload);
 
@@ -92,7 +92,7 @@ export default class Form {
      *
      * @param payload
      */
-    setState(payload: any) {
+    public setState(payload: any) {
         this.assign(payload);
 
         return this;
@@ -101,7 +101,7 @@ export default class Form {
     /**
      * Commit the changes
      */
-    commit() {
+    public commit() {
 
         if (this.dataState.equals(this.dirtyDataState)) {
             return this.updatePromise;
@@ -128,14 +128,14 @@ export default class Form {
     /**
      * Determine if this form is dirty.
      */
-    dirty() {
+    public dirty() {
         return this.dataState !== this.dirtyDataState;
     }
 
     /**
      * Determine if this form is clean.
      */
-    clean() {
+    public clean() {
         return this.dataState === this.dirtyDataState;
     }
 
@@ -144,7 +144,7 @@ export default class Form {
      *
      * @param flag
      */
-    autoCommit(flag?: boolean) {
+    public autoCommit(flag?: boolean) {
 
         if (flag !== undefined) {
             this.auto = flag;
@@ -157,7 +157,7 @@ export default class Form {
      * Perform a reset
      *
      */
-    reset() {
+    public reset() {
         this.event.emit(EVENT_WILL_CHANGE, this.defaultState);
 
         this.dataState      = Immutable.Map<string, any>(this.defaultState);
@@ -172,7 +172,7 @@ export default class Form {
      * Get the rules applied for this form
      *
      */
-    rules() {
+    public rules() {
         return this.rulesMap;
     }
 
@@ -181,7 +181,7 @@ export default class Form {
      *
      * @param listener
      */
-    willChange(listener: StateChangeListener) {
+    public willChange(listener: StateChangeListener) {
         this.event.on(EVENT_WILL_CHANGE, listener);
         return this;
     }
@@ -191,7 +191,7 @@ export default class Form {
      *
      * @param listener
      */
-    didChange(listener: StateChangeListener) {
+    public didChange(listener: StateChangeListener) {
         this.event.on(EVENT_DID_CHANGE, listener);
         return this;
     }
@@ -200,7 +200,7 @@ export default class Form {
      * Get the form validity of the current state
      *
      */
-    getValidity() {
+    public getValidity() {
         return this.validity;
     }
 
@@ -210,7 +210,7 @@ export default class Form {
      *
      * @param asImmutable
      */
-    async getDirty(asImmutable = true) {
+    public async getDirty(asImmutable = true) {
         return asImmutable ?
             this.dirtyDataState :
             this.dirtyDataState.toJS()
@@ -223,7 +223,7 @@ export default class Form {
      *
      * @param asImmutable
      */
-    async getValues(asImmutable = true) {
+    public async getValues(asImmutable = true) {
         return asImmutable ?
             this.dataState :
             this.dataState.toJS()
