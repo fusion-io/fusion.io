@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/container",
-  "version": "2.5.0-3.0.0-rc.1.0",
+  "version": "3.0.0",
   "description": "Depedency Container for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
@@ -30,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
+  "gitHead": "3dbb92d73e23902943e4120b70c3eeef5bba08f2"
 }

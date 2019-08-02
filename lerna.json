@@ -10,8 +10,7 @@
     "packages/proton",
     "packages/queue",
     "packages/utils",
-    "packages/validation",
-    "packages/wave-function"
+    "packages/validation"
   ],
-  "version": "2.5.0-3.0.0-rc.1.0"
+  "version": "3.0.0"
 }
