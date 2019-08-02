@@ -1,4 +1,5 @@
 export default {
+
     debug: true,
 
     keys: [ ],
@@ -13,6 +14,7 @@ export default {
             }
         }
     },
+
     services: {
 
         mqtt: {
@@ -28,6 +30,7 @@ export default {
 
         }
     },
+
     database: {
         default: "sqlite",
         adapters: {
@@ -37,5 +40,7 @@ export default {
                 useNullAsDefault: true
             }
         }
-    }
+    },
+
+    view: "views"
 }

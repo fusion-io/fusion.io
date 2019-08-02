@@ -35,7 +35,8 @@
     "@fusion.io/integrations-knex": "^2.5.0-rc24",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "youch": "^2.0.10"
+    "youch": "^2.0.10",
+    "nunjucks": "^3.2.0"
   },
   "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
 }

@@ -42,7 +42,10 @@ export default class Plasma extends CorePlasma {
                 new Delegated(sender, listener)
             )
         ;
+    }
 
+    @inject(Hub)
+    boot(hubManager: Hub) {
         const { hub } = this.config;
 
         hubManager.configure(hub);

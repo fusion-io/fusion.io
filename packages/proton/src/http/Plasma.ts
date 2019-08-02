@@ -13,10 +13,6 @@ export default class Plasma extends CorePlasma {
         if (debug) {
             kernel.use(handleError);
         }
-
-        kernel.use(router.routes());
-        kernel.use(router.allowedMethods());
-
         kernel.keys = keys;
     }
 }

@@ -43,7 +43,7 @@ import {
 import { Locale, Preset } from "@fusion.io/localization";
 import { DatabaseManager } from "@fusion.io/integrations-knex";
 import { Kernel, Router, Controller, get, del, patch, put, post, route } from "./http";
-import { renderable } from "./templating";
+import { View, renderable } from "./templating";
 
 export {
 
@@ -103,7 +103,9 @@ export {
     route,
 
     // View package re-export
+    View,
     renderable,
 
+    // Package plasma
     ProtonPlasma
 }

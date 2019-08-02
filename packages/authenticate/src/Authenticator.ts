@@ -1,4 +1,4 @@
-import {IdentityProvider, Mountable, Protocol} from "./Contracts";
+import { IdentityProvider, Mountable, Protocol } from "./Contracts";
 import Gateway from "./Gateway";
 
 /**

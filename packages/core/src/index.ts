@@ -23,7 +23,7 @@ export class Plasma {
     constructor(protected tokamak: Tokamak, protected config: any) { }
 
     public compose(...services: any[]) { };
-    public boot() { };
+    public boot(...services: any[]) { };
 }
 
 /**

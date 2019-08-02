@@ -1,8 +1,10 @@
 import Plasma from "./Plasma";
-import {tokamak} from "@fusion.io/core";
+import { tokamak } from "@fusion.io/core";
+import View from "./Environment";
 
 export {
-    Plasma
+    Plasma,
+    View
 }
 
 export const renderable = (template: string, asVariable: string = 'model') => <T extends {new(...args:any[]):{}}>(Target: T) => {
