@@ -24,7 +24,6 @@
   "scripts": {
     "clean": "rm -rf lib",
     "tsc": "tsc",
-    "build": "tsc && tsc -m es6 --outDir lib-esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
