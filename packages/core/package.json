@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/core",
-  "version": "2.5.0-rc24",
+  "version": "2.5.0-3.0.0-rc.1.0",
   "description": "Fusion Core. Better App Bootstrap for better Geeks.",
   "publishConfig": {
     "access": "public"
@@ -32,7 +32,7 @@
   },
   "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e",
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc24",
-    "@fusion.io/utils": "^2.5.0-rc24"
+    "@fusion.io/container": "^2.5.0-3.0.0-rc.1.0",
+    "@fusion.io/utils": "^2.5.0-3.0.0-rc.1.0"
   }
 }

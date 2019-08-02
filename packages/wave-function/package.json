@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/wave-function",
-  "version": "2.5.0-rc23",
+  "version": "2.5.0-3.0.0-rc.1.0",
   "description": "This is just the test app for the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -24,8 +24,8 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/proton": "^2.5.0-rc24",
-    "@fusion.io/authenticate": "^2.5.0-rc24"
+    "@fusion.io/authenticate": "^2.5.0-3.0.0-rc.1.0",
+    "@fusion.io/proton": "^2.5.0-3.0.0-rc.1.0"
   },
   "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
 }

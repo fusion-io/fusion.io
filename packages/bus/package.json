@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/bus",
-  "version": "2.5.0-rc24",
+  "version": "2.5.0-3.0.0-rc.1.0",
   "description": "The Message transporter for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -29,7 +29,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^2.5.0-rc24"
+    "@fusion.io/core": "^2.5.0-3.0.0-rc.1.0"
   },
   "devDependencies": {
     "pubnub": "^4.24.4",

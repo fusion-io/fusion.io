@@ -6,12 +6,12 @@
     "packages/container",
     "packages/core",
     "packages/knex",
+    "packages/localization",
     "packages/proton",
     "packages/queue",
     "packages/utils",
     "packages/validation",
-    "packages/localization",
     "packages/wave-function"
   ],
-  "version": "2.5.0-rc24"
+  "version": "2.5.0-3.0.0-rc.1.0"
 }
