@@ -1,35 +1,12 @@
-import { IdentityProvider, Mountable, Protocol } from "./Contracts";
+import { Manager, tokamak } from "@fusion.io/core";
+import { Mountable } from "./Contracts";
 import Gateway from "./Gateway";
 
 /**
  * An authenticator service. It its simplest form, it managing
  * gateways.
  */
-export default class Authenticator {
-
-    private gateways: Map<string, Gateway> = new Map<string, Gateway>();
-
-    /**
-     * Register an existing gateway
-     *
-     * @param gateName
-     * @param gateInstance
-     */
-    public register(gateName: string, gateInstance: Gateway) {
-        this.gateways.set(gateName, gateInstance);
-        return this;
-    }
-
-    /**
-     * Create a new gateway
-     *
-     * @param gateway
-     * @param protocol
-     * @param provider
-     */
-    public gate(gateway: string, protocol: Protocol, provider: IdentityProvider) {
-        return this.register(gateway, new Gateway(protocol, provider));
-    }
+export class Authenticator extends Manager<Gateway> {
 
     /**
      * Authenticate a context by a given gateway.
@@ -38,7 +15,7 @@ export default class Authenticator {
      * @param context
      */
     public authenticate(gateway: string, context: Object) {
-        return this.getOrFail(gateway).authenticate(context);
+        return this.adapter(gateway).authenticate(context);
     }
 
     /**
@@ -63,7 +40,7 @@ export default class Authenticator {
 
             // Now we are actually inside the context.
             // we check for the protocol of the gateway
-            const protocol = this.getOrFail(gateway).protocol;
+            const protocol = this.adapter(gateway).protocol;
 
             if ('function' !== typeof (protocol as Mountable).mount) {
                 throw new Error(
@@ -82,20 +59,5 @@ export default class Authenticator {
             // Lastly, we'll trigger the mountFunction here here
             return mountFunction(...arg);
         }
-    }
-
-    /**
-     * Get a gateway by its name.
-     *
-     * @param gateway
-     */
-    protected getOrFail(gateway: string): Gateway {
-        const gatewayInstance = this.gateways.get(gateway);
-
-        if (!gatewayInstance) {
-            throw new Error(`Gateway [${gateway}] is not registered.`);
-        }
-
-        return gatewayInstance;
     }
 }

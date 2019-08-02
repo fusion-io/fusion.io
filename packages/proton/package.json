@@ -21,14 +21,14 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
-    "tsc": "rm -rf lib && tsc",
+    "clean": "rm -rf lib",
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/authenticate": "^2.5.0-rc24",
     "@fusion.io/core": "^2.5.0-rc24",
     "@fusion.io/validation": "^2.5.0-rc24",
     "@fusion.io/localization": "^2.5.0-rc24",

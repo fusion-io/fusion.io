@@ -1,9 +1,9 @@
 import Gateway from "../Gateway";
-import {IdentityProvider} from "../Contracts";
 import IdentityProviderChain from "../IdentityProviderChain"
-import {ExpressOAuth2, KoaOAuth2} from "../protocols";
 import UnAuthenticated from "../UnAuthenticated";
-import jwt, {DecodeOptions} from "jsonwebtoken";
+import { IdentityProvider } from "../Contracts";
+import { ExpressOAuth2, KoaOAuth2 } from "../protocols";
+
 
 declare type Credential = {
     access_token: string,
@@ -14,13 +14,13 @@ declare type Credential = {
  * @implements IdentityProvider
  */
 class GoogleIDP implements IdentityProvider {
-    constructor(private readonly clientSecret: string) {
-    }
+    constructor(private readonly clientSecret: string) { }
 
     async provide({access_token, id_token}: Credential) {
+        const jwt = require("jsonwebtoken");
 
         try {
-            const profile = jwt.decode(id_token, (this.clientSecret as DecodeOptions));
+            const profile = jwt.decode(id_token, ( this.clientSecret ));
 
             return { access_token, id_token, profile };
         } catch (error) {
@@ -29,7 +29,7 @@ class GoogleIDP implements IdentityProvider {
     }
 }
 
-export const createGateway = (framework: string, options: any, provider: IdentityProvider) => {
+export const createGoogleGateway = (framework: string, options: any, provider: IdentityProvider) => {
 
     if (framework !== 'koa' && framework !== 'express') {
         throw new Error(`Google gateway does not support framework [${framework}]`);
@@ -50,8 +50,8 @@ export const createGateway = (framework: string, options: any, provider: Identit
  * @param {IdentityProvider} provider
  * @return {Gateway}
  */
-export const createExpressGateway = (options: any, provider: IdentityProvider) => {
-    return createGateway('express', options, provider);
+export const createGoogleExpressGateway = (options: any, provider: IdentityProvider) => {
+    return createGoogleGateway('express', options, provider);
 };
 
 /**
@@ -60,6 +60,6 @@ export const createExpressGateway = (options: any, provider: IdentityProvider) =
  * @param provider
  * @return {Gateway}
  */
-export const createKoaGateway = (options: any, provider: IdentityProvider) => {
-    return createGateway('koa', options, provider);
+export const createGoogleKoaGateway = (options: any, provider: IdentityProvider) => {
+    return createGoogleGateway('koa', options, provider);
 };

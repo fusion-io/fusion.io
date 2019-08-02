@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import util from 'util';
 
 import Gateway from "../Gateway";
@@ -12,8 +11,6 @@ import {
     ExpressToken
 } from "../protocols";
 
-const verifyJWT = util.promisify(jwt.verify);
-
 declare type Credential = {token: string};
 
 /**
@@ -24,6 +21,9 @@ class JWTIdentityProvider implements IdentityProvider {
     constructor(private readonly privateKey: string) { }
 
     async provide({token}: Credential) {
+        const jwt = require('jsonwebtoken');
+        const verifyJWT = util.promisify(jwt.verify);
+
         try {
             const payload = await verifyJWT(token, this.privateKey);
             return {token, payload};
@@ -33,7 +33,7 @@ class JWTIdentityProvider implements IdentityProvider {
     }
 }
 
-export const createGateway = (framework: string, privateKey: string, provider: IdentityProvider) => {
+export const createJWTGateway = (framework: string, privateKey: string, provider: IdentityProvider) => {
     if (framework !== 'koa' && framework !== 'express' && framework !== 'socket.io') {
         throw new Error(`JWT gateway does not support framework [${framework}]`);
     }
@@ -51,14 +51,14 @@ export const createGateway = (framework: string, privateKey: string, provider: I
     return new Gateway(new Protocol(), new IdentityProviderChain([new JWTIdentityProvider(privateKey), provider]))
 };
 
-export const createExpressGateway = (privateKey: string, provider: IdentityProvider) => {
-    return createGateway('express', privateKey, provider);
+export const createJWTExpressGateway = (privateKey: string, provider: IdentityProvider) => {
+    return createJWTGateway('express', privateKey, provider);
 };
 
-export const createKoaGateway = (privateKey: string, provider: IdentityProvider) => {
-    return createGateway('koa', privateKey, provider);
+export const createJWTKoaGateway = (privateKey: string, provider: IdentityProvider) => {
+    return createJWTGateway('koa', privateKey, provider);
 };
 
-export const createSocketIOGateway = (privateKey: string, provider: IdentityProvider) => {
-    return createGateway('socket.io', privateKey, provider);
+export const createJWTSocketIOGateway = (privateKey: string, provider: IdentityProvider) => {
+    return createJWTGateway('socket.io', privateKey, provider);
 };

@@ -11,7 +11,8 @@
     "test": "test"
   },
   "scripts": {
-    "tsc": "rm -rf lib && tsc",
+    "clean": "rm -rf lib",
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rikky <son.levuthai@gmail.com>",
@@ -30,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
+  "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e",
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
 }

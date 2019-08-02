@@ -24,7 +24,8 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/proton": "^2.5.0-rc24"
+    "@fusion.io/proton": "^2.5.0-rc24",
+    "@fusion.io/authenticate": "^2.5.0-rc24"
   },
   "gitHead": "a42317cd83cf6d6e8282c0adcf2351c4a262401e"
 }

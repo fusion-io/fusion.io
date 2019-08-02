@@ -1,7 +1,7 @@
 import Gateway from "../Gateway";
-import {IdentityProvider} from "../Contracts";
 import IdentityProviderChain from "../IdentityProviderChain"
-import {ExpressOAuth2, KoaOAuth2, callAPI} from "../protocols";
+import { IdentityProvider } from "../Contracts";
+import { ExpressOAuth2, KoaOAuth2, callAPI } from "../protocols";
 
 declare type Credential = {
     access_token: string
@@ -26,7 +26,7 @@ class GitHubIDP implements IdentityProvider {
     }
 }
 
-export const createGateway = (framework: string, options: any, provider: IdentityProvider) => {
+export const createGitHubGateway = (framework: string, options: any, provider: IdentityProvider) => {
 
     if (framework !== 'koa' && framework !== 'express') {
         throw new Error(`GitHub gateway does not support framework [${framework}]`);
@@ -47,8 +47,8 @@ export const createGateway = (framework: string, options: any, provider: Identit
  * @param {IdentityProvider} provider
  * @return {Gateway}
  */
-export const createExpressGateway = (options: any, provider: IdentityProvider) => {
-    return createGateway('express', options, provider);
+export const createGitHubExpressGateway = (options: any, provider: IdentityProvider) => {
+    return createGitHubGateway('express', options, provider);
 };
 
 /**
@@ -57,6 +57,6 @@ export const createExpressGateway = (options: any, provider: IdentityProvider) =
  * @param provider
  * @return {Gateway}
  */
-export const createKoaGateway = (options: any, provider: IdentityProvider) => {
-    return createGateway('koa', options, provider);
+export const createGitHubKoaGateway = (options: any, provider: IdentityProvider) => {
+    return createGitHubGateway('koa', options, provider);
 };

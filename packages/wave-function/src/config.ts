@@ -4,6 +4,24 @@ export default {
 
     keys: [ ],
 
+    authentication: {
+        default: 'facebook',
+        adapters: {
+            facebook: {
+                driver: 'facebook',
+                options: {
+                    clientId: process.env.FACEBOOK_CLIENT_ID,
+                    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+                    redirectUri: 'http://localhost:2512/facebook/callback'
+                }
+
+            },
+            jwt: {
+                driver: 'jwt'
+            }
+        }
+    },
+
     locale: {
         default: 'international',
 
