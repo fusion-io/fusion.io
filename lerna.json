@@ -1,6 +1,7 @@
 {
   "packages": [
     "packages/authenticate",
+    "packages/authorization",
     "packages/bus",
     "packages/cli",
     "packages/container",

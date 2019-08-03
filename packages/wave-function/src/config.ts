@@ -17,8 +17,26 @@ export default {
 
             },
             jwt: {
-                driver: 'jwt'
+                driver: 'jwt',
+                options: {
+                    privateKey: process.env.JWT_PRIVATE_KEY
+                }
             }
+        }
+    },
+
+    authorization: {
+        default: 'user',
+        adapters: {
+            posts: {
+                driver: 'acl',
+                options: {
+                    guest: ['read'],
+                    user: ['read', 'comment', 'share', 'like'],
+                    admin: ['edit', 'publish']
+                }
+            },
+
         }
     },
 
@@ -28,7 +46,14 @@ export default {
         adapters: {
             international: {
                 driver: 'ldc',
-                language: 'en-US'
+                options: {
+                    language: 'en-US',
+                    currency: 'dollar',
+                    timeZone: 'utc',
+                    dateTime: {
+                        format: 'YYYY-mm-dd HH:MM:SS'
+                    }
+                }
             }
         }
     },
@@ -40,8 +65,8 @@ export default {
         },
 
         pubnub: {
-            publishKey: "pub-c-9b3aaf95-e915-42e1-8db4-18ec7b67269e",
-            subscribeKey: "sub-c-e15be580-4479-11e8-8bb7-3ab51ec5ed79"
+            publishKey: process.env.PUBNUB_PUBLISH_KEY,
+            subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY
         },
 
         i18next: {

@@ -1,0 +1,34 @@
+{
+  "name": "@fusion.io/authorization",
+  "version": "3.0.1-alpha.4",
+  "description": "The Authorization library for the Geeks, by the Geeks.",
+  "author": "rikky <son.levuthai@gmail.com>",
+  "homepage": "https://github.com/fusion-io/fusion.io#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion-io/fusion.io.git"
+  },
+  "scripts": {
+    "clean": "rm -rf lib",
+    "tsc": "tsc",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fusion-io/fusion.io/issues"
+  },
+  "dependencies": {
+    "@fusion.io/core": "^3.0.1-alpha.4"
+  }
+}
