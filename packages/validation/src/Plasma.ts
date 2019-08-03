@@ -1,6 +1,12 @@
-import {inject, Plasma as CorePlasma} from "@fusion.io/core";
+import { inject, Plasma as CorePlasma } from "@fusion.io/core";
 import Validator from "./Validator";
-
+import {
+    length,
+    nope,
+    range,
+    required,
+    array
+} from "./rules";
 
 export default class Plasma extends CorePlasma {
 
@@ -42,7 +48,6 @@ export default class Plasma extends CorePlasma {
             isJSON: 'json',
             isJWT: 'jwt',
             isLatLong: 'latlong',
-            isLength: 'length',
             isLowercase: 'lowercase',
             isMACAddress: 'macAddress',
             isMD5: 'md5',
@@ -66,10 +71,19 @@ export default class Plasma extends CorePlasma {
         for (let nativeName in Plasma.ChrisOharaValidators) {
             if (Plasma.ChrisOharaValidators.hasOwnProperty(nativeName)) {
                 let desiredName = Plasma.ChrisOharaValidators[nativeName];
-                validator.register(desiredName, async (value: any, ...args: any[]) => {
-                    return await (nativeValidators[nativeName] as Function)(value + '', ...args);
+
+                validator.extends(desiredName, (value: any, ...args: any[]) => {
+                    return (nativeValidators[nativeName] as Function)(value + '', ...args);
                 })
             }
         }
+
+        validator
+            .extends('length', length)
+            .extends('*', nope)
+            .extends('range', range)
+            .extends('required', required)
+            .extends('array', array)
+        ;
     }
 }

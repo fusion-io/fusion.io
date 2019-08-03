@@ -1,18 +1,13 @@
-import Rule, {ValidationFunction} from "./Rule";
+import { Manager, singleton } from "@fusion.io/core";
+import Rule, { ValidationFunction } from "./Rule";
 import RuleSet from "./RuleSet";
-import {singleton} from "@fusion.io/core";
-import RuleSetMap, {RuleSetMapDefinition} from "./RuleSetMap";
-
-/**
- * Error for this layer
- */
-export class ValidatorError extends Error { }
+import RuleSetMap, { RuleSetMapDefinition } from "./RuleSetMap";
 
 /**
  * Validator Manager
  */
 @singleton()
-export default class Validator extends Map<string, ValidationFunction> {
+export default class Validator extends Manager<ValidationFunction> {
 
     /**
      * Create a validate function with given validator name.
@@ -22,14 +17,7 @@ export default class Validator extends Map<string, ValidationFunction> {
      * @return {function(*=): *}
      */
     make(name: string, args: any[] = [])  {
-
-        const validationFunction = this.get(name);
-
-        if (!validationFunction) {
-            throw new ValidatorError(`E_VALIDATOR: Validator [${name}] is not registered.`);
-        }
-
-        return new Rule(name, validationFunction, args);
+        return new Rule(name, this.adapter(name), args);
     }
 
     /**
@@ -68,18 +56,5 @@ export default class Validator extends Map<string, ValidationFunction> {
         }
 
         return map;
-    }
-
-    /**
-     * Register a new Rule
-     *
-     * @param name
-     * @param validationFunction
-     */
-    register(name: string, validationFunction: ValidationFunction) {
-
-        this.set(name, validationFunction);
-
-        return this;
     }
 }
