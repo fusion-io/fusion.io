@@ -28,6 +28,7 @@ export type Driver<Adapter> = (options: any) => Adapter
  * Manager is a service which can manages the adapters and its supported drivers.
  */
 export class Manager<Adapter> {
+
     /**
      * List of the supported drivers
      */
@@ -115,5 +116,18 @@ export class Manager<Adapter> {
         const driverInstance: Driver<Adapter> = (this.supports.get(driver) as Driver<Adapter>);
 
         return driverInstance(options);
+    }
+
+    /**
+     * Extend this Manager with a given Adapter.
+     * Sometimes we already have the prebuilt adapter instance,
+     * We can also extends the Manager with such adapter.
+     *
+     * @param name
+     * @param adapter
+     */
+    public extends(name: string, adapter: Adapter) {
+        this.adapters.set(name, adapter);
+        return this;
     }
 }
