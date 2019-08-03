@@ -107,7 +107,7 @@ export class Manager<Adapter> {
      * @param driver
      * @param options
      */
-    public installAdapter({driver, options} : AdapterConfiguration): Adapter {
+    protected installAdapter({driver, options} : AdapterConfiguration): Adapter {
 
         if (!this.supported(driver)) {
             throw new ManagerError(`Driver [${driver}] is not supported`);
