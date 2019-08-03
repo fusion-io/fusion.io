@@ -37,7 +37,23 @@ import {
     IdentityProvider,
     Credential,
     Identity,
-    StateVerifier
+    StateVerifier,
+    createFacebookExpressGateway,
+    createFacebookGateway,
+    createFacebookKoaGateway,
+    createGoogleExpressGateway,
+    createGoogleGateway,
+    createGoogleKoaGateway,
+    createInstagramExpressGateway,
+    createInstagramGateway,
+    createInstagramKoaGateway,
+    createJWTExpressGateway,
+    createJWTGateway,
+    createJWTKoaGateway,
+    createJWTSocketIOGateway,
+    createSlackExpressGateway,
+    createSlackGateway,
+    createSlackKoaGateway
 } from "@fusion.io/authenticate";
 
 import { Locale, Preset } from "@fusion.io/localization";
@@ -83,6 +99,22 @@ export {
     Credential,
     Identity,
     StateVerifier,
+    createFacebookExpressGateway,
+    createFacebookGateway,
+    createFacebookKoaGateway,
+    createGoogleExpressGateway,
+    createGoogleGateway,
+    createGoogleKoaGateway,
+    createInstagramExpressGateway,
+    createInstagramGateway,
+    createInstagramKoaGateway,
+    createJWTExpressGateway,
+    createJWTGateway,
+    createJWTKoaGateway,
+    createJWTSocketIOGateway,
+    createSlackExpressGateway,
+    createSlackGateway,
+    createSlackKoaGateway,
 
     // Localization package re-export
     Locale,
