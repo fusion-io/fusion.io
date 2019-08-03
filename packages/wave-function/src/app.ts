@@ -1,5 +1,4 @@
-import { tokamak, ProtonPlasma, Kernel, Router } from "@fusion.io/proton";
-import { Plasma as Authentication } from "@fusion.io/authenticate";
+import { tokamak, ProtonPlasma, Kernel } from "@fusion.io/proton";
 import Gateways from "./auth/Plasma"
 import HttpPlasma from "./http/Plasma";
 import config from "./config";
@@ -8,7 +7,6 @@ tokamak
     .configure(config)
     .fuse(ProtonPlasma)
     .fuse(HttpPlasma)
-    .fuse(Authentication)
     .fuse(Gateways)
     .start()
 ;

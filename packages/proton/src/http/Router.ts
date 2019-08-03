@@ -30,7 +30,7 @@ export default class Router extends KoaRouter {
 
             // @ts-ignore
             return this[route.method](
-                `${Controller.name}.${route.action}`,
+                `${Constructor.name}.${route.action}`,
                 route.url,
                 ...controllerLevelMiddlewares,
                 ...actionLevelMiddlewares,

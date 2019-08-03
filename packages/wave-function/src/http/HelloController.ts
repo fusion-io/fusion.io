@@ -1,5 +1,4 @@
-import { singleton, get, Controller, inject } from "@fusion.io/proton";
-import { authenticator } from "@fusion.io/authenticate";
+import { singleton, get, Controller, authenticator } from "@fusion.io/proton";
 import { Context } from "koa";
 
 @singleton()
