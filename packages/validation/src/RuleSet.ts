@@ -92,7 +92,7 @@ export default class RuleSet extends Map<string, Rule> {
      * Alias of serialize()
      *
      */
-    strigify() {
+    stringify() {
         return this.serialize();
     }
 }
