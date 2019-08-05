@@ -38,22 +38,28 @@ import {
     Credential,
     Identity,
     StateVerifier,
-    createFacebookExpressGateway,
-    createFacebookGateway,
-    createFacebookKoaGateway,
-    createGoogleExpressGateway,
-    createGoogleGateway,
-    createGoogleKoaGateway,
-    createInstagramExpressGateway,
-    createInstagramGateway,
-    createInstagramKoaGateway,
-    createJWTExpressGateway,
-    createJWTGateway,
-    createJWTKoaGateway,
-    createJWTSocketIOGateway,
-    createSlackExpressGateway,
-    createSlackGateway,
-    createSlackKoaGateway
+
+    HeadlessLocal,
+    HttpOAuth2,
+    HttpSession,
+    HttpTokenBearer,
+    SocketIOToken,
+    KoaLocal,
+    ExpressLocal,
+    SocketIOLocal,
+    KoaOAuth2,
+    ExpressOAuth2,
+    KoaToken,
+    ExpressToken,
+    KoaSession,
+    ExpressSession,
+
+    FacebookIdentityProvider, FacebookCredential,
+    GithubIdentityProvider, GithubCredential,
+    GoogleIdentityProvider, GoogleCredential,
+    InstagramIdentityProvider, InstagramCredential,
+    JsonWebtokenIdentityProvider, JWTCredential,
+    SlackIdentityProvider, SlackCredential
 } from "@fusion.io/authenticate";
 
 import {
@@ -96,6 +102,7 @@ export {
 
     // Authentication package re-export
 
+    // Core
     Aborted,
     Authenticator,
     Gateway,
@@ -110,22 +117,30 @@ export {
     Credential,
     Identity,
     StateVerifier,
-    createFacebookExpressGateway,
-    createFacebookGateway,
-    createFacebookKoaGateway,
-    createGoogleExpressGateway,
-    createGoogleGateway,
-    createGoogleKoaGateway,
-    createInstagramExpressGateway,
-    createInstagramGateway,
-    createInstagramKoaGateway,
-    createJWTExpressGateway,
-    createJWTGateway,
-    createJWTKoaGateway,
-    createJWTSocketIOGateway,
-    createSlackExpressGateway,
-    createSlackGateway,
-    createSlackKoaGateway,
+
+    // Protocols
+    HeadlessLocal,
+    HttpOAuth2,
+    HttpSession,
+    HttpTokenBearer,
+    SocketIOToken,
+    KoaLocal,
+    ExpressLocal,
+    SocketIOLocal,
+    KoaOAuth2,
+    ExpressOAuth2,
+    KoaToken,
+    ExpressToken,
+    KoaSession,
+    ExpressSession,
+
+    // IDPs
+    FacebookIdentityProvider, FacebookCredential,
+    GithubIdentityProvider, GithubCredential,
+    GoogleIdentityProvider, GoogleCredential,
+    InstagramIdentityProvider, InstagramCredential,
+    JsonWebtokenIdentityProvider, JWTCredential,
+    SlackIdentityProvider, SlackCredential,
 
     // Authorization package re-export
     Authorizer,

@@ -10,11 +10,16 @@ export default class HelloController extends Controller {
         context.render('hello', { message: 'Hello World' });
     }
 
-    @get('/facebook/callback', authenticator.guard('facebook'))
+    @get('/facebook/callback', authenticator.guard('facebook.user'))
     async facebook(context: Context) {
         context.body = {
             identity: context.identity
         }
+    }
+
+    @get('/login/facebook', authenticator.guard('facebook.user'))
+    async facebookAuthorize() {
+        // TODO nothing here
     }
 
     @get('/jwt', authenticator.guard('jwt'))

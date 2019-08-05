@@ -17,4 +17,4 @@ export {
 
 export * from "./Contracts";
 export * from "./protocols";
-export * from "./gateways";
+export * from "./identity-providers";

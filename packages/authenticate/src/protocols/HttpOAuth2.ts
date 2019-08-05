@@ -2,11 +2,7 @@ import {StateVerifier, Protocol} from "../Contracts";
 import Aborted from "../Aborted";
 import UnAuthenticated from "../UnAuthenticated";
 import querystring from 'querystring';
-import request from "request";
-import util from "util";
 import {HttpContext} from "./Contracts";
-
-const callAPI = util.promisify(request);
 
 /**
  * Default scope verifier.
@@ -72,7 +68,7 @@ export default class HttpOAuth2 implements Protocol {
      */
     public async redirectToAuthorizeEndpoint({httpContext: {response}}: {httpContext: HttpContext}) {
 
-        let { host, path, clientId, redirectUri, scope } = this.options;
+        let { authorizePath, clientId, redirectUri, scope } = this.options;
 
         const qs: any = {
             response_type: 'code',
@@ -89,11 +85,7 @@ export default class HttpOAuth2 implements Protocol {
             qs['state'] = await this.stateVerifier.makeState();
         }
 
-        if (!path) {
-            path = '/oauth2/authorize';
-        }
-
-        const authorizeUri = `${host}${path}?${querystring.stringify(qs)}`;
+        const authorizeUri = `${authorizePath}?${querystring.stringify(qs)}`;
 
         response.redirect(authorizeUri);
 
@@ -117,7 +109,7 @@ export default class HttpOAuth2 implements Protocol {
             throw new UnAuthenticated(`OAuth2 state [${request.query['state']}] is invalid`);
         }
 
-        const form = {
+        const payload = {
             client_id: this.options.clientId,
             client_secret: this.options.clientSecret,
             redirect_uri: this.options.redirectUri,
@@ -125,23 +117,13 @@ export default class HttpOAuth2 implements Protocol {
             grant_type: 'authorization_code'
         };
 
-        const tokenPath = this.options['tokenPath'] || `${this.options.host}/oauth/access_token`;
+        const tokenPath = this.options['tokenPath'];
 
-        // @ts-ignore
-        const response = await callAPI({
-            url: tokenPath,
-            method: 'POST',
-            form,
-            json: true
-        });
+        const axios = require('axios');
 
-        const responseAsJson = response.toJSON();
+        const { data } = await axios.post(tokenPath, payload);
 
-        if (response.statusCode >= 300) {
-            throw new UnAuthenticated(`OAuth2 Server Error. Response from server: ${JSON.stringify(responseAsJson.body)}`);
-        }
-
-        return responseAsJson.body;
+        return data;
     }
 
     /**

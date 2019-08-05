@@ -15,7 +15,6 @@ export {
     SocketIOToken
 };
 
-export const callAPI        = (options: any): Promise<any> => util.promisify(request)(options, undefined);
 export const KoaLocal       = mountKoa(HeadlessLocal);
 export const ExpressLocal   = mountExpress(HeadlessLocal);
 export const SocketIOLocal  = mountSocketIO(HeadlessLocal);

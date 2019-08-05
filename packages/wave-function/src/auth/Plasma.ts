@@ -1,13 +1,22 @@
-import { Plasma as CorePlasma, inject, Authenticator, createFacebookKoaGateway, createJWTKoaGateway } from "@fusion.io/proton";
-import DummyUserProvider from "./DummnyUserProvider";
-
+import {
+    Plasma as CorePlasma,
+    inject, Authenticator, KoaOAuth2, Gateway,
+    FacebookIdentityProvider, KoaToken, JsonWebtokenIdentityProvider
+} from "@fusion.io/proton";
 
 export default class Plasma extends CorePlasma {
 
     @inject(Authenticator)
     compose(authenticator: Authenticator) {
         authenticator
-            .supporting('facebook', options => createFacebookKoaGateway(options, new DummyUserProvider()))
-            .supporting('jwt', options => createJWTKoaGateway(options, new DummyUserProvider()))
+            .supporting('facebook', options => new Gateway(
+                new KoaOAuth2(options.protocol),
+                new FacebookIdentityProvider(options.idp)
+            ))
+            .supporting('jwt', options => new Gateway(
+                new KoaToken(),
+                new JsonWebtokenIdentityProvider(options)
+            ))
+        ;
     }
 }

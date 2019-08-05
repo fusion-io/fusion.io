@@ -33,6 +33,7 @@
   },
   "gitHead": "0a28ed2832d5b8b9a08dcedd36a9c3b37f13a2fb",
   "devDependencies": {
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "axios": "^0.19.0"
   }
 }
