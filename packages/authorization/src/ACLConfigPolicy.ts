@@ -50,10 +50,7 @@ export default class ACLConfigPolicy implements Policy<ACLIdentityOrRole> {
      */
     public async check(authorizable: ACLIdentityOrRole, permission: string) {
 
-        let roles = (typeof authorizable === "string") ?
-            [ authorizable ] :
-            (authorizable as HavingRoles).getRoles()
-        ;
+        let roles = ACLConfigPolicy.resolveRoles(authorizable);
 
         return roles.reduce(
             (allowing: boolean, role) => allowing || this.checkForRole(role, permission), false
@@ -73,10 +70,27 @@ export default class ACLConfigPolicy implements Policy<ACLIdentityOrRole> {
 
     /**
      *
+     * @param authorizable
+     */
+    private static resolveRoles(authorizable: ACLIdentityOrRole) {
+        return (typeof authorizable === "string") ?
+            [ authorizable ] :
+            (authorizable as HavingRoles).getRoles()
+        ;
+    }
+
+    /**
+     *
      * @param identityOrRole
      */
     async granted(identityOrRole: HavingRoles): Promise<Permissions> {
-        // TODO
-        return [];
+
+        const roles = ACLConfigPolicy.resolveRoles(identityOrRole);
+
+        return roles
+            .map(role => this.config.hasOwnProperty(role) ? this.config[role] : [])
+            .reduce((merged, permissions) => merged.concat(permissions), [])
+            .filter((x, i, a) => a.indexOf(x) == i)
+        ;
     };
 }

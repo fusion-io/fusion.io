@@ -12,6 +12,6 @@ export default class Plasma extends CorePlasma {
     @inject(Locale)
     boot(localization: Locale) {
         const { locale } = this.config;
-        localization.configure(locale);
+        localization.bootstrap(locale);
     }
 }

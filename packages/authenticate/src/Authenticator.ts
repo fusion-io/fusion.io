@@ -1,12 +1,41 @@
-import { Manager, tokamak } from "@fusion.io/core";
+import { Manager } from "@fusion.io/core";
 import { Mountable } from "./Contracts";
 import Gateway from "./Gateway";
+
+/**
+ * The user friendly configuration for authenticator
+ */
+export type AuthenticatorConfiguration = {
+    default: string,
+    gateways: {
+        [name:string]: {
+            gateway: "string",
+            options: any
+        }
+    }
+}
 
 /**
  * An authenticator service. It its simplest form, it managing
  * gateways.
  */
 export class Authenticator extends Manager<Gateway> {
+
+    bootstrap(config: AuthenticatorConfiguration) {
+
+        const standardAdapterConfiguration =
+            Object.entries(config.gateways)
+                .reduce((merged, [gatewayName, {gateway, options}]) => ({
+                    ...merged,
+                    [gatewayName]: { driver: gateway, options}
+                }), {})
+            ;
+
+        return this.configure({
+            default: config.default,
+            adapters: standardAdapterConfiguration
+        });
+    }
 
     /**
      * Authenticate a context by a given gateway.

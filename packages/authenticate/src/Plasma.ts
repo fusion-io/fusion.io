@@ -14,6 +14,6 @@ export class Plasma extends CorePlasma {
     boot() {
         const { authentication } = this.config;
 
-        authenticator.configure(authentication);
+        authenticator.bootstrap(authentication);
     }
 }

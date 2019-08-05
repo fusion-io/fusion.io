@@ -8,6 +8,6 @@ export default class Plasma extends CorePlasma {
 
         const { database } = this.config;
 
-        dbm.configure(database);
+        dbm.bootstrap(database);
     }
 }

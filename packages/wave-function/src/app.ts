@@ -1,7 +1,8 @@
 import { tokamak, ProtonPlasma, Kernel } from "@fusion.io/proton";
 import Gateways from "./auth/Plasma"
 import HttpPlasma from "./http/Plasma";
-import config from "./config";
+
+const config = require("../config");
 
 tokamak
     .configure(config)

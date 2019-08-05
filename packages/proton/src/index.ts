@@ -56,6 +56,17 @@ import {
     createSlackKoaGateway
 } from "@fusion.io/authenticate";
 
+import {
+    Authorizer,
+    AuthorizerConfiguration,
+    GrantablePolicy,
+    Policy,
+    ACLConfigPolicy,
+    ACLConfiguration,
+    HavingRoles,
+    ACLIdentityOrRole
+} from "@fusion.io/authorization";
+
 import { Locale, Preset } from "@fusion.io/localization";
 import { DatabaseManager } from "@fusion.io/integrations-knex";
 import { Kernel, Router, Controller, get, del, patch, put, post, route } from "./http";
@@ -115,6 +126,16 @@ export {
     createSlackExpressGateway,
     createSlackGateway,
     createSlackKoaGateway,
+
+    // Authorization package re-export
+    Authorizer,
+    AuthorizerConfiguration,
+    GrantablePolicy,
+    Policy,
+    ACLConfigPolicy,
+    ACLConfiguration,
+    HavingRoles,
+    ACLIdentityOrRole,
 
     // Localization package re-export
     Locale,
