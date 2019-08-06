@@ -1,9 +1,0 @@
-import {inject} from "@fusion.io/framework";
-
-export default class {{className}} {
-
-    @inject()
-    async seed() {
-        //
-    }
-}
