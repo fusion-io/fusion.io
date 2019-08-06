@@ -1,10 +1,11 @@
-import { Plasma as CorePlasma, inject, Kernel, Router } from "@fusion.io/proton";
+import {Plasma as CorePlasma, inject, Kernel, Router, authenticator} from "@fusion.io/proton";
 import HelloController from "./HelloController";
 
 export default class Plasma extends CorePlasma {
 
     @inject(Kernel, Router)
     boot(kernel: Kernel, router: Router) {
+
 
         kernel.use(router.routes());
         kernel.use(router.allowedMethods());

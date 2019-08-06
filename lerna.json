@@ -4,6 +4,7 @@
     "packages/authorization",
     "packages/bus",
     "packages/cli",
+    "packages/commands",
     "packages/container",
     "packages/core",
     "packages/knex",
@@ -11,7 +12,8 @@
     "packages/proton",
     "packages/queue",
     "packages/utils",
-    "packages/validation"
+    "packages/validation",
+    "packages/wave-function"
   ],
   "version": "3.0.1-alpha.4"
 }

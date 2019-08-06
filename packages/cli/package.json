@@ -1,14 +1,15 @@
 {
   "name": "@fusion.io/cli",
-  "version": "2.5.0-rc7",
-  "description": "> TODO: description",
+  "version": "3.0.1-alpha.4",
+  "description": "The CLI tools for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
   },
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
-  "license": "ISC",
-  "main": "lib/cli.js",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -26,8 +27,11 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "6385344182e3e2a371b51e3a83a685c4c42226a4",
+  "bin": {
+    "fusion": "bin/cli.js"
+  },
   "dependencies": {
-    "@fusion.io/container": "^2.5.0-rc7"
+    "yargs": "^13.3.0",
+    "@fusion.io/core": "^3.0.1-alpha.4"
   }
 }

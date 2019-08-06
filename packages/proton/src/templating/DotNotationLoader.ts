@@ -1,4 +1,4 @@
-import {FileSystemLoader, Loader} from "nunjucks";
+import { FileSystemLoader, Loader } from "nunjucks";
 
 /**
  * Just wrap the FileSystemLoader to have a nicer view path name

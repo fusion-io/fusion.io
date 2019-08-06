@@ -1,11 +1,11 @@
-# `model`
+# `commands`
 
 > TODO: description
 
 ## Usage
 
 ```
-const model = require('model');
+const commands = require('commands');
 
 // TODO: DEMONSTRATE API
 ```

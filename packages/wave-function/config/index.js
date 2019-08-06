@@ -20,6 +20,10 @@ module.exports = {
         }
     },
 
+    http: {
+        port: 2512
+    },
+
     authentication: require('./authentication'),
 
     authorization: require('./authorization'),
