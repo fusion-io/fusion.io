@@ -13,6 +13,21 @@ export default class ConsoleKernel {
     }
 
     public apply(yargs: Yargs|any) {
+        yargs
+            .option('interactive', {
+                alias: 'i',
+                description: 'Turn on interactive mode',
+                default: false,
+                type: 'boolean'
+            })
+            .option('verbose', {
+                alias: 'v',
+                describe: 'Set verbosity level',
+                default: 0,
+                type: 'count'
+            })
+        ;
+
         this.commands.forEach(CommandConstructor => {
             const cmd = tokamak.make<Command>(CommandConstructor);
 

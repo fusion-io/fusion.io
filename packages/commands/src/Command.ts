@@ -22,9 +22,13 @@ export default abstract class Command {
 
     protected options: any = [];
 
-    protected input: Input = tokamak.make<Input>(Input);
+    protected input(type?: string) {
+        return tokamak.make<Input>(Input).adapter(type);
+    }
 
-    protected output: Output = tokamak.make<Output>(Output);
+    protected output(type?: string) {
+        return tokamak.make<Output>(Output).adapter(type);
+    }
 
     protected async asking(argv: any, ...args: any[]) {
         return { };
@@ -64,12 +68,6 @@ export default abstract class Command {
             },
 
             builder(yargs: any): void {
-                yargs.option('interactive', {
-                    alias: 'i',
-                    default: false,
-                    type: 'boolean'
-                });
-
                 Object.entries(instance.options).forEach(([key, options]) => yargs.option(key, options));
 
                 instance.builder(yargs);

@@ -28,7 +28,7 @@ export default class Config extends Command {
     }
 
     protected async asking(argv: any) {
-        return this.input.adapter('inquiry').asking([{
+        return this.input('inquiry').asking([{
                 type: 'autocomplete',
                 name: 'xpath',
                 suggestOnly: true,
@@ -38,6 +38,6 @@ export default class Config extends Command {
 
     @inject('config')
     public async execute({ xpath }: { xpath: string }, config: any) {
-        await this.output.adapter('log').showing(xpath ? lodashGet(config, xpath) : config)
+        await this.output('log').showing(xpath ? lodashGet(config, xpath) : config)
     }
 }

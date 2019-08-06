@@ -1,3 +1,5 @@
+#! /usr/local/bin/node
+
 const tokamak = require(process.cwd() + '/app').default;
 const { ConsoleKernel, Plasma } = require('@fusion.io/commands');
 const yargs = require('yargs');
@@ -13,8 +15,9 @@ kernel
     .apply(yargs);
 
 module.exports =
-    yargs.demandCommand()
+    yargs
+        .demandCommand()
         .help()
-        .wrap(72)
+        .wrap(80)
         .argv
 ;
