@@ -11,6 +11,7 @@ import ProgressBar from "./io/OuputHelper/ProgressBar";
 import Tasks from "./io/OuputHelper/Tasks";
 import Table from "./io/OuputHelper/Table";
 import UI from "./io/OuputHelper/UI";
+import Tokamak from "./tokamak/Tokamak";
 
 export default class Plasma extends CorePlasma {
 
@@ -19,6 +20,7 @@ export default class Plasma extends CorePlasma {
 
         consoleKernel
             .register(Config)
+            .register(Tokamak)
         ;
 
         // Input Helpers
