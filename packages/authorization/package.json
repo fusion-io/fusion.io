@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authorization",
-  "version": "3.0.1-alpha.5",
+  "version": "3.0.1-alpha.6",
   "description": "The Authorization library for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -29,6 +29,6 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.5"
+    "@fusion.io/core": "^3.0.1-alpha.6"
   }
 }

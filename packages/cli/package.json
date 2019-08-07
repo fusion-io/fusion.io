@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/cli",
-  "version": "3.0.1-alpha.5",
+  "version": "3.0.1-alpha.6",
   "description": "The CLI tools for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
@@ -33,8 +33,8 @@
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/register": "^7.5.5",
-    "@fusion.io/commands": "^3.0.1-alpha.5",
-    "@fusion.io/core": "^3.0.1-alpha.5",
+    "@fusion.io/commands": "^3.0.1-alpha.6",
+    "@fusion.io/core": "^3.0.1-alpha.6",
     "find-up": "^4.1.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
