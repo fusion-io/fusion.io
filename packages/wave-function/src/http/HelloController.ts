@@ -5,9 +5,9 @@ import { Context } from "koa";
 export default class HelloController extends Controller {
 
 
-    @get('/message/hello')
+    @get('/')
     async index(context: Context) {
-        context.render('hello', { message: 'Hello World' });
+        context.render('hello', { message: 'Yo! Let\'s Nuke!' });
     }
 
     @get('/facebook/callback', authenticator.guard('facebook.user'))

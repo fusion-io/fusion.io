@@ -34,10 +34,14 @@
     "@babel/core": "^7.5.5",
     "@babel/register": "^7.5.5",
     "@fusion.io/commands": "^3.0.1-alpha.7",
+    "koa": "^2.7.0",
     "@fusion.io/core": "^3.0.1-alpha.7",
+    "chokidar": "^3.0.2",
     "find-up": "^4.1.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
-    "yargs": "^13.3.0"
+    "yargs": "^13.3.0",
+    "faker": "^4.1.0",
+    "chalk": "^2.4.2"
   }
 }
