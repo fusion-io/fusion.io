@@ -10,30 +10,95 @@ export type CommandConstructor = {
     new(...args: any[]): Command
 }
 
+/**
+ * Command class
+ */
 export default abstract class Command {
 
+    /**
+     * The command signature
+     */
     protected command: string = '';
 
+    /**
+     * Description
+     */
     protected describe: string = '';
 
+    /**
+     * Aliases
+     */
     protected aliases: string[] = [];
 
+    /**
+     * List of the command middlewares
+     */
     protected middlewares: Function[] = [];
 
+    /**
+     * List of the command options / arguments
+     */
     protected options: any = [];
 
-    protected input(type?: string) {
-        return tokamak.make<Input>(Input).adapter(type);
+    /**
+     * The input service of the command. We can use it to interact
+     * with the user
+     *
+     */
+    private input: Input = tokamak.make<Input>(Input);
+
+    /**
+     * The output service of the command. We can use it
+     * to showing feedback to the user.
+     */
+    private output: Output = tokamak.make<Output>(Output);
+
+    /**
+     * List of Sub Commands
+     */
+    protected subCommands: CommandConstructor[] = [ ];
+
+    /**
+     * Using the input to ask the user.
+     *
+     * @param type
+     * @param parameters
+     */
+    protected ask(type: string, ...parameters: any[]) {
+        return this.input.adapter(type).asking(...parameters);
     }
 
-    protected output(type?: string) {
-        return tokamak.make<Output>(Output).adapter(type);
+    /**
+     * Using the output feed back to the user.
+     *
+     * @param type
+     * @param parameters
+     */
+    protected show(type: string, ...parameters: any[]) {
+        return this.output.adapter(type).showing(...parameters);
     }
 
-    protected async asking(argv: any, ...args: any[]) {
+    /**
+     * Interact with the user just before the
+     * command started.
+     *
+     * This is a good place to perform interaction
+     * and getting the user answer, after that,
+     * the user's response will also be the command
+     * argument/option
+     *
+     * @param argv
+     * @param args
+     */
+    protected async interact(argv: any, ...args: any[]) {
         return { };
     }
 
+    /**
+     * Builder to make the Sub Command for Yargs
+     *
+     * @param yargs
+     */
     protected builder(yargs: Yargs) {
         this.subCommands.forEach(Cmd => {
             const cmd = tokamak.make<Command>(Cmd);
@@ -41,10 +106,9 @@ export default abstract class Command {
         });
     };
 
-    protected subCommands: CommandConstructor[] = [ ];
-
-    protected abstract execute(argv: any, ...args: any): any;
-
+    /**
+     * Convert this command into Yargs command.
+     */
     toYargs() {
         const instance = this;
 
@@ -56,22 +120,33 @@ export default abstract class Command {
 
             middlewares: [
                 (argv: any) => {
-                    if (argv.interactive) {
-                        return instance.asking(argv).then((parsed: any) => ({...argv, ...parsed}));
-                    }
+                    this.input.setInteractive(argv.interactive);
+                    this.output.setVerbosity(argv.verbose);
+
+                    return instance.interact(argv).then((parsed: any) => ({...argv, ...parsed}));
                 },
                 ...instance.middlewares
             ],
 
             handler(argv: any): void {
+                // TODO will handle the command's error here.
                 Promise.resolve(instance.execute(argv)).catch(error => console.error(error));
             },
 
             builder(yargs: any): void {
+                // TODO handling the options.
                 Object.entries(instance.options).forEach(([key, options]) => yargs.option(key, options));
 
                 instance.builder(yargs);
             }
         }
     }
+
+    /**
+     * Execute the command.
+     *
+     * @param argv
+     * @param args
+     */
+    protected abstract execute(argv: any, ...args: any): any;
 }

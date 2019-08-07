@@ -8,6 +8,7 @@ const lodashGet = require("lodash.get");
 export default class Config extends Command {
 
     command     = "config [xpath]";
+
     describe    = chalk`Dumps the configuration values with given {cyan xpath}`;
 
     @inject('config')
@@ -27,17 +28,17 @@ export default class Config extends Command {
         ;
     }
 
-    protected async asking(argv: any) {
-        return this.input('inquiry').asking([{
-                type: 'autocomplete',
-                name: 'xpath',
-                suggestOnly: true,
-                source: this.suggest
-            }])
+    protected async interact(argv: any) {
+        return this.ask('inquiry', [{
+            type: 'autocomplete',
+            name: 'xpath',
+            suggestOnly: true,
+            source: this.suggest
+        }]);
     }
 
     @inject('config')
     public async execute({ xpath }: { xpath: string }, config: any) {
-        await this.output('log').showing(xpath ? lodashGet(config, xpath) : config)
+        await this.show('log', xpath ? lodashGet(config, xpath) : config)
     }
 }

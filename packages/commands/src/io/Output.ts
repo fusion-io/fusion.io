@@ -7,4 +7,7 @@ export type OutputHelper = {
 @singleton()
 export default class Output extends Manager<OutputHelper> {
 
+    setVerbosity(verbose: number) {
+        return this;
+    }
 }

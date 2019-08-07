@@ -7,4 +7,10 @@ export type InputHelper = {
 @singleton()
 export default class Input extends Manager<InputHelper> {
 
+    private interactive: boolean = false;
+
+    setInteractive(interactive: boolean) {
+        this.interactive = interactive;
+        return this;
+    }
 }
