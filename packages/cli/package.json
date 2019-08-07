@@ -33,6 +33,9 @@
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/register": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@fusion.io/commands": "^3.0.1-alpha.7",
     "koa": "^2.7.0",
     "@fusion.io/core": "^3.0.1-alpha.7",

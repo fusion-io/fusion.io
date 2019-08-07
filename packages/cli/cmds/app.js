@@ -1,5 +1,5 @@
 const { ConsoleKernel, Plasma } = require('@fusion.io/commands');
-const CliPlasma = require('./StartServerCommand');
+const CliPlasma = require('./ProtonStart');
 const yargs = require('yargs');
 
 module.exports = {
@@ -9,7 +9,15 @@ module.exports = {
         yargs.showHelp();
     },
     builder(yargs) {
-        require("@babel/register");
+        require("@babel/register")({
+            "presets": [
+                [ "@babel/preset-env", { "useBuiltIns": "entry" } ]
+            ],
+            "plugins": [
+                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+            ]
+        });
         require("ts-node").register({
             transpileOnly: true
         });
