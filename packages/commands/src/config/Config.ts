@@ -1,7 +1,6 @@
 import { inject, singleton } from "@fusion.io/core";
 import chalk from "chalk";
 import Command from "../Command";
-
 const lodashGet = require("lodash.get");
 
 @singleton()
@@ -29,7 +28,7 @@ export default class Config extends Command {
     }
 
     protected async interact(argv: any) {
-        return this.ask('inquiry', [{
+        return this.input.ask('inquiry', [{
             type: 'autocomplete',
             name: 'xpath',
             suggestOnly: true,
@@ -39,6 +38,6 @@ export default class Config extends Command {
 
     @inject('config')
     public async execute({ xpath }: { xpath: string }, config: any) {
-        await this.show('log', xpath ? lodashGet(config, xpath) : config)
+        await this.output.operate('log', xpath ? lodashGet(config, xpath) : config);
     }
 }

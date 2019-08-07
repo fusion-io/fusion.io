@@ -23,7 +23,7 @@ export default class ConsoleKernel {
             .option('verbose', {
                 alias: 'v',
                 describe: 'Set verbosity level',
-                default: 0,
+                default: 2,
                 type: 'count'
             })
         ;

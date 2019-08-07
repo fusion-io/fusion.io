@@ -13,4 +13,12 @@ export default class Input extends Manager<InputHelper> {
         this.interactive = interactive;
         return this;
     }
+
+    ask(type: string, ...questions: any[]) {
+        if (this.interactive) {
+            return this.adapter(type).asking(...questions);
+        }
+
+        return Promise.resolve({});
+    }
 }

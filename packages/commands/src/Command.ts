@@ -45,38 +45,18 @@ export default abstract class Command {
      * with the user
      *
      */
-    private input: Input = tokamak.make<Input>(Input);
+    protected input: Input = tokamak.make<Input>(Input);
 
     /**
      * The output service of the command. We can use it
      * to showing feedback to the user.
      */
-    private output: Output = tokamak.make<Output>(Output);
+    protected output: Output = tokamak.make<Output>(Output);
 
     /**
      * List of Sub Commands
      */
     protected subCommands: CommandConstructor[] = [ ];
-
-    /**
-     * Using the input to ask the user.
-     *
-     * @param type
-     * @param parameters
-     */
-    protected ask(type: string, ...parameters: any[]) {
-        return this.input.adapter(type).asking(...parameters);
-    }
-
-    /**
-     * Using the output feed back to the user.
-     *
-     * @param type
-     * @param parameters
-     */
-    protected show(type: string, ...parameters: any[]) {
-        return this.output.adapter(type).showing(...parameters);
-    }
 
     /**
      * Interact with the user just before the
