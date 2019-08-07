@@ -30,23 +30,27 @@ class ProtonStart extends Command {
             });
 
             http.createServer((request, response) => {
-                // TODO will read the configuration file
 
-                // We may don't need this.
-                // We need to figure out how to load the kernel without require
-                const reloaded  = require(process.cwd() + '/' + rc.app);
-                const fusion    = reloaded.default;
+                try {
+                    // We may don't need this.
+                    // We need to figure out how to load the kernel without require
+                    const reloaded  = require(process.cwd() + '/' + rc.app);
+                    const fusion    = reloaded.default;
 
-                if (!reloaded.protonKernel) {
-                    throw new Error("There are no protonKernel in your app export");
+                    if (!reloaded.protonKernel) {
+                        throw new Error("There are no protonKernel in your app export");
+                    }
+
+
+                    // Start fusion
+                    fusion.start();
+
+                    // Handle the HTTP request
+                    reloaded.protonKernel.callback()(request, response);
+                } catch (e) {
+                    spinner.start(chalk.red("Oops! " + e.message + '. ' + chalk.gray('Waiting for change.')))
                 }
 
-
-                // Start fusion
-                fusion.start();
-
-                // Handle the HTTP request
-                reloaded.protonKernel.callback()(request, response);
             }).listen(port);
             // noinspection JSValidateTypes
 
