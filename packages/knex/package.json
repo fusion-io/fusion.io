@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/integrations-knex",
-  "version": "3.0.1-alpha.8",
+  "version": "3.0.1-alpha.9",
   "description": "Knex Integration for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -30,7 +30,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.8",
+    "@fusion.io/core": "^3.0.1-alpha.9",
     "knex": "^0.19.1"
   },
   "gitHead": "02b4e011ba3247bf8ac03d949c227870892952bb"

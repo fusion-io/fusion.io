@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/core",
-  "version": "3.0.1-alpha.8",
+  "version": "3.0.1-alpha.9",
   "description": "Fusion Core. Better App Bootstrap for better Geeks.",
   "publishConfig": {
     "access": "public"
@@ -32,7 +32,7 @@
   },
   "gitHead": "02b4e011ba3247bf8ac03d949c227870892952bb",
   "dependencies": {
-    "@fusion.io/container": "^3.0.1-alpha.8",
-    "@fusion.io/utils": "^3.0.1-alpha.8"
+    "@fusion.io/container": "^3.0.1-alpha.9",
+    "@fusion.io/utils": "^3.0.1-alpha.9"
   }
 }
