@@ -1,19 +1,20 @@
-const { Command, ConsoleKernel } = require("@fusion.io/commands");
-const { tokamak, Plasma } = require("@fusion.io/core");
+const { Command, ConsoleKernel } = require("@fusion.io/commands/lib/index");
+const { tokamak, Plasma } = require("@fusion.io/core/lib/index");
 
 const chalk = require('chalk');
 const http  = require('http');
 const faker = require('faker');
+const chokidar = require('chokidar');
 
-class Watch extends Command {
+class ProtonStart extends Command {
+
 
     // noinspection JSCheckFunctionSignatures
-    async execute(argv, ...args) {
-
-        const chokidar = require('chokidar');
+    async execute({rc}) {
         const watcher = chokidar.watch(process.cwd());
         const spinner = await this.output.operate('spinner');
         const port    = process.env.PORT || 2512;
+
         await this.output.operate('log', chalk`{gray Starting the development server at {cyan ${port}}}`);
 
         spinner.start(chalk`{gray Starting}`);
@@ -35,14 +36,19 @@ class Watch extends Command {
 
                 // We may don't need this.
                 // We need to figure out how to load the kernel without require
-                const {kernel} = require(process.cwd() + '/src/app');
-                const fusion = require(process.cwd() + '/src/app').default;
+                const reloaded  = require(process.cwd() + '/' + rc.app);
+                const fusion    = reloaded.default;
+
+                if (!reloaded.protonKernel) {
+                    throw new Error("There are no protonKernel in your app export");
+                }
+
 
                 // Start fusion
                 fusion.start();
 
                 // Handle the HTTP request
-                kernel.callback()(request, response);
+                reloaded.protonKernel.callback()(request, response);
             }).listen(port);
             // noinspection JSValidateTypes
 
@@ -51,7 +57,7 @@ class Watch extends Command {
     }
 }
 
-tokamak.singleton(Watch, () => new Watch());
+tokamak.singleton(ProtonStart, () => new ProtonStart());
 
 
 class CliPlasma extends Plasma {
@@ -59,7 +65,7 @@ class CliPlasma extends Plasma {
     // noinspection JSCheckFunctionSignatures
     compose() {
         tokamak.make(ConsoleKernel)
-            .register(Watch);
+            .register(ProtonStart);
     }
 }
 
