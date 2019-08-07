@@ -11,6 +11,6 @@ export default class Table implements OutputHelper {
             table.push(...renderFunctionOrData);
         }
 
-        console.log(table);
+        console.log(table.toString());
     }
 }
