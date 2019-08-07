@@ -1,4 +1,4 @@
-import {inject, Plasma as CorePlasma} from "@fusion.io/core";
+import { inject, Plasma as CorePlasma } from "@fusion.io/core";
 import { ConsoleKernel } from "@fusion.io/commands";
 import Proton from "./Proton";
 

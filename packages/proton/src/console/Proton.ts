@@ -9,5 +9,5 @@ export default class Proton extends Command {
         Serve
     ];
 
-    protected execute() { }
+    protected async execute() { }
 }

@@ -1,4 +1,4 @@
-import {inject, singleton} from "@fusion.io/core";
+import { inject, singleton } from "@fusion.io/core";
 import Kernel from "../http/Koa";
 import { Command } from "@fusion.io/commands";
 
@@ -6,7 +6,7 @@ import { Command } from "@fusion.io/commands";
 export default class Serve extends Command {
 
     @inject(Kernel, 'config')
-    protected execute(argv: any, kernel: Kernel, { http: port }: any) {
+    protected async execute(argv: any, kernel: Kernel, { http: port }: any) {
         kernel.listen(port);
     }
 }
