@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "3.0.1-alpha.4",
+  "version": "3.0.1-alpha.5",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -18,7 +18,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.4"
+    "@fusion.io/core": "^3.0.1-alpha.5"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [
@@ -33,7 +33,7 @@
   },
   "gitHead": "0a28ed2832d5b8b9a08dcedd36a9c3b37f13a2fb",
   "devDependencies": {
-    "jsonwebtoken": "^8.5.1",
-    "axios": "^0.19.0"
+    "axios": "^0.19.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }
