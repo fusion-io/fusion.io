@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
-  "gitHead": "3b2c9457d96333fedd05c97810788a897679a8de",
+  "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a",
   "dependencies": {
     "@fusion.io/container": "^3.0.1-alpha.11",
     "@fusion.io/utils": "^3.0.1-alpha.11"

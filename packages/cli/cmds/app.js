@@ -9,9 +9,24 @@ module.exports = {
         yargs.showHelp();
     },
     builder(yargs) {
-        require("@babel/register");
+        require("@babel/register")({
+            "presets": [["@babel/preset-env", {
+                "targets": {
+                    "node": "8"
+                }
+            }]],
+            "plugins": [
+                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+            ]
+        });
         require("ts-node").register({
-            transpileOnly: true
+            transpileOnly: true,
+            compilerOptions: {
+                "experimentalDecorators": true,
+                "target": "es6",
+                "module": "commonjs"
+            }
         });
 
         const findUp        = require('find-up');
