@@ -9,15 +9,7 @@ module.exports = {
         yargs.showHelp();
     },
     builder(yargs) {
-        require("@babel/register")({
-            "presets": [
-                [ "@babel/preset-env", { "useBuiltIns": "entry" } ]
-            ],
-            "plugins": [
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-            ]
-        });
+        require("@babel/register");
         require("ts-node").register({
             transpileOnly: true
         });
