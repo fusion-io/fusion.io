@@ -24,8 +24,9 @@ module.exports = {
             transpileOnly: true,
             compilerOptions: {
                 "experimentalDecorators": true,
-                "target": "es6",
-                "module": "commonjs"
+                "target": "esnext",
+                "module": "commonjs",
+                "esModuleInterop": true
             }
         });
 
