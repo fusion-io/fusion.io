@@ -19,6 +19,9 @@ export default class Plasma extends CorePlasma {
 
         consoleKernel
             .register(Config)
+            .on('error', (error: {code?: number}) => {
+                process.exit(error.code || -5);
+            })
         ;
 
         // Input Helpers

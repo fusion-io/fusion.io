@@ -1,9 +1,10 @@
 import { singleton, tokamak } from "@fusion.io/core";
 import { Yargs } from "./Contracts";
 import Command, { CommandConstructor } from "./Command";
+import { EventEmitter } from "events";
 
 @singleton()
-export default class ConsoleKernel {
+export default class ConsoleKernel extends EventEmitter {
 
     private commands = new Set<CommandConstructor>();
 

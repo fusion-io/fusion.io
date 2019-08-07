@@ -3,6 +3,7 @@ import { Yargs } from "./Contracts";
 import chalk from "chalk";
 import Input from "./io/Input";
 import Output from "./io/Output";
+import ConsoleKernel from "./ConsoleKernel";
 
 const kebabCase = require('lodash.kebabcase');
 
@@ -109,14 +110,24 @@ export default abstract class Command {
             ],
 
             handler(argv: any): void {
-                // TODO will handle the command's error here.
-                Promise.resolve(instance.execute(argv)).catch(error => console.error(error));
+                (async() => {
+                    try {
+                        await instance.execute(argv);
+                        return 0;
+                    } catch (error) {
+                        await instance.output.error('box', error.message);
+                        await instance.output.debug('log', error.stack);
+
+                        tokamak.make<ConsoleKernel>(ConsoleKernel).emit('error', error);
+
+                        return error.code || -1;
+                    }
+                })()
+                ;
             },
 
             builder(yargs: any): void {
-                // TODO handling the options.
                 Object.entries(instance.options).forEach(([key, options]) => yargs.option(key, options));
-
                 instance.builder(yargs);
             }
         }
@@ -128,5 +139,5 @@ export default abstract class Command {
      * @param argv
      * @param args
      */
-    protected abstract execute(argv: any, ...args: any): any;
+    protected async abstract execute(argv: any, ...args: any): Promise<void>;
 }
