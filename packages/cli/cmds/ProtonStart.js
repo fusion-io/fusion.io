@@ -22,9 +22,7 @@ class ProtonStart extends Command {
         watcher.on('ready', () => {
             watcher.on('all', () => {
                 Object.keys(require.cache).forEach((id) => {
-                    if (!/[\/\\]node_modules[\/\\]/.test(id)) {
-                        delete require.cache[id];
-                    }
+                    delete require.cache[id];
                 });
                 process.nextTick(() => {
                     spinner.start(chalk`{gray It\'s reloaded, {cyan ${faker.name.findName()}}!}`);
