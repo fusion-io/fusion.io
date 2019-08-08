@@ -11,7 +11,7 @@ class ProtonStart extends Command {
 
     // noinspection JSCheckFunctionSignatures
     async execute({rc}) {
-        const watcher = chokidar.watch(process.cwd());
+        const watcher = chokidar.watch(process.cwd(), { ignored: /node_modules/ });
         const spinner = await this.output.operate('spinner');
         const port    = process.env.PORT || 2512;
 
@@ -22,7 +22,9 @@ class ProtonStart extends Command {
         watcher.on('ready', () => {
             watcher.on('all', () => {
                 Object.keys(require.cache).forEach((id) => {
-                    delete require.cache[id];
+                    if (!/node_modules/.test(id)) {
+                        delete require.cache[id];
+                    }
                 });
                 process.nextTick(() => {
                     spinner.start(chalk`{gray It\'s reloaded, {cyan ${faker.name.findName()}}!}`);
