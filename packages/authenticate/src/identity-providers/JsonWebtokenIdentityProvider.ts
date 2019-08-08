@@ -11,7 +11,7 @@ export default class JWTIdentityProvider implements IdentityProvider {
         const jwt = require('jsonwebtoken');
 
         try {
-            const payload = await jwt.decode(token, this.privateKey);
+            const payload = jwt.verify(token, this.privateKey);
             return {token, payload};
         } catch (e) {
             throw new UnAuthenticated(`JWT Signature invalid. Reason: ${e}`);
