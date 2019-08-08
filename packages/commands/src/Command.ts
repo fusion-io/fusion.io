@@ -127,6 +127,7 @@ export default abstract class Command {
             },
 
             builder(yargs: any): void {
+                // TODO need to work with positional
                 Object.entries(instance.options).forEach(([key, options]) => yargs.option(key, options));
                 instance.builder(yargs);
             }

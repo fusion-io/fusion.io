@@ -1,35 +1,13 @@
 const { ConsoleKernel, Plasma } = require('@fusion.io/commands');
-const CliPlasma = require('./ProtonStart');
 const yargs = require('yargs');
 
 module.exports = {
-    command: '$0',
+    command: 'app',
     describe: 'Application Commands',
     handler() {
         yargs.showHelp();
     },
     builder(yargs) {
-        require("@babel/register")({
-            "presets": [["@babel/preset-env", {
-                "targets": {
-                    "node": "8"
-                }
-            }]],
-            "plugins": [
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-            ]
-        });
-        require("ts-node").register({
-            transpileOnly: true,
-            compilerOptions: {
-                "experimentalDecorators": true,
-                "target": "esnext",
-                "module": "commonjs",
-                "esModuleInterop": true
-            }
-        });
-
         const findUp        = require('find-up');
         const fs            = require('fs');
         const configPath    = findUp.sync(['.fusionrc', '.fusionrc.json']);
@@ -45,7 +23,7 @@ module.exports = {
 
         yargs.config({rc, fusionApp});
 
-        tokamak.fuse(Plasma).fuse(CliPlasma).start();
+        tokamak.fuse(Plasma).start();
         tokamak.make(ConsoleKernel).apply(yargs);
     }
 };
