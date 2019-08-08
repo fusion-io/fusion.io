@@ -23,8 +23,23 @@ class Proton {
 
         await fs.outputFile(baseAppDirectory + '/' + 'config/index.js', content, 'utf8');
         await fs.outputJson(baseAppDirectory + '/' + '.fusionrc', {
-            app: sourceDirectory
+            app: sourceDirectory + '/app'
         });
+
+        const tsConfig = `{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "build",
+    "target": "es6"
+  },
+  "include": [
+    "./src"
+  ]
+}
+`;
+        await fs.outputFile(baseAppDirectory + '/' + 'tsconfig.json', tsConfig);
     }
 
     static resolveTemplatePath(parentDirectory, language) {
