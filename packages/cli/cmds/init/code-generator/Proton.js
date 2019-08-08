@@ -17,6 +17,9 @@ class Proton {
         );
 
         const configPlaceHolder = require('./configPlaceHolder');
+
+        configPlaceHolder.view = viewDirectory;
+
         const content = "module.exports = :config:;"
             .replace(/:config:/, JSON.stringify(configPlaceHolder, null, 4))
         ;
@@ -35,7 +38,7 @@ class Proton {
     "target": "es6"
   },
   "include": [
-    "./src"
+    "./${sourceDirectory}"
   ]
 }
 `;
