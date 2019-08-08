@@ -20,11 +20,6 @@ exports.middlewares = [require('../../app-inqurier'), argv => {
             name: 'storageDirectory',
             message: "where will be your application\'s storage directory?",
             default: "storages"
-        },
-        {
-            name: 'configFile',
-            message: 'what will be your configuration file name?',
-            default: 'config/index.js'
         }
     ]).then(answers => ({
         ...answers,
