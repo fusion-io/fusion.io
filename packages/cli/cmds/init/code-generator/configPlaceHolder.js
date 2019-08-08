@@ -4,6 +4,10 @@ module.exports = {
 
     keys: [ ],
 
+    services: {
+
+    },
+
     authentication: {
         default: '',
         gateways: {
