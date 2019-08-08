@@ -33,9 +33,7 @@ exports.handler = ({server, port}) => {
     watcher.on('ready', () => {
         watcher.on('all', () => {
             Object.keys(require.cache).forEach((id) => {
-                if (!/node_modules/.test(id)) {
-                    delete require.cache[id];
-                }
+                delete require.cache[id];
             });
             process.nextTick(() => {
                 spinner.color = 'cyan';
