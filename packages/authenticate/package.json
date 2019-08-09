@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/authenticate",
-  "version": "3.0.1-alpha.27",
+  "version": "3.0.1-alpha.28",
   "description": "Better Authentication for better Geeks",
   "publishConfig": {
     "access": "public"
@@ -18,7 +18,7 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.27"
+    "@fusion.io/core": "^3.0.1-alpha.28"
   },
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "files": [
