@@ -63,8 +63,6 @@ exports.handler = (options) => {
     watcher.on('ready', () => {
         watcher.on('all', () => {
             Object.keys(require.cache).forEach((id) => {
-                // We'll clear all of the require cache excepts
-                // the native C++ node modules
                 if (!require.cache[id].filename.match(/node_modules/)) {
                     delete require.cache[id];
                 }
