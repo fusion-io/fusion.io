@@ -9,6 +9,7 @@ exports.describe = 'Start a live server';
 exports.command  = 'live [server]';
 
 exports.builder = yargs => {
+
     yargs.positional('server', {
         describe: 'Server file path'
     });
@@ -32,20 +33,18 @@ exports.builder = yargs => {
         describe: 'Using spinning ui',
         type: 'boolean',
         default: false
-    })
-};
+    });
 
-exports.builder = (yargs) => {
     const findUp        = require('find-up');
     const fs            = require('fs');
     const configPath    = findUp.sync(['.fusionrc', '.fusionrc.json']);
     const rc            = configPath ? JSON.parse(fs.readFileSync(configPath).toString()) : {};
 
-    yargs.config({rc});
+    yargs.config(rc);
 };
 
 exports.handler = (options) => {
-    const mergeOptions = {...options, ...options.rc.live};
+    const mergeOptions = {...options, ...options.live};
     const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts || 'node_modules') });
 
     console.log(chalk`{gray Starting the development server at {cyan ${mergeOptions.port}}}`);
@@ -90,7 +89,7 @@ exports.handler = (options) => {
             } catch (e) {
                 if (mergeOptions.spin) {
                     spinner.color = 'red';
-                    spinner.text = chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.');
+                    spinner.text = chalk.red("Oops! " + e.message + '. \n') + chalk.gray('Waiting for change.');
                 } else {
                     console.log(chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.'));
                 }
