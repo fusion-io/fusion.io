@@ -1,7 +1,8 @@
 {
   "app": "src/app",
   "live": {
-    "spin": true,
-    "port": "2512"
+    "spin": false,
+    "port": "2512",
+    "server": "src/server"
   }
 }

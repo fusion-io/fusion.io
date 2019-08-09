@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 
 class Proton {
-    async generate({language, sourceDirectory, viewDirectory, configFile, storageDirectory}) {
+    async generate({language, sourceDirectory, viewDirectory}) {
         const baseAppDirectory = process.cwd();
 
         // Copy source code
