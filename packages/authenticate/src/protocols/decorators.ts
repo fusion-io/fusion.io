@@ -1,4 +1,4 @@
-import {ContextConsumer} from "../Contracts";
+import { ContextConsumer } from "../Contracts";
 import Aborted from "../Aborted";
 
 export function mountExpress<T extends {new(...args:any[]):{}}> (Protocol:T) {

@@ -3,7 +3,7 @@
  *
  * @implements IdentityProvider
  */
-import {Credential, IdentityProvider} from "./Contracts";
+import { Credential, IdentityProvider } from "./Contracts";
 
 export default class IdentityProviderChain implements IdentityProvider {
 

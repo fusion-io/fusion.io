@@ -1,4 +1,4 @@
-import {StateVerifier, Protocol} from "../Contracts";
+import { StateVerifier, Protocol } from "../Contracts";
 import Aborted from "../Aborted";
 import UnAuthenticated from "../UnAuthenticated";
 import querystring from 'querystring';

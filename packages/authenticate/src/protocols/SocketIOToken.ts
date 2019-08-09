@@ -1,6 +1,6 @@
-import {ContextConsumer, Mountable, Protocol} from "../Contracts";
+import { ContextConsumer, Mountable, Protocol } from "../Contracts";
+import { SocketContext } from "./Contracts";
 import UnAuthenticated from "../UnAuthenticated";
-import {SocketContext} from "./Contracts";
 
 /**
  * @implements Protocol

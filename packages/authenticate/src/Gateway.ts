@@ -1,4 +1,4 @@
-import {IdentityProvider, MountableProtocol, Protocol} from "./Contracts";
+import { IdentityProvider, MountableProtocol, Protocol } from "./Contracts";
 import UnAuthenticated from "./UnAuthenticated";
 /**
  * A gate to determine of in the given context, the given Credential is

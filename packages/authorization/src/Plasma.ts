@@ -6,7 +6,7 @@ export default class Plasma extends CorePlasma {
 
     @inject(Authorizer)
     compose(authorizer: Authorizer) {
-        authorizer.supporting('acl.config', (options => new ACLConfigPolicy(options)))
+        authorizer.supporting('acl', (options => new ACLConfigPolicy(options)))
     }
 
     @inject(Authorizer)

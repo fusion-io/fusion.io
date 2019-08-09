@@ -1,4 +1,4 @@
-import {Protocol} from "../Contracts";
+import { Protocol } from "../Contracts";
 import UnAuthenticated from "../UnAuthenticated";
 
 

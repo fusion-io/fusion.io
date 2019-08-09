@@ -1,6 +1,6 @@
-import {Protocol} from "../Contracts";
+import { Protocol } from "../Contracts";
+import { HttpContext } from "./Contracts";
 import UnAuthenticated from "../UnAuthenticated";
-import {HttpContext} from "./Contracts";
 
 /**
  * @implements Protocol
