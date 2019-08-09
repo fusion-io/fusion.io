@@ -26,7 +26,11 @@ class Proton {
 
         await fs.outputFile(baseAppDirectory + '/' + 'config/index.js', content, 'utf8');
         await fs.outputJson(baseAppDirectory + '/' + '.fusionrc', {
-            app: sourceDirectory + '/app'
+            app: sourceDirectory + '/app',
+            live: {
+                spin: true,
+                port: "2512"
+            }
         });
 
         const tsConfig = `{

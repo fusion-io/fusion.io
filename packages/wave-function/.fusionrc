@@ -1,3 +1,7 @@
 {
-  "app": "src/app"
+  "app": "src/app",
+  "live": {
+    "spin": true,
+    "port": "2512"
+  }
 }

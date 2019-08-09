@@ -14,21 +14,51 @@ exports.builder = yargs => {
     });
 
     yargs.option('port', {
+        alias: 'p',
         describe: 'Listen on port',
         type: 'number',
         default: 2512
     });
+
+    yargs.option('excepts', {
+        alias: 'e',
+        describe: 'RegExp for ignoring files',
+        type: 'string',
+        default: 'node_modules|.\.log|^\.'
+    });
+
+    yargs.option('spin', {
+        alias: 's',
+        describe: 'Using spinning ui',
+        type: 'boolean',
+        default: false
+    })
 };
 
-exports.handler = ({server, port}) => {
-    const watcher = chokidar.watch(process.cwd(), { ignored: /node_modules/ });
+exports.builder = (yargs) => {
+    const findUp        = require('find-up');
+    const fs            = require('fs');
+    const configPath    = findUp.sync(['.fusionrc', '.fusionrc.json']);
+    const rc            = configPath ? JSON.parse(fs.readFileSync(configPath).toString()) : {};
 
-    console.log(chalk`{gray Starting the development server at {cyan ${port}}}`);
+    yargs.config({rc});
+};
 
-    const spinner = ora().start();
+exports.handler = (options) => {
+    const mergeOptions = {...options, ...options.rc.live};
+    const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts || 'node_modules') });
 
-    spinner.color = 'cyan';
-    spinner.text= chalk`{gray Starting}`;
+    console.log(chalk`{gray Starting the development server at {cyan ${mergeOptions.port}}}`);
+
+    const spinner = ora();
+
+    if (mergeOptions.spin) {
+        spinner.start();
+        spinner.color = 'cyan';
+        spinner.text= chalk`{gray Starting}`;
+    } else {
+        console.log(chalk`{gray Starting}`);
+    }
 
     watcher.on('ready', () => {
         watcher.on('all', () => {
@@ -40,15 +70,19 @@ exports.handler = ({server, port}) => {
                 }
             });
             process.nextTick(() => {
-                spinner.color = 'cyan';
-                spinner.text = chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`;
+                if (mergeOptions.spin) {
+                    spinner.color = 'cyan';
+                    spinner.text = chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`;
+                } else {
+                    console.log(chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
+                }
             });
         });
 
         http.createServer((request, response) => {
 
             try {
-                let reloaded  = require(process.cwd() + '/' + server);
+                let reloaded  = require(process.cwd() + '/' + mergeOptions.server);
 
                 if ('function' === typeof reloaded.default) {
                     reloaded = reloaded.default;
@@ -56,13 +90,21 @@ exports.handler = ({server, port}) => {
 
                 reloaded(request, response);
             } catch (e) {
-                spinner.color = 'red';
-                spinner.text = chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.');
+                if (mergeOptions.spin) {
+                    spinner.color = 'red';
+                    spinner.text = chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.');
+                } else {
+                    console.log(chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.'));
+                }
             }
 
-        }).listen(port);
+        }).listen(mergeOptions.port);
 
-        spinner.color = 'cyan';
-        spinner.text = chalk.gray('Started');
+        if (mergeOptions.spin) {
+            spinner.color = 'cyan';
+            spinner.text = chalk.gray('Started');
+        } else {
+            console.log(chalk.gray('Started'));
+        }
     });
 };
