@@ -33,7 +33,11 @@ exports.handler = ({server, port}) => {
     watcher.on('ready', () => {
         watcher.on('all', () => {
             Object.keys(require.cache).forEach((id) => {
-                delete require.cache[id];
+                // We'll clear all of the require cache excepts
+                // the native C++ node modules
+                if (!require.cache[id].filename.endsWith('.node')) {
+                    delete require.cache[id];
+                }
             });
             process.nextTick(() => {
                 spinner.color = 'cyan';
