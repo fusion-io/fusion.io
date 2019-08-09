@@ -44,7 +44,7 @@ exports.builder = yargs => {
 };
 
 exports.handler = (options) => {
-    const mergeOptions = {...options, ...options.live};
+    const mergeOptions = {...options.live, ...options};
     const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts || 'node_modules') });
 
     console.log(chalk`{gray Starting the development server at {cyan ${mergeOptions.port}}}`);
