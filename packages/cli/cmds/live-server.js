@@ -49,7 +49,7 @@ exports.builder = yargs => {
         describe: 'RegExp for reloading cached files',
         type: 'array',
         default: [
-            ['.']
+            ['^((?!node_modules).)*$']
         ]
     });
 
@@ -82,7 +82,17 @@ exports.handler = (options) => {
         watcher.on('all', () => {
             Object.keys(require.cache).forEach((id) => {
                 mergeOptions.reloadFiles.forEach(pattern => {
-                    if (require.cache[id] && new RegExp(pattern).test(require.cache[id].filename)) {
+                    if (
+                        // Maybe with the before pattern, the module has already been delete
+                        require.cache[id] &&
+
+                        // If the module ends with .node (the C++ extension)
+                        // We'll ignore the cache
+                        require.cache[id].filename.endsWith('.node') &&
+
+                        // Check the if the file matched the user's options
+                        new RegExp(pattern).test(require.cache[id].filename))
+                    {
                         delete require.cache[id];
                     }
                 })
