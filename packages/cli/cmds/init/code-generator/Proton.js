@@ -29,7 +29,12 @@ class Proton {
             app: sourceDirectory + '/app',
             live: {
                 spin: true,
-                port: "2512"
+                port: "2512",
+                server: "src/server",
+                reloadFiles: [
+                    "^((?!node_modules).)*$",
+                    "@fusion.io"
+                ]
             }
         });
 

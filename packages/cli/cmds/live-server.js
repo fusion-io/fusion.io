@@ -4,6 +4,22 @@ const faker     = require('faker');
 const chokidar  = require('chokidar');
 const ora       = require('ora');
 
+class MessageContext {
+    constructor(spinner = null) {
+        this.spinner = spinner;
+    }
+
+    output(message) {
+        if (this.spinner) {
+            this.spinner.color = 'cyan';
+            this.spinner.text  = message;
+        } else {
+            console.log(message);
+        }
+    }
+}
+
+
 exports.describe = 'Start a live server';
 
 exports.command  = 'live [server]';
@@ -25,7 +41,16 @@ exports.builder = yargs => {
         alias: 'e',
         describe: 'RegExp for ignoring files',
         type: 'string',
-        default: 'node_modules|.\.log|^\.'
+        default: 'node_modules'
+    });
+
+    yargs.option('reload-files', {
+        alias: 'r',
+        describe: 'RegExp for reloading cached files',
+        type: 'array',
+        default: [
+            ['.']
+        ]
     });
 
     yargs.option('spin', {
@@ -45,34 +70,25 @@ exports.builder = yargs => {
 
 exports.handler = (options) => {
     const mergeOptions = {...options, ...options.live};
-    const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts || 'node_modules') });
+    const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts) });
 
     console.log(chalk`{gray Starting the development server at {cyan ${mergeOptions.port}}}`);
 
-    const spinner = ora();
+    const messageCtx = new MessageContext(mergeOptions.spin ? ora().start() : null);
 
-    if (mergeOptions.spin) {
-        spinner.start();
-        spinner.color = 'cyan';
-        spinner.text= chalk`{gray Starting}`;
-    } else {
-        console.log(chalk`{gray Starting}`);
-    }
+    messageCtx.output(chalk`{gray Starting}`);
 
     watcher.on('ready', () => {
         watcher.on('all', () => {
             Object.keys(require.cache).forEach((id) => {
-                if (!require.cache[id].filename.match(/node_modules/)) {
-                    delete require.cache[id];
-                }
+                mergeOptions.reloadFiles.forEach(pattern => {
+                    if (require.cache[id] && new RegExp(pattern).test(require.cache[id].filename)) {
+                        delete require.cache[id];
+                    }
+                })
             });
             process.nextTick(() => {
-                if (mergeOptions.spin) {
-                    spinner.color = 'cyan';
-                    spinner.text = chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`;
-                } else {
-                    console.log(chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
-                }
+                messageCtx.output(chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
             });
         });
 
@@ -87,21 +103,11 @@ exports.handler = (options) => {
 
                 reloaded(request, response);
             } catch (e) {
-                if (mergeOptions.spin) {
-                    spinner.color = 'red';
-                    spinner.text = chalk.red("Oops! " + e.message + '. \n') + chalk.gray('Waiting for change.');
-                } else {
-                    console.log(chalk.red("Oops! " + e.message + '. ') + chalk.gray('Waiting for change.'));
-                }
+                messageCtx.output(chalk.red("Oops! " + e.message + '. \n') + chalk.gray('Waiting for change.'));
             }
 
         }).listen(mergeOptions.port);
 
-        if (mergeOptions.spin) {
-            spinner.color = 'cyan';
-            spinner.text = chalk.gray('Started');
-        } else {
-            console.log(chalk.gray('Started'));
-        }
+        messageCtx.output(chalk.gray('Started'));
     });
 };
