@@ -1,5 +1,5 @@
 import {IdentityProvider, singleton} from "@fusion.io/proton";
-import User from "../http/User";
+import User from "../User";
 
 @singleton()
 export default class UserProvider implements IdentityProvider {
