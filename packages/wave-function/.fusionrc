@@ -1,0 +1,11 @@
+{
+  "app": "src/app",
+  "live": {
+    "spin": true,
+    "server": "src/server",
+    "reloadFiles": [
+      "^((?!node_modules).)*$",
+      "@fusion.io"
+    ]
+  }
+}

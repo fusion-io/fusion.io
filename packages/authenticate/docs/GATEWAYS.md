@@ -63,9 +63,9 @@ And now you can use the `facebook` gateway with ease by:
 
 ```javascript
 
-app.get('/facebook', authenticator.guard('facebook'));
+app.get('/facebook', authenticator.authenticate('facebook'));
 
-app.get('/facebook/callback', authenticator.guard('facebook'), (request, response) => {
+app.get('/facebook/callback', authenticator.authenticate('facebook'), (request, response) => {
 
     response.json({
 

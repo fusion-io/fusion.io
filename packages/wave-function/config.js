@@ -5,16 +5,27 @@ module.exports = {
     keys: [ ],
 
     authentication: {
-        default: '',
         gateways: {
-
+            "token.users": {
+                gateway: "jwt",
+                options: {
+                    privateKey: 'qwertyuiopasdfghjklzxcvbnm123456'
+                }
+            }
         }
     },
 
     authorization: {
         default: '',
         policies: {
-
+            message: {
+                policy: "acl",
+                options: {
+                    "Project Administrator": [
+                        'view'
+                    ]
+                }
+            }
         }
     },
 

@@ -1,5 +1,6 @@
 import ACLConfigPolicy, { ACLConfiguration, HavingRoles, ACLIdentityOrRole } from "./ACLConfigPolicy";
 import Plasma from "./Plasma";
+import UnAuthorized from "./UnAuthorized";
 
 export { Authorizer, AuthorizerConfiguration } from "./Authorizer";
 export { GrantablePolicy, Policy } from "./Contracts";
@@ -10,5 +11,6 @@ export {
     ACLConfiguration,
     HavingRoles,
     ACLIdentityOrRole,
+    UnAuthorized,
     Plasma
 }

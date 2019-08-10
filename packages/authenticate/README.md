@@ -153,7 +153,7 @@ Just use the `authenticator.gate(gateName, protocol, identityProvider);` to regi
 
 ## Guard your resources
 
-Now, your gate is ready, let's guard your resource with your gate.
+Now, your gate is ready, let's authenticate your resource with your gate.
 
 ```javascript
 
@@ -193,7 +193,7 @@ try {
 ### Good news for `Koa`, `Express`, `Socket.IO` users!
 
 We love `middleware` style! If you are using above frameworks,
-you'll have a very nice place to guard your resources. The mighty `middleware`:
+you'll have a very nice place to authenticate your resources. The mighty `middleware`:
 
 ```javascript
 
@@ -236,28 +236,28 @@ And for your laziness, we also wrapped it. So beside [`HeadlessLocal`](docs/PROT
 [`ExpressSession`](docs/PROTOCOLS.md#koasession-and-expresssession).
 
 These are framework specific protocols.
-It have ability to `mount` to your framework as a middleware and `guard` its endpoints.
+It have ability to `mount` to your framework as a middleware and `authenticate` its endpoints.
 
-You can replace the above code by simple `authenticator.guard()` method:
+You can replace the above code by simple `authenticator.authenticate()` method:
 
 ```javascript
 
 // For koa:
 //
 // app or router
-app.use(authenticator.guard('local'));
+app.use(authenticator.authenticate('local'));
 // Then you can get the identity by accessing `context.identity`.
 
 // For express:
 //
 // app or router
-app.use(authenticator.guard('local'));
+app.use(authenticator.authenticate('local'));
 // Then you can get the identity by accessing `request.identity`.
 
 // For Socket.IO:
 //
 // socket or namespace
-socket.use(authenticator.guard('local'));
+socket.use(authenticator.authenticate('local'));
 // Then you can get the identity by accessing `socket.identity`.
 
 ```

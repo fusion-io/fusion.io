@@ -78,13 +78,17 @@ import {
     ACLConfigPolicy,
     ACLConfiguration,
     HavingRoles,
+    UnAuthorized,
     ACLIdentityOrRole
 } from "@fusion.io/authorization";
 
 import { Locale, Preset } from "@fusion.io/localization";
 import { DatabaseManager } from "@fusion.io/integrations-knex";
-import { Kernel, Router, Controller, get, del, patch, put, post, route } from "./http";
+import { Kernel, Router, Controller, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
 import { View, renderable } from "./templating";
+
+import { authenticate } from "./authentication/authenticate";
+import { authorize } from "./authorization/authorize";
 
 export {
 
@@ -166,6 +170,7 @@ export {
     ACLConfigPolicy,
     ACLConfiguration,
     HavingRoles,
+    UnAuthorized,
     ACLIdentityOrRole,
 
     // Localization package re-export
@@ -179,6 +184,8 @@ export {
     Kernel,
     Router,
     Controller,
+    ErrorHandlerManager,
+    HandleFunction,
     get,
     del,
     patch,
@@ -189,6 +196,9 @@ export {
     // View package re-export
     View,
     renderable,
+
+    authenticate,
+    authorize,
 
     // Package plasma
     ProtonPlasma

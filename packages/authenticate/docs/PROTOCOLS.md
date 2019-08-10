@@ -24,21 +24,21 @@ const options = {
 const otherLocalProtocol = new HeadlessLocal(options);
 ```
 
-With this Protocol, you can't use `authenticator.guard()`. You should use the derived protocols of this one:
+With this Protocol, you can't use `authenticator.authenticate()`. You should use the derived protocols of this one:
 
 [`ExpressLocal`](#expresslocal) and [`KoaLocal`](#koalocal).
 
 ## `ExpressLocal`
 
 Is a subclass of `HeadlessLocal` protocol, specialized for [express framework](http://expressjs.com).
-If you are using `authenticator.guard()`, the protocol by itself will read the `request.body` for the `Credential`.
+If you are using `authenticator.authenticate()`, the protocol by itself will read the `request.body` for the `Credential`.
 
 *Don't forget to use `body-parser`!  😆*
 
 ## `KoaLocal`
 
 Is another subclass of  `HeadlessLocal` protocol, specialized for [koa framework](https://koajs.com/).
-If you are using `authenticator.guard()`, again, the protocol will try to read from `ctx.request.body`
+If you are using `authenticator.authenticate()`, again, the protocol will try to read from `ctx.request.body`
 
 *And also don't forget to use `body-parser`, again!*
 
@@ -99,7 +99,7 @@ interface StateVerifier {
 Using `StateVerifier` will help you prevent `CSRF` attack when using `OAuth2` protocol.
 So we encourage you write one for it. (TODO I'm also making one for ya! ✌️)
 
-Since with this Protocol, you can't use `authenticator.guard()`.
+Since with this Protocol, you can't use `authenticator.authenticate()`.
 We also encourage you using derived subclass of this protocol [`KoaOAuth2` and `ExpressOAuth2`](#koaoauth2-and-expressoauth2).
 
 ## `KoaOAuth2` and `ExpressOAuth2`
@@ -116,10 +116,10 @@ To use `OAuth2` protocol is a little bit complex. You'll have to define 2 routes
 // Example using express and OAuth2 to let user login via their Facebook account.
 // I bet Koa users don't hate me because of not demo the source in Koa.
 
-app.get('/facebook', authenticator.guard('facebook'));
+app.get('/facebook', authenticator.authenticate('facebook'));
 
 app.get('/facebook/callback',
-    authentication.guard('facebook'),
+    authentication.authenticate('facebook'),
     (request, response) => {
 
         // TODO
@@ -138,20 +138,20 @@ This is a generic protocol for Http. It will try to read the token from the requ
 2. Request's `token` key in query string;
 3. Request's `token` key in body;
 
-With this Protocol, you can't use `authenticator.guard()`.
+With this Protocol, you can't use `authenticator.authenticate()`.
 Please use its derived protocols [`KoaToken` and `ExpressToken`](#koatoken-and-expresstoken) if you able to do so.
 
 ## `KoaToken` and `ExpressToken`
 
 Nothing to do with these protocols. You can just grab it and play!
-Of course you can use `authenticator.guard()` with these guys.
+Of course you can use `authenticator.authenticate()` with these guys.
 
 ## `SocketIOToken`
 
 This protocol is specialized for [`Socket.IO`](https://socket.io).
 
 It will read the `token` from the `socket.handshake.query`.
-Of course you can use `authenticator.guard()` with this protocol.
+Of course you can use `authenticator.authenticate()` with this protocol.
 
 
 ## `KoaSession` and `ExpressSession`
@@ -331,8 +331,8 @@ authenticator.gate('awesome', new MyAweSomeExpressProtocol(), new YourAweSomeUse
 
 app.get('/im-awe-some',
 
-    // You can now .guard() an express route
-    authenticator.guard('awesome'),
+    // You can now .authenticate() an express route
+    authenticator.authenticate('awesome'),
 
     (request, response) => {
         response.json({
