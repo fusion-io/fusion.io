@@ -1,12 +1,15 @@
-import {Manager, singleton} from "@fusion.io/core";
+import { Manager, singleton } from "@fusion.io/core";
 import { Policy } from "./Contracts";
 import UnAuthorized from "./UnAuthorized";
 
+/**
+ * The user's friendly configuration
+ */
 export type AuthorizerConfiguration = {
     default: string,
     policies: {
-        [resource: string]: {
-            policy: string,
+        [policy: string]: {
+            driver: string,
             options: any
         }
     }
@@ -20,10 +23,11 @@ export class Authorizer extends Manager<Policy<any>> {
      * @param config
      */
     bootstrap(config: AuthorizerConfiguration) {
-        const standardAdapterConfig = Object.entries(config.policies).reduce((merged, [resource, { policy, options }]) => ({
-            ...merged,
-            [resource]: { driver: policy, options }
-        }), {});
+        const standardAdapterConfig = Object.entries(config.policies)
+            .reduce((merged, [resource, { driver, options }]) => ({
+                ...merged,
+                [resource]: { driver: driver, options }
+            }), {});
 
         this.configure({
             default: config.default,

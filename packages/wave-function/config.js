@@ -19,18 +19,38 @@ module.exports = {
     },
 
     authorization: {
-        default: 'message',
+
+        default: 'media',
+
         policies: {
             message: {
                 policy: "acl",
                 options: {
-                    "admin": [
-                        'view', 'grant', 'block'
-                    ],
-                    "moderator": [
-                        "view", "edit"
-                    ]
+                    "admin": [ "view", "edit", "remove" ],
+                    "owner": [ "edit" ],
+                    "user": [ "view", "create" ]
                 }
+            },
+
+            post: {
+                policy: "acl",
+                options: {
+                    "user": [ "view", "share" ],
+                    "guest": [ "view" ]
+                }
+            },
+
+            media: {
+                policy: "combined",
+                options: {
+                    policies: [ 'message', 'post' ]
+                }
+            },
+
+            // @@
+            crazy: {
+                policy: "composed",
+                options: ({ combine, group }) => group(combine('media', 'post'), 'message')
             }
         }
     },
