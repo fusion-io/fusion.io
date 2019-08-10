@@ -11,8 +11,16 @@ export default class IdentityProviderChain implements IdentityProvider {
      *
      * @param {IdentityProvider[]} chains
      */
-    constructor(private chains: Array<IdentityProvider> = []) {
+    constructor(private chains: Array<IdentityProvider> = []) { }
 
+    /**
+     * Connect with an IdentityProvider
+     *
+     * @param provider
+     */
+    public push(provider: IdentityProvider) {
+        this.chains.push(provider);
+        return this;
     }
 
     /**

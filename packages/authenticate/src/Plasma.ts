@@ -1,17 +1,10 @@
-import { tokamak, Plasma as CorePlasma } from "@fusion.io/core";
+import { Plasma as CorePlasma, inject } from "@fusion.io/core";
 import { Authenticator } from "./Authenticator";
 
-const authenticator = new Authenticator();
+export default class Plasma extends CorePlasma {
 
-tokamak.singleton(Authenticator, () => authenticator);
-
-export {
-    authenticator
-};
-
-export class Plasma extends CorePlasma {
-
-    boot() {
+    @inject(Authenticator)
+    boot(authenticator: Authenticator) {
         const { authentication } = this.config;
 
         authenticator.bootstrap(authentication);

@@ -37,7 +37,6 @@ import {
     Gateway,
     IdentityProviderChain,
     UnAuthenticated,
-    authenticator,
     ContextConsumer,
     Mountable,
     Protocol,
@@ -66,7 +65,7 @@ import {
     GithubIdentityProvider, GithubCredential,
     GoogleIdentityProvider, GoogleCredential,
     InstagramIdentityProvider, InstagramCredential,
-    JsonWebtokenIdentityProvider, JWTCredential,
+    JsonWebTokenIdentityProvider, JsonWebTokenCredential,
     SlackIdentityProvider, SlackCredential
 } from "@fusion.io/authenticate";
 
@@ -128,7 +127,6 @@ export {
     Gateway,
     IdentityProviderChain,
     UnAuthenticated,
-    authenticator,
     ContextConsumer,
     Mountable,
     Protocol,
@@ -159,7 +157,7 @@ export {
     GithubIdentityProvider, GithubCredential,
     GoogleIdentityProvider, GoogleCredential,
     InstagramIdentityProvider, InstagramCredential,
-    JsonWebtokenIdentityProvider, JWTCredential,
+    JsonWebTokenIdentityProvider, JsonWebTokenCredential,
     SlackIdentityProvider, SlackCredential,
 
     // Authorization package re-export

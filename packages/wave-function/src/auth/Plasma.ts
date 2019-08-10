@@ -1,28 +1,23 @@
 import {
     inject,
     Authenticator,
-    Gateway,
-    IdentityProviderChain,
-    JsonWebtokenIdentityProvider,
-    KoaToken, UnAuthenticated,
-    ErrorHandlerManager, UnAuthorized,
+    UnAuthenticated,
+    UnAuthorized,
+    ErrorHandlerManager,
+    JsonWebTokenIdentityProvider,
     Plasma as CorePlasma
 } from "@fusion.io/proton";
-
 import UserProvider from "./UserProvider";
 
 export default class Plasma extends CorePlasma {
 
-    @inject(Authenticator, ErrorHandlerManager)
-    compose(authenticator: Authenticator, handler: ErrorHandlerManager) {
+    @inject(Authenticator, ErrorHandlerManager, UserProvider)
+    compose(authenticator: Authenticator, handler: ErrorHandlerManager, userIDP: UserProvider) {
 
-        authenticator.supporting('jwt', ({ privateKey }) => new Gateway(
-            new KoaToken(),
-            new IdentityProviderChain([
-                new JsonWebtokenIdentityProvider(privateKey),
-                new UserProvider()
-            ])
-        ));
+        authenticator.connect('jwt.users', ({ privateKey }) => [
+            new JsonWebTokenIdentityProvider(privateKey),
+            userIDP
+        ]);
 
         handler
             .willHandle(UnAuthenticated, async (error, context) => {

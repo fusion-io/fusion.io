@@ -6,8 +6,11 @@ module.exports = {
 
     authentication: {
         gateways: {
-            "token.users": {
-                gateway: "jwt",
+            "session.users": {
+                protocol: 'proton.session'
+            },
+            "jwt.users": {
+                protocol: "proton.token",
                 options: {
                     privateKey: 'qwertyuiopasdfghjklzxcvbnm123456'
                 }
@@ -16,13 +19,16 @@ module.exports = {
     },
 
     authorization: {
-        default: '',
+        default: 'message',
         policies: {
             message: {
                 policy: "acl",
                 options: {
-                    "Project Administrator": [
-                        'view'
+                    "admin": [
+                        'view', 'grant', 'block'
+                    ],
+                    "moderator": [
+                        "view", "edit"
                     ]
                 }
             }

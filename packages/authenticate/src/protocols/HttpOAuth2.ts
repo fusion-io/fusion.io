@@ -2,7 +2,7 @@ import { StateVerifier, Protocol } from "../Contracts";
 import Aborted from "../Aborted";
 import UnAuthenticated from "../UnAuthenticated";
 import querystring from 'querystring';
-import {HttpContext} from "./Contracts";
+import { HttpContext } from "./Contracts";
 
 /**
  * Default scope verifier.

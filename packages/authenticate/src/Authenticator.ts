@@ -1,5 +1,5 @@
-import { Manager } from "@fusion.io/core";
-import { Mountable } from "./Contracts";
+import {Manager, AdapterConfiguration, singleton, ManagerError} from "@fusion.io/core";
+import {IdentityProvider, Mountable, Protocol} from "./Contracts";
 import Gateway from "./Gateway";
 
 /**
@@ -9,25 +9,55 @@ export type AuthenticatorConfiguration = {
     default: string,
     gateways: {
         [name:string]: {
-            gateway: "string",
+            protocol: "string",
             options: any
         }
     }
 }
 
+export type GatewayConnector = (options?: any) => IdentityProvider|IdentityProvider[];
+
 /**
  * An authenticator service. It its simplest form, it managing
- * gateways.
+ * gateways
+ *
  */
+@singleton()
 export class Authenticator extends Manager<Gateway> {
 
-    bootstrap(config: AuthenticatorConfiguration) {
+    private gatewayConnectors: Map<string, GatewayConnector> = new Map<string, GatewayConnector>();
+
+    /**
+     * Connect an IDP to the gateway
+     *
+     * @param gateway
+     * @param connector
+     */
+    public connect(gateway: string, connector: GatewayConnector) {
+        this.gatewayConnectors.set(gateway, connector);
+        return this;
+    }
+
+    /**
+     *
+     * @param config
+     */
+    public bootstrap(config: AuthenticatorConfiguration) {
 
         const standardAdapterConfiguration =
             Object.entries(config.gateways)
-                .reduce((merged, [gatewayName, {gateway, options}]) => ({
+                .reduce((merged, [gatewayName, { protocol, options }]) => ({
                     ...merged,
-                    [gatewayName]: { driver: gateway, options}
+                    [gatewayName]: {
+                        driver: protocol,
+                        options: {
+                            ...options,
+
+                            // We'll allow the consumer code connects
+                            // its IDP to the gateway
+                            connector: this.gatewayConnectors.get(gatewayName)
+                        }
+                    }
                 }), {})
             ;
 
@@ -38,7 +68,25 @@ export class Authenticator extends Manager<Gateway> {
     }
 
     /**
-     * Authenticate a context by a given gateway.
+     * Overrides the install adapter method to connect the gateway with IDP
+     *
+     * @param configuration
+     */
+    protected installAdapter(configuration: AdapterConfiguration) {
+        const gateway = super.installAdapter(configuration);
+
+        if (configuration.options.connector) {
+            let providers = configuration.options.connector(configuration.options);
+            if (!(providers instanceof Array)) providers = [providers];
+
+            (providers as IdentityProvider[]).forEach(provider => gateway.provider.push(provider));
+        }
+
+        return gateway;
+    }
+
+    /**
+     * Authenticate a context by a given gateway
      *
      * @param gateway
      * @param context
@@ -49,13 +97,13 @@ export class Authenticator extends Manager<Gateway> {
 
     /**
      * Returning a connection which can be used to mount to
-     * the transport layer.
+     * the transport layer
      *
      * Normally, we need to authenticate over Http, then guard() will
-     * return a middleware.
+     * return a middleware
      *
      * If we authenticate over Socket, then guard() will return the
-     * socket connection middleware.
+     * socket connection middleware
      *
      * @param gateway
      * @return {mount}
@@ -69,11 +117,11 @@ export class Authenticator extends Manager<Gateway> {
 
             // Now we are actually inside the context.
             // we check for the protocol of the gateway
-            const protocol = this.adapter(gateway).protocol;
+            const protocol: unknown = this.adapter(gateway).protocol;
 
             if ('function' !== typeof (protocol as Mountable).mount) {
                 throw new Error(
-                    `The protocol [${protocol.constructor.name}] of the gateway [${gateway}]` +
+                    `The protocol [${(protocol as Protocol).constructor.name}] of the gateway [${gateway}]` +
                     ` does not support mounting to a framework.`
                 );
             }

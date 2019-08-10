@@ -1,13 +1,13 @@
 import { IdentityProvider } from "../Contracts";
 import UnAuthenticated from "../UnAuthenticated";
 
-export type JWTCredential = { token: string };
+export type JsonWebTokenCredential = { token: string };
 
-export default class JWTIdentityProvider implements IdentityProvider {
+export default class JebWebTokenIdentityProvider implements IdentityProvider {
 
     constructor(private readonly privateKey: string) { }
 
-    async provide({token}: JWTCredential) {
+    async provide({token}: JsonWebTokenCredential) {
         const jwt = require('jsonwebtoken');
 
         try {

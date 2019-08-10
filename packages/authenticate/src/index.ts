@@ -3,7 +3,7 @@ import Gateway from "./Gateway";
 import IdentityProviderChain from "./IdentityProviderChain";
 import UnAuthenticated from "./UnAuthenticated"
 import { Authenticator } from "./Authenticator";
-import { Plasma, authenticator } from "./Plasma";
+import Plasma from "./Plasma";
 
 export {
     Aborted,
@@ -11,8 +11,7 @@ export {
     Gateway,
     IdentityProviderChain,
     UnAuthenticated,
-    Plasma,
-    authenticator
+    Plasma
 }
 
 export * from "./Contracts";

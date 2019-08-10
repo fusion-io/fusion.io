@@ -3,9 +3,7 @@ import HttpOAuth2 from "./HttpOAuth2";
 import HttpSession from "./HttpSession";
 import HttpTokenBearer from "./HttpTokenBearer";
 import SocketIOToken from "./SocketIOToken";
-import util from "util";
-import request from "request";
-import {mountExpress, mountKoa, mountSocketIO} from "./decorators";
+import { mountExpress, mountKoa, mountSocketIO } from "./decorators";
 
 export {
     HeadlessLocal,
