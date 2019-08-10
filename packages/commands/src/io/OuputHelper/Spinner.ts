@@ -14,7 +14,5 @@ export default class Spinner implements OutputHelper {
                 .catch(error => spinner.fail(error))
             ;
         }
-
-        return spinner;
     }
 }
