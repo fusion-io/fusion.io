@@ -88,7 +88,7 @@ exports.handler = (options) => {
 
                         // If the module ends with .node (the C++ extension)
                         // We'll ignore the cache
-                        require.cache[id].filename.endsWith('.node') &&
+                        (!require.cache[id].filename.endsWith('.node')) &&
 
                         // Check the if the file matched the user's options
                         new RegExp(pattern).test(require.cache[id].filename))
