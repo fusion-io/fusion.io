@@ -28,6 +28,9 @@ export default class Down extends Command {
     protected async execute({ step, reset }: any, migrator: DatabaseMigrator) {
         const rolledBack = reset ? await migrator.reset() : await migrator.down(step);
 
-        await this.output.info('log', rolledBack.join('\n'));
+        rolledBack.length ?
+            await this.output.info('log', rolledBack.join('\n')) :
+            await this.output.info('log', 'Nothing to rollback')
+        ;
     }
 }
