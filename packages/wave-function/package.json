@@ -26,7 +26,8 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/proton": "^3.0.1-alpha.11"
+    "@fusion.io/proton": "^3.0.1-alpha.33",
+    "@fusion.io/integrations-knex": "^3.0.1-alpha.33"
   },
   "devDependencies": {
     "@fusion.io/cli": "^3.0.1-alpha.11"

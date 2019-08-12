@@ -97,7 +97,7 @@ export default abstract class Command {
 
             command  : this.command || kebabCase(this.constructor.name),
             aliases  : this.aliases,
-            describe : chalk.gray(this.describe) || chalk`{gray Command created by [{cyan ${this.constructor.name}]}}`,
+            describe : chalk.gray(this.describe) || chalk`{gray Command created by [{cyan ${this.constructor.name}}]}`,
 
             middlewares: [
                 (argv: any) => {

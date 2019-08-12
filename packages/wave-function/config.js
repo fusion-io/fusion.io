@@ -63,9 +63,16 @@ module.exports = {
     },
 
     database: {
-        default: '',
+        default: 'fusion',
         connections: {
-
+            fusion: {
+                client: 'sqlite3',
+                connection: __dirname + '/db.sqlite',
+                useNullAsDefault: true
+            }
+        },
+        migration: {
+            directory: __dirname + '/migrations'
         }
     },
 
