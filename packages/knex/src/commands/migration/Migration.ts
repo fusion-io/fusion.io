@@ -11,6 +11,6 @@ export default class Migration extends Command {
     subCommands = [ Create, Up, Down, Init ];
 
     protected async execute(argv: any) {
-
+        console.log('listing the migrations');
     }
 }

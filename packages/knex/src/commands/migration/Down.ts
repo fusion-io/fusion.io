@@ -1,6 +1,6 @@
 import { Command } from "@fusion.io/commands";
 import { inject, singleton } from "@fusion.io/core";
-import DatabaseMigrator from "../migration/DatabaseMigrator";
+import DatabaseMigrator from "../../migration/DatabaseMigrator";
 
 @singleton()
 export default class Down extends Command {

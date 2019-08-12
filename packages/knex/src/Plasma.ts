@@ -1,7 +1,7 @@
 import { inject, Plasma as CorePlasma } from "@fusion.io/core";
 import { ConsoleKernel } from "@fusion.io/commands";
 import DatabaseManager from "./DatabaseManager";
-import Migration from "./commands/Migration";
+import Migration from "./commands/migration/Migration";
 
 export default class Plasma extends CorePlasma {
 
