@@ -5,6 +5,8 @@ import DatabaseMigrator from "../../migration/DatabaseMigrator";
 @singleton()
 export default class Up extends Command {
 
+    describe = 'Run migration up';
+
     options = {
         step: {
             describe: 'Number of step',
