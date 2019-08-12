@@ -29,7 +29,9 @@ export default class Migration extends Command {
         if ('production' === process.env.NODE_ENV && (!argv.force)) {
             await this.output.error('box', 'You are about running a migration command in production environment.' +
                 ' This action might cause data loss.\nIf you understand the risks and wish to continue,' +
-                ' re-run the command with the --force flag. Exiting command with error code 20');
+                ' re-run the command with the --force flag.');
+
+            await this.output.info('log', 'Exiting command with error code 20');
 
             process.exit(20);
         }
