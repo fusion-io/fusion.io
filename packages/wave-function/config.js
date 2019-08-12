@@ -20,7 +20,7 @@ module.exports = {
 
     authorization: {
 
-        default: 'media',
+        default: 'message',
 
         policies: {
             message: {

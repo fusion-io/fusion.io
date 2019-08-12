@@ -1,0 +1,10 @@
+export default class :className: {
+
+    async up(schema) {
+
+    }
+
+    async down(schema) {
+
+    }
+}

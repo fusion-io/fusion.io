@@ -9,6 +9,7 @@
     "packages/core",
     "packages/knex",
     "packages/localization",
+    "packages/migration",
     "packages/proton",
     "packages/queue",
     "packages/utils",
