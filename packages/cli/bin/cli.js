@@ -1,3 +1,3 @@
 #! /usr/local/bin/node
 
-require('../cmd')
+require('../cmd');
