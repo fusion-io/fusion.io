@@ -5,8 +5,12 @@ import DatabaseMigrator from "../../migration/DatabaseMigrator";
 @singleton()
 export default class Create extends Command {
 
+    command = 'create <comment>';
+
+    describe = 'Creating a new migration';
+
     @inject(DatabaseMigrator)
-    protected async execute(argv: any, migrator: DatabaseMigrator) {
-        await migrator.manager.create('foobar');
+    protected async execute({ comment }: any, migrator: DatabaseMigrator) {
+        await migrator.manager.create(comment);
     }
 }
