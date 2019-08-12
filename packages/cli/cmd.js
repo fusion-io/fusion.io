@@ -27,6 +27,6 @@ module.exports = yargs
     .command(require('./cmds/init'))
     .demandCommand()
     .help()
-    .wrap(80)
+    .wrap(120)
     .argv
 ;
