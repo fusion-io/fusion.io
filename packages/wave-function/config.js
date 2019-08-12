@@ -4,6 +4,10 @@ module.exports = {
 
     keys: [ ],
 
+    services: {
+        // TODO
+    },
+
     authentication: {
         gateways: {
             "session.users": {
@@ -41,7 +45,7 @@ module.exports = {
             },
 
             media: {
-                policy: "combined",
+                policy: "group",
                 options: {
                     policies: [ 'message', 'post' ]
                 }

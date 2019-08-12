@@ -122,8 +122,7 @@ export default abstract class Command {
 
                         return error.code || -1;
                     }
-                })()
-                ;
+                })().then(() => process.exit(0));
             },
 
             builder(yargs: any): void {

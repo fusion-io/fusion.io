@@ -1,4 +1,5 @@
 const { ConsoleKernel, Plasma } = require('@fusion.io/commands');
+const chalk = require('chalk');
 const yargs = require('yargs');
 
 module.exports = {
@@ -20,6 +21,12 @@ module.exports = {
 
         const fusionApp = require(process.cwd() + '/' + rc.app);
         const tokamak = fusionApp.default;
+        const consoleKernel = tokamak.make(ConsoleKernel);
+
+        consoleKernel.on('error', (error) => {
+            console.error(error);
+            process.exit(1);
+        });
 
         yargs.config({rc, fusionApp});
 
