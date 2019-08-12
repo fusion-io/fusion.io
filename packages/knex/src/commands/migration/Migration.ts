@@ -1,5 +1,5 @@
 import { Command } from "@fusion.io/commands";
-import {inject, singleton} from "@fusion.io/core";
+import { inject, singleton } from "@fusion.io/core";
 import chalk from "chalk";
 import Up from "./Up";
 import Create from "./Create";
@@ -10,7 +10,7 @@ import DatabaseMigrator from "../../migration/DatabaseMigrator";
 @singleton()
 export default class Migration extends Command {
 
-    describe = 'Listing the migrations';
+    describe = 'List the migrations';
 
     subCommands = [ Create, Up, Down, Init ];
 

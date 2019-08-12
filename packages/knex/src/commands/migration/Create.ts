@@ -7,7 +7,7 @@ export default class Create extends Command {
 
     command = 'create <comment>';
 
-    describe = 'Creating a new migration';
+    describe = 'Create a new migration';
 
     @inject(DatabaseMigrator)
     protected async execute({ comment }: any, migrator: DatabaseMigrator) {
