@@ -15,6 +15,17 @@ export default class DatabaseMigrationState implements MigrationState {
     constructor(private connection: Knex, private table: string) { }
 
     /**
+     * Change the connection
+     *
+     * @param connection
+     */
+    setConnection(connection: Knex) {
+        this.connection = connection;
+
+        return this;
+    }
+
+    /**
      * @inheritDoc
      *
      * @param migrations

@@ -6,6 +6,8 @@ import Create from "./Create";
 import Init from "./Init";
 import Down from "./Down";
 import DatabaseMigrator from "../../migration/DatabaseMigrator";
+import DatabaseManager from "../../DatabaseManager";
+import DatabaseMigrationState from "../../migration/DatabaseMigrationState";
 
 @singleton()
 export default class Migration extends Command {
@@ -15,6 +17,14 @@ export default class Migration extends Command {
     subCommands = [ Create, Up, Down, Init ];
 
     options = {
+
+        connection: {
+            describe: 'Specify the database connection',
+            alias: 'c',
+            type: 'string',
+            default: null
+        },
+
         force: {
             describe: 'Force run the migration',
             alias: 'f',
@@ -23,7 +33,11 @@ export default class Migration extends Command {
         }
     };
 
-    middlewares = [(argv: any) => this.checkForEnvironment(argv)];
+    middlewares = [
+        (argv: any) => this.checkForEnvironment(argv),
+        // @ts-ignore
+        (argv: any) => this.switchConnection(argv)
+    ];
 
     async checkForEnvironment(argv: any) {
         if ('production' === process.env.NODE_ENV && (!argv.force)) {
@@ -35,6 +49,11 @@ export default class Migration extends Command {
 
             process.exit(20);
         }
+    }
+
+    @inject(DatabaseMigrator, DatabaseManager)
+    switchConnection({ connection }: any, migrator: DatabaseMigrator, dbm: DatabaseManager) {
+        (migrator.state as DatabaseMigrationState).setConnection(dbm.connection(connection));
     }
 
     @inject(DatabaseMigrator)
