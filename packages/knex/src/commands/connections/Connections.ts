@@ -1,5 +1,5 @@
 import { Command } from "@fusion.io/commands";
-import {inject, singleton} from "@fusion.io/core";
+import { inject, singleton } from "@fusion.io/core";
 import chalk from "chalk";
 import DatabaseManager from "../../DatabaseManager";
 
@@ -8,7 +8,7 @@ export default class Connections extends Command {
 
     command = 'database-connections';
 
-    aliases = ['db', 'connections'];
+    aliases = ['databases', 'db'];
 
     describe = 'Check the connectivity of the database connections';
 
@@ -20,11 +20,15 @@ export default class Connections extends Command {
                 title: connection,
                 task: async () => {
                     await dbm.connection(connection).raw('select 1 + 1 as result');
-                    return 'connected'
                 }
             }
         });
 
-        await this.output.operate('tasks', tasks);
+        try {
+            await this.output.operate('tasks', tasks, { concurrent: true, exitOnError: false });
+        } catch (e) {
+            this.output.debug('log', e.stack);
+        }
+
     }
 }
