@@ -8,7 +8,6 @@ export default class Plasma extends CorePlasma {
 
         kernel.use(router.routes());
         kernel.use(router.allowedMethods());
-
         router.controller(HelloController);
     }
 }
