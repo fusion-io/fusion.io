@@ -130,6 +130,10 @@ export default class HttpOAuth2 implements Protocol {
             data: querystring.stringify(payload)
         });
 
+        if ('string' === typeof data) {
+            return querystring.decode(data);
+        }
+
         return data;
     }
 
