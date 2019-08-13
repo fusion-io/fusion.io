@@ -123,6 +123,7 @@ export default class HttpOAuth2 implements Protocol {
 
         const { data } = await axios({
             url: tokenPath,
+            method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
