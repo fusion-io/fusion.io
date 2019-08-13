@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/queue",
-  "version": "3.0.1-alpha.34",
+  "version": "3.0.1-alpha.35",
   "description": "Queue service for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -29,8 +29,8 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/bus": "^3.0.1-alpha.34",
-    "@fusion.io/core": "^3.0.1-alpha.34"
+    "@fusion.io/bus": "^3.0.1-alpha.35",
+    "@fusion.io/core": "^3.0.1-alpha.35"
   },
   "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a"
 }
