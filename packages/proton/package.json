@@ -38,7 +38,6 @@
     "@fusion.io/validation": "^3.0.1-alpha.38",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "nunjucks": "^3.2.0",
     "youch": "^2.0.10"
   },
   "devDependencies": {

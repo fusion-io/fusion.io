@@ -1,6 +1,6 @@
 import { Plasma as CorePlasma, inject } from "@fusion.io/core";
 import Router from "./Router";
-import Kernel from "./Koa";
+import Kernel from "./Kernel";
 import handleError from "./handleError";
 import ErrorHandlerManager from "./ErrorHandlerManager";
 
