@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/commands",
-  "version": "3.0.1-alpha.37",
+  "version": "3.0.1-alpha.38",
   "description": "The command line tool for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
@@ -30,7 +30,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.37",
+    "@fusion.io/core": "^3.0.1-alpha.38",
     "@types/inquirer": "^6.5.0",
     "@types/listr": "^0.14.2",
     "@types/progress": "^2.0.3",
