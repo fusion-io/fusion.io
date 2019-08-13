@@ -121,7 +121,13 @@ export default class HttpOAuth2 implements Protocol {
 
         const axios = require('axios');
 
-        const { data } = await axios.post(tokenPath, payload);
+        const { data } = await axios({
+            url: tokenPath,
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            data: querystring.stringify(payload)
+        });
 
         return data;
     }
