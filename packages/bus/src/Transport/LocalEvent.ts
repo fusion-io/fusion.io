@@ -19,5 +19,4 @@ export default class LocalEvent implements PublishTransport, SubscribeTransport 
             this.emitter.on(channel, consumer);
         });
     }
-
 }

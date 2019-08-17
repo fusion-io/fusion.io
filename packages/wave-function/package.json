@@ -28,6 +28,7 @@
   "dependencies": {
     "@fusion.io/proton": "^3.0.1-alpha.33",
     "@fusion.io/integrations-knex": "^3.0.1-alpha.33",
+    "@fusion.io/bus": "^3.0.1-alpha.38",
     "knex": "^0.19.1"
   },
   "devDependencies": {

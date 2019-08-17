@@ -1,4 +1,4 @@
-import {MessageConsumer} from "./SubscribeTransport";
+import {MessageConsumer} from "../Subscriber/SubscribeTransport";
 
 export type Middleware = (message: any, next: Function) => Promise<void>
 

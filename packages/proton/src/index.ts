@@ -86,7 +86,6 @@ import {
 import { Locale, Preset } from "@fusion.io/localization";
 import { DatabaseManager } from "@fusion.io/integrations-knex";
 import { Kernel, Router, Controller, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
-import { View, renderable } from "./templating";
 
 import { authenticate } from "./authentication/authenticate";
 import { authorize } from "./authorization/authorize";
@@ -194,10 +193,6 @@ export {
     put,
     post,
     route,
-
-    // View package re-export
-    View,
-    renderable,
 
     authenticate,
     authorize,

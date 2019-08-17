@@ -1,7 +1,7 @@
 import { Manager, singleton, tokamak } from "@fusion.io/core";
-import ChannelController, { ChannelControllerConstructor } from "./ChannelController";
+import ChannelController, { ChannelControllerConstructor } from "../Channel/ChannelController";
 import SubscribeTransport from "./SubscribeTransport";
-import ChannelControllerStack, { Middleware } from "./ChannelControllerStack";
+import ChannelControllerStack, { Middleware } from "../Channel/ChannelControllerStack";
 
 @singleton()
 export default class Subscriber extends Manager<SubscribeTransport> {
@@ -16,12 +16,15 @@ export default class Subscriber extends Manager<SubscribeTransport> {
         return stack;
     }
 
-    controller(Constructor: ChannelControllerConstructor) {
+    controller(Constructor: ChannelControllerConstructor, via?: string) {
         const instance = tokamak.make<ChannelController>(Constructor);
 
-        instance.subscriptions().forEach(subscription => {
-            this.subscribe(subscription.channels, subscription.via)
+        Constructor.subscriptions.forEach(subscription => {
+            this.subscribe(subscription.channels, via)
+                .use(...Constructor.middlewares)
                 .use(...subscription.middlewares)
+                // @ts-ignore
+                .use(instance[subscription.action])
         });
     }
 }
