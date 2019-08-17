@@ -1,4 +1,4 @@
-import {IdentityProvider, singleton} from "@fusion.io/proton";
+import { IdentityProvider, singleton } from "@fusion.io/proton";
 import User from "../User";
 
 @singleton()
