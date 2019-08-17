@@ -1,4 +1,5 @@
 export default interface Message {
-    channel(): string|string[],
+    channel(): string
+    as?(): string
     payload?(): any
 }

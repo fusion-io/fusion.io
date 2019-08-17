@@ -33,7 +33,8 @@
   },
   "devDependencies": {
     "pubnub": "^4.24.4",
-    "socket.io-client": "^2.2.0"
+    "socket.io-client": "^2.2.0",
+    "@types/pubnub": "^4.0.6"
   },
   "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a"
 }

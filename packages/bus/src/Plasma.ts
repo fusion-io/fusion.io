@@ -2,6 +2,7 @@ import { inject, Plasma as CorePlasma } from "@fusion.io/core";
 import Publisher from "./Publisher/Publisher";
 import Subscriber from "./Subscriber/Subscriber";
 import LocalEvent from "./Transport/LocalEvent";
+import Pubnub from "./Transport/Pubnub";
 
 export default class Plasma extends CorePlasma {
 
@@ -11,6 +12,13 @@ export default class Plasma extends CorePlasma {
 
         pub.supporting('local', () => transport);
         sub.supporting('local', () => transport);
+
+        const pubnubDriver = (options: any) => {
+            const Client = require('pubnub');
+            return new Pubnub(new Client(options))
+        };
+        pub.supporting('pubnub', pubnubDriver);
+        sub.supporting('pubnub', pubnubDriver);
     }
 
     @inject(Publisher, Subscriber)

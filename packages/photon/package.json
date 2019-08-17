@@ -5,6 +5,9 @@
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index",
   "directories": {
     "lib": "lib",
@@ -18,6 +21,8 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
+    "clean": "rm -rf lib",
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
