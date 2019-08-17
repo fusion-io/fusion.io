@@ -14,3 +14,22 @@ import Subscriber from "./Subscriber/Subscriber";
 import SubscribeTransport from "./Subscriber/SubscribeTransport";
 
 import LocalEvent from "./Transport/LocalEvent";
+
+export {
+    Message,
+    Plasma,
+
+    channel,
+    ChannelController,
+    ChannelControllerStack,
+
+    MessageManager,
+    typed,
+    Publisher,
+    PublishTransport,
+
+    Subscriber,
+    SubscribeTransport,
+
+    LocalEvent
+}

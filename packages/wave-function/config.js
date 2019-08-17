@@ -8,6 +8,24 @@ module.exports = {
         // TODO
     },
 
+    publisher: {
+        default: 'local',
+        adapters: {
+            local: {
+                driver: 'local'
+            }
+        }
+    },
+
+    subscriber: {
+        default: 'local',
+        adapters: {
+            local: {
+                driver: 'local'
+            }
+        }
+    },
+
     authentication: {
         gateways: {
             "session.users": {
