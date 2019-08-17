@@ -1,4 +1,4 @@
-import { Manager, singleton, tokamak } from "@fusion.io/core";
+import { Manager, singleton } from "@fusion.io/core";
 import SubscribeTransport, { MessageConsumer } from "./SubscribeTransport";
 
 @singleton()
