@@ -1,11 +1,11 @@
-# `Bus`
+# `Channel`
 
 > TODO: description
 
 ## Usage
 
 ```
-const bus = require('Bus');
+const bus = require('Channel');
 
 // TODO: DEMONSTRATE API
 ```

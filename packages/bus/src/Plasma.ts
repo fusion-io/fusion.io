@@ -1,53 +1,23 @@
 import { inject, Plasma as CorePlasma } from "@fusion.io/core";
-import Hub from "./Hub";
-import LocalEvent from "./Buses/LocalEvent";
-import MQTT from "./Buses/MQTT";
-import Pubnub from "./Buses/Pubnub";
-import SocketIO from "./Buses/SocketIO";
-import Delegated from "./Buses/Delegated";
+import Publisher from "./Publisher/Publisher";
+import Subscriber from "./Subscriber/Subscriber";
+import LocalEvent from "./Transport/LocalEvent";
 
 export default class Plasma extends CorePlasma {
 
+    @inject(Publisher, Subscriber)
+    compose(pub: Publisher, sub: Subscriber) {
+        const transport = new LocalEvent();
 
-    checkForServices(service: string) {
-        if (!this.tokamak.bound(service)) {
-            throw new Error(`The required service package [${service}] is not configured`)
-        }
-
-        return this.tokamak.make(service);
-    };
-
-
-    @inject(Hub)
-    compose(hubManager: Hub) {
-        hubManager
-            .supporting('local', () => new LocalEvent())
-
-            .supporting('mqtt', ({ serviceLocation } = { serviceLocation: 'services.mqtt' }) => {
-                const client = this.checkForServices(serviceLocation);
-                return new MQTT(client);
-            })
-
-            .supporting('pubnub', ({ serviceLocation } = { serviceLocation: 'services.pubnub' }) => {
-                const client:any = this.checkForServices(serviceLocation);
-                return new Pubnub(client)
-            })
-
-            .supporting('socket.io', ({ serviceLocation } = { serviceLocation: 'services.socket.io'}) => {
-                const socket = this.checkForServices(serviceLocation);
-                return new SocketIO(socket);
-            })
-
-            .supporting('delegated', ({ sender, listener }: {sender: Function, listener: Function}) =>
-                new Delegated(sender, listener)
-            )
-        ;
+        pub.supporting('local', () => transport);
+        sub.supporting('local', () => transport);
     }
 
-    @inject(Hub)
-    boot(hubManager: Hub) {
-        const { hub } = this.config;
+    @inject(Publisher, Subscriber)
+    boot(pub: Publisher, sub: Subscriber) {
+        const { publisher, subscriber } = this.config;
 
-        hubManager.configure(hub);
+        pub.configure(publisher);
+        sub.configure(subscriber);
     }
 }

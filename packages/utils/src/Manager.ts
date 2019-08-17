@@ -32,12 +32,12 @@ export class Manager<Adapter> {
     /**
      * List of the supported drivers
      */
-    private supports: Map<string, Driver<Adapter>> = new Map<string, Driver<Adapter>>();
+    protected supports: Map<string, Driver<Adapter>> = new Map<string, Driver<Adapter>>();
 
     /**
      * List of the installed adapters
      */
-    private adapters: Map<string, Adapter> = new Map<string, Adapter>();
+    protected adapters: Map<string, Adapter> = new Map<string, Adapter>();
 
     /**
      * The default configuration of the manager
