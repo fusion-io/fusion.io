@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/wave-function",
-  "version": "3.0.1-alpha.33",
+  "version": "3.0.1-alpha.39",
   "description": "This is just the test app for the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -26,13 +26,13 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/proton": "^3.0.1-alpha.33",
-    "@fusion.io/integrations-knex": "^3.0.1-alpha.33",
-    "@fusion.io/bus": "^3.0.1-alpha.38",
+    "@fusion.io/bus": "^3.0.1-alpha.39",
+    "@fusion.io/integrations-knex": "^3.0.1-alpha.39",
+    "@fusion.io/proton": "^3.0.1-alpha.39",
     "knex": "^0.19.1"
   },
   "devDependencies": {
-    "@fusion.io/cli": "^3.0.1-alpha.11"
+    "@fusion.io/cli": "^3.0.1-alpha.39"
   },
   "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a"
 }
