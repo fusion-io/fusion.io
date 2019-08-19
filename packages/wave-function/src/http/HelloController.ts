@@ -1,5 +1,6 @@
-import { singleton, get, Controller, authenticate, authorize, inject, Authorizer } from "@fusion.io/proton";
+import { singleton, get, Controller, authenticate, authorize, inject } from "@fusion.io/proton";
 import { Context } from "koa";
+import { Publisher } from "@fusion.io/bus";
 
 @singleton()
 export default class HelloController extends Controller {
@@ -9,9 +10,17 @@ export default class HelloController extends Controller {
         context.body = {message: "tokamak.fuse(ProtonPlasma);"};
     }
 
-    @inject(Authorizer)
-    @get('/permissions', authenticate('jwt.users'))
-    async permissions(context: Context, next: Function, authorizer: Authorizer) {
-        context.body = await authorizer.granted(context.identity)
+    @inject(Publisher)
+    @get('/permissions')
+    async permissions(context: Context, next: Function, publisher: Publisher) {
+        publisher.publish({
+            channel: () => 'xx',
+            as: () => 'fusion.message',
+            payload: () => 'Hello world'
+        });
+
+        context.body = {
+            message: 'ok'
+        }
     }
 }
