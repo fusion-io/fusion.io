@@ -31,7 +31,7 @@ export const get    = (url: string, ...middlewares: Function[]) => route('get', 
  * @param url
  * @param middlewares
  */
-export const post   = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
+export const post   = (url: string, ...middlewares: Function[]) => route('post', url, ...middlewares);
 
 /**
  * Decorates a put route
@@ -39,7 +39,7 @@ export const post   = (url: string, ...middlewares: Function[]) => route('get', 
  * @param url
  * @param middlewares
  */
-export const put    = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
+export const put    = (url: string, ...middlewares: Function[]) => route('put', url, ...middlewares);
 
 /**
  * Decorates a patch route
@@ -47,7 +47,7 @@ export const put    = (url: string, ...middlewares: Function[]) => route('get', 
  * @param url
  * @param middlewares
  */
-export const patch  = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
+export const patch  = (url: string, ...middlewares: Function[]) => route('patch', url, ...middlewares);
 
 /**
  * Decorates a delete route
@@ -55,4 +55,4 @@ export const patch  = (url: string, ...middlewares: Function[]) => route('get', 
  * @param url
  * @param middlewares
  */
-export const del    = (url: string, ...middlewares: Function[]) => route('get', url, ...middlewares);
+export const del    = (url: string, ...middlewares: Function[]) => route('del', url, ...middlewares);
