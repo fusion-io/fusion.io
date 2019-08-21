@@ -13,8 +13,7 @@
     "packages/proton",
     "packages/queue",
     "packages/utils",
-    "packages/validation",
-    "packages/wave-function"
+    "packages/validation"
   ],
-  "version": "3.0.1-alpha.40"
+  "version": "3.0.1-alpha.41"
 }

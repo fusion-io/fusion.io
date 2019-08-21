@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/cli",
-  "version": "3.0.1-alpha.40",
+  "version": "3.0.1-alpha.41",
   "description": "The CLI tools for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
@@ -29,8 +29,8 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
-    "@fusion.io/commands": "^3.0.1-alpha.40",
-    "@fusion.io/core": "^3.0.1-alpha.40",
+    "@fusion.io/commands": "^3.0.1-alpha.41",
+    "@fusion.io/core": "^3.0.1-alpha.41",
     "chalk": "^2.4.2",
     "chokidar": "^3.0.2",
     "faker": "^4.1.0",
