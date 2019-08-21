@@ -89,7 +89,6 @@ import {
 } from "@fusion.io/authorization";
 
 import { Locale, Preset } from "@fusion.io/localization";
-import { DatabaseManager } from "@fusion.io/integrations-knex";
 import { Kernel, Router, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
 
 import { authenticate } from "./authentication/authenticate";
@@ -187,9 +186,6 @@ export {
     // Localization package re-export
     Locale,
     Preset,
-
-    // Database package re-export
-    DatabaseManager,
 
     // Http package re-export
     Kernel,
