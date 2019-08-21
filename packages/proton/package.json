@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/proton",
-  "version": "3.0.1-alpha.41",
+  "version": "3.0.1-alpha.42",
   "description": "The HTTP Server framework for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -30,12 +30,12 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/authenticate": "^3.0.1-alpha.41",
-    "@fusion.io/authorization": "^3.0.1-alpha.41",
-    "@fusion.io/commands": "^3.0.1-alpha.41",
-    "@fusion.io/core": "^3.0.1-alpha.41",
-    "@fusion.io/localization": "^3.0.1-alpha.41",
-    "@fusion.io/validation": "^3.0.1-alpha.41",
+    "@fusion.io/authenticate": "^3.0.1-alpha.42",
+    "@fusion.io/authorization": "^3.0.1-alpha.42",
+    "@fusion.io/commands": "^3.0.1-alpha.42",
+    "@fusion.io/core": "^3.0.1-alpha.42",
+    "@fusion.io/localization": "^3.0.1-alpha.42",
+    "@fusion.io/validation": "^3.0.1-alpha.42",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "youch": "^2.0.10"
