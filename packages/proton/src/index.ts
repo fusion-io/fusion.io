@@ -21,7 +21,12 @@ import {
     singleton,
     bindInversion,
     singletonInversion,
-    inject
+    inject,
+    compose,
+    serializer,
+    serializable,
+    loose,
+    MiddlewareDispatcher
 } from "@fusion.io/core";
 
 
@@ -85,7 +90,7 @@ import {
 
 import { Locale, Preset } from "@fusion.io/localization";
 import { DatabaseManager } from "@fusion.io/integrations-knex";
-import { Kernel, Router, Controller, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
+import { Kernel, Router, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
 
 import { authenticate } from "./authentication/authenticate";
 import { authorize } from "./authorization/authorize";
@@ -113,6 +118,11 @@ export {
     bindInversion,
     singletonInversion,
     inject,
+    compose,
+    serializer,
+    serializable,
+    loose,
+    MiddlewareDispatcher,
 
 
     // Validation package re-export
@@ -184,7 +194,6 @@ export {
     // Http package re-export
     Kernel,
     Router,
-    Controller,
     ErrorHandlerManager,
     HandleFunction,
     get,

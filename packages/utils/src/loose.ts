@@ -1,4 +1,4 @@
-export default (packageName: string) => {
+export const loose = (packageName: string) => {
     try {
         return require(packageName)
     } catch (e) {
@@ -10,4 +10,4 @@ export default (packageName: string) => {
 
         throw e;
     }
-}
+};

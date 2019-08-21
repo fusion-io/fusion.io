@@ -1,5 +1,3 @@
-import Controller from "./Controller";
-
 declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
 
 /**
@@ -11,8 +9,10 @@ declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
  */
 export const route = (method: availableMethods, url: string, ...middlewares: Function[]) => {
 
-    return (target: Controller, action: string) => {
-        // @ts-ignore
+    return (target: any, action: string) => {
+        if (!target.constructor.routes) {
+            target.constructor.routes = [];
+        }
         target.constructor.routes.push({method, url, action, middlewares});
     }
 };

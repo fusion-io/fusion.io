@@ -1,5 +1,5 @@
 import KoaRouter from "koa-router";
-import Controller, { ControllerConstructor, RouteDefinition } from "./Controller";
+import { ControllerConstructor, RouteDefinition } from "./Controller";
 import { tokamak, singleton } from "@fusion.io/core";
 
 /**
@@ -19,10 +19,10 @@ export default class Router extends KoaRouter {
      * @param Constructor
      */
     public controller(Constructor: ControllerConstructor|any): Router {
-        const controller: Controller     = tokamak.make<Controller>(Constructor);
-        const controllerLevelMiddlewares = Constructor.middlewares;
+        const controller: any = tokamak.make<any>(Constructor);
+        const controllerLevelMiddlewares = Constructor.middlewares || [];
 
-        const routes    = Constructor.routes;
+        const routes = Constructor.routes;
 
         routes.forEach((route: RouteDefinition) => {
 
@@ -34,7 +34,7 @@ export default class Router extends KoaRouter {
                 route.url,
                 ...controllerLevelMiddlewares,
                 ...actionLevelMiddlewares,
-                controller.wrap(route.action)
+                (context, next) => controller[route.action](context, next)
             );
         });
 

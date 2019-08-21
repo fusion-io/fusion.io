@@ -11,7 +11,7 @@ export default class LocalEvent implements PublishTransport, SubscribeTransport 
         this.emitter.emit(message.channel(), {
             as      : message.as ? message.as() : message.constructor.name,
             payload : message.payload ? message.payload() : message
-        })
+        });
     }
 
     subscribe(channels: string | string[], consumer: (message: any) => Promise<void>) {

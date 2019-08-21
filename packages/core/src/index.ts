@@ -1,8 +1,47 @@
 import { Container, DependencyKey } from "@fusion.io/container";
+import {
+    Monad,
+    MonadConstructor,
+    SillyMonad,
+    compose,
 
-export * from "@fusion.io/utils";
+    ManagerError,
+    AdapterConfiguration,
+    ManagerConfiguration,
+    Driver,
+    Manager,
+
+    SerializerError,
+    Serializer,
+    serializer,
+    serializable,
+
+    loose,
+
+    MiddlewareDispatcher
+} from "@fusion.io/utils";
 
 export {
+    Monad,
+    MonadConstructor,
+    SillyMonad,
+    compose,
+
+    ManagerError,
+    AdapterConfiguration,
+    ManagerConfiguration,
+    Driver,
+    Manager,
+
+    SerializerError,
+    Serializer,
+    serializer,
+    serializable,
+
+    loose,
+
+    MiddlewareDispatcher,
+
     DependencyKey
 }
 
