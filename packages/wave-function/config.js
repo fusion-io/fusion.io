@@ -89,12 +89,15 @@ module.exports = {
         connections: {
             fusion: {
                 client: 'sqlite3',
-                connection: __dirname + '/db.sqlite',
+                connection: __dirname + '/database/db.sqlite',
                 useNullAsDefault: true
             }
         },
         migration: {
-            directory: __dirname + '/migrations'
+            directory: __dirname + '/database/migrations'
+        },
+        seeder: {
+            directory: __dirname + '/database/seeders'
         }
     },
 

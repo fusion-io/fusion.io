@@ -1,0 +1,9 @@
+import { Seeder } from "@fusion.io/integrations-knex";
+
+export default class :className: extends Seeder {
+
+    async run() {
+        // TODO your seeder script
+        // this.call(OtherSeeder)
+    }
+}

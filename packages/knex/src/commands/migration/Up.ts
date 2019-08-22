@@ -1,5 +1,5 @@
 import { Command } from "@fusion.io/commands";
-import {inject, singleton} from "@fusion.io/core";
+import { inject, singleton } from "@fusion.io/core";
 import DatabaseMigrator from "../../migration/DatabaseMigrator";
 
 @singleton()
