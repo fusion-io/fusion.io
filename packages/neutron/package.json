@@ -1,11 +1,14 @@
 {
-  "name": "@fusion.io/wave-function",
-  "version": "3.0.1-alpha.39",
-  "description": "This is just the test app for the Geeks.",
+  "name": "@fusion.io/neutron",
+  "version": "3.0.1-alpha.44",
+  "description": "The source code generator for Open API Specification by the Geeks!",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
-  "license": "MIT",
-  "main": "lib/wave-function.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -18,7 +21,7 @@
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
-    "fusion": "fusion",
+    "clean": "rm -rf lib",
     "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
@@ -26,14 +29,9 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/bus": "^3.0.1-alpha.44",
-    "@fusion.io/integrations-knex": "^3.0.1-alpha.44",
     "@fusion.io/proton": "^3.0.1-alpha.44",
-    "@fusion.io/neutron": "^3.0.1-alpha.44",
-    "knex": "^0.19.1"
-  },
-  "devDependencies": {
-    "@fusion.io/cli": "^3.0.1-alpha.40"
-  },
-  "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a"
+    "@fusion.io/commands": "^3.0.1-alpha.44",
+    "js-yaml": "^3.13.1",
+    "@types/js-yaml": "^3.12.1"
+  }
 }

@@ -1,5 +1,9 @@
 {
   "app": "src/app",
+  "neutron": {
+    "spec": "APISpec.yaml",
+    "output": "src/api"
+  },
   "live": {
     "spin": true,
     "server": "src/server",
