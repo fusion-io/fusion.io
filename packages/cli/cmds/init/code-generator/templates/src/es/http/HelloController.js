@@ -1,7 +1,7 @@
 import { singleton, get, Controller } from "@fusion.io/proton";
 
 @singleton()
-export default class HelloController extends Controller {
+export default class HelloController {
 
     @get('/')
     async index(context) {
