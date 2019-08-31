@@ -1,5 +1,4 @@
 import { Plasma as CorePlasma, inject } from "@fusion.io/core";
-import { renderView } from "@fusion.io/integrations-handlebars";
 import Router from "./Router";
 import Kernel from "./Kernel";
 import handleError from "./handleError";
@@ -15,7 +14,7 @@ export default class Plasma extends CorePlasma {
         kernel.keys = keys;
 
         if (debug) kernel.use(handleError);
+
         kernel.use(handler.middleware());
-        kernel.use(renderView);
     }
 }

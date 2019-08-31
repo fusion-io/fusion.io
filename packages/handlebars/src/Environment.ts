@@ -25,6 +25,10 @@ export default class Environment {
         return this;
     }
 
+    getHandlebars() {
+        return Handlebars;
+    }
+
     rendering(view: string, middleware: RenderingMiddleware) {
         if (!this.renderDispatchers.has(view)) {
             this.renderDispatchers.set(view, new MiddlewareDispatcher());
