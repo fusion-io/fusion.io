@@ -5,13 +5,16 @@ import {
     KoaToken,
     KoaOAuth2,
     KoaLocal,
-    KoaSession
+    KoaSession,
+    Plasma as AuthenticatePlasma
 } from "@fusion.io/authenticate";
 
 export class Plasma extends CorePlasma {
 
     @inject(Authenticator)
     compose(authenticator: Authenticator) {
+
+        this.tokamak.fuse(AuthenticatePlasma);
 
         authenticator
             .supporting('proton.oauth2', options => new Gateway(new KoaOAuth2(options)))

@@ -89,6 +89,11 @@ import {
 } from "@fusion.io/authorization";
 
 import { Locale, Preset } from "@fusion.io/localization";
+
+import {
+    Environment as View
+} from "@fusion.io/integrations-handlebars";
+
 import { Kernel, Router, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
 
 import { authenticate } from "./authentication/authenticate";
@@ -203,5 +208,7 @@ export {
     authorize,
 
     // Package plasma
-    ProtonPlasma
+    ProtonPlasma,
+
+    View
 }
