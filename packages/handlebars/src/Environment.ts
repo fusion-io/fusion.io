@@ -1,18 +1,27 @@
 import { MiddlewareDispatcher, singleton } from "@fusion.io/core";
 import Handlebars from "handlebars";
 import fs from "fs";
+import glob from "glob";
+import path from "path";
 
 export type RenderingMiddleware = (context: any, next: Function) => Promise<any>|any;
 
 @singleton()
 export default class Environment {
 
-    protected directory: string = 'views';
-
     protected renderDispatchers: Map<string, MiddlewareDispatcher> = new Map();
 
-    setViewDirectory(directory: string) {
-        this.directory = directory;
+    loadViews(directory: string) {
+        glob.sync(directory + '/**/*.hbs').forEach(template => {
+            const partial = path
+                .relative(directory, template)
+                .replace(/^\//, '')
+                .replace('.hbs', '')
+            ;
+
+            Handlebars.registerPartial(partial, fs.readFileSync(template).toString());
+        });
+
         return this;
     }
 
