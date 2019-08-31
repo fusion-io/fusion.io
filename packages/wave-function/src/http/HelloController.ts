@@ -1,13 +1,13 @@
-import { singleton, get, authenticate, authorize, inject } from "@fusion.io/proton";
+import { singleton, get } from "@fusion.io/proton";
 import { Context } from "koa";
-import { Publisher } from "@fusion.io/bus";
+import User from "../User";
 
 @singleton()
 export default class HelloController {
 
-    @get('/', authenticate('jwt.users'), authorize('view'))
+    @get('/')
     async index(context: Context) {
-        context.body = {message: "tokamak.fuse(ProtonPlasma);"};
+        context.render('hello', { message: 'tokamak.fuse(ProtonPlasma);', user: new User({ roles: ['foobar']})});
     }
 
     @get('/permissions')

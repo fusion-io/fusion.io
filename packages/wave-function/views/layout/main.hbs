@@ -10,19 +10,14 @@
             background: whitesmoke;
         }
 
-        main {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     </style>
+    {{#> head }}
+        <!--    Default head content    -->
+    {{/head}}
 </head>
 <body>
     <main>
-        <h1>
-            <code>{{ message }}</code>
-        </h1>
+        {{> content }}
     </main>
 </body>
 </html>

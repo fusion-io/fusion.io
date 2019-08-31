@@ -101,5 +101,7 @@ module.exports = {
         }
     },
 
-    view: 'views'
+    view: {
+        directory: __dirname + '/views'
+    }
 };

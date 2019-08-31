@@ -15,4 +15,15 @@ export default class User implements HavingRoles, Identity {
 
         return [];
     }
+
+    name() {
+        return 'rikky';
+    }
+
+    async posts() {
+        return [
+            'foo',
+            'bar'
+        ]
+    }
 }

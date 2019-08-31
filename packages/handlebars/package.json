@@ -1,29 +1,40 @@
 {
   "name": "@fusion.io/integrations-handlebars",
-  "version": "3.0.1-alpha.38",
+  "version": "3.0.1-alpha.44",
   "description": "The handlebars view engine for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
   "license": "MIT",
-  "main": "lib/handlebars.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "resources"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fusion-io/fusion.io.git"
   },
   "scripts": {
+    "clean": "rm -rf lib",
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "handlebars": "^4.1.2"
+    "@fusion.io/core": "^3.0.1-alpha.44",
+    "@types/handlebars": "^4.1.0",
+    "handlebars": "^4.1.2",
+    "handlebars-helpers": "^0.10.0",
+    "glob": "^7.1.4"
   }
 }
