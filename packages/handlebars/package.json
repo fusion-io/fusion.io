@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/integrations-handlebars",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "The handlebars view engine for the Geeks, by the Geeks.",
   "author": "rikky <son.levuthai@gmail.com>",
   "homepage": "https://github.com/fusion-io/fusion.io#readme",
@@ -31,7 +31,7 @@
     "url": "https://github.com/fusion-io/fusion.io/issues"
   },
   "dependencies": {
-    "@fusion.io/core": "^3.1.3",
+    "@fusion.io/core": "^3.1.4",
     "@types/handlebars": "^4.1.0",
     "glob": "^7.1.4",
     "handlebars": "^4.1.2"

@@ -1,6 +1,6 @@
 {
   "name": "@fusion.io/container",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "Depedency Container for the Geeks, by the Geeks.",
   "publishConfig": {
     "access": "public"
