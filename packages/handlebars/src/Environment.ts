@@ -27,17 +27,12 @@ export default class Environment {
     }
 
     async render(view: string, context: {} = {}) {
-        const template   = fs.readFileSync(this.guessViewFile(view)).toString();
         const dispatcher = this.renderDispatchers.get(view);
 
         if (dispatcher) {
             await dispatcher.dispatch(context);
         }
 
-        return Handlebars.compile(template)(context);
-    }
-
-    protected guessViewFile(view: string) {
-        return this.directory + '/' + view.split('.').join('/') + '.hbs';
+        return Handlebars.compile(`{{> ${view} }}`)(context);
     }
 }
