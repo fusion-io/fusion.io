@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fusion Proton</title>
+    <title>{{title}}</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Source Code Pro', monospace;
             background: whitesmoke;
         }
-
-        main {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     </style>
+    {{#> head }}
+        <!--    Default head content    -->
+    {{/head}}
 </head>
 <body>
     <main>
-        <h1>
-            <code>{{ message }}</code>
-        </h1>
+        {{> content }}
     </main>
 </body>
 </html>
