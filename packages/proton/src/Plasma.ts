@@ -5,6 +5,7 @@ import { Plasma as Localization } from "@fusion.io/localization";
 import { Plasma as Http } from "./http";
 import { Plasma as Authentication } from "./authentication/Plasma";
 
+import Templating from "./view/Plasma";
 import ProtonCommand from "./commands/Plasma";
 
 export default class Plasma extends CorePlasma {
@@ -17,6 +18,7 @@ export default class Plasma extends CorePlasma {
             .fuse(Authentication)
             .fuse(Authorization)
             .fuse(ProtonCommand)
+            .fuse(Templating)
         ;
     }
 }

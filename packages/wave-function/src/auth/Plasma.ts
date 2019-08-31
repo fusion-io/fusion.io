@@ -11,14 +11,16 @@ import UserProvider from "./UserProvider";
 
 export default class Plasma extends CorePlasma {
 
-    @inject(Authenticator, ErrorHandlerManager, UserProvider)
-    compose(authenticator: Authenticator, handler: ErrorHandlerManager, userIDP: UserProvider) {
-
+    @inject(Authenticator, UserProvider)
+    compose(authenticator: Authenticator, userIDP: UserProvider) {
         authenticator.connect('jwt.users', ({ privateKey }) => [
             new JsonWebTokenIdentityProvider(privateKey),
             userIDP
         ]);
+    }
 
+    @inject(ErrorHandlerManager)
+    boot(handler: ErrorHandlerManager) {
         handler
             .willHandle(UnAuthenticated, async (error, context) => {
                 context.status = 403;

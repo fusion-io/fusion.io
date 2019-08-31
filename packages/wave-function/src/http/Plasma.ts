@@ -10,7 +10,6 @@ export default class Plasma extends CorePlasma {
     @inject(Kernel, Router, Subscriber, Environment)
     boot(kernel: Kernel, router: Router, sub: Subscriber, env: Environment) {
 
-        kernel.use(renderView);
         kernel.use(router.routes());
         kernel.use(router.allowedMethods());
 
