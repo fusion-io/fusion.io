@@ -20,6 +20,10 @@ export default class User implements HavingRoles, Identity {
         return 'rikky';
     }
 
+    identity() {
+        return this.name();
+    }
+
     async posts() {
         return [
             'foo',

@@ -2,7 +2,7 @@ module.exports = {
 
     debug: true,
 
-    keys: [ ],
+    keys: [ 'some-secret-key' ],
 
     services: {
         // TODO

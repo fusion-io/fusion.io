@@ -8,11 +8,13 @@ import {
     KoaSession,
     Plasma as AuthenticatePlasma
 } from "@fusion.io/authenticate";
+import Kernel from "../http/Kernel";
+import Authenticable from "./Authenticable";
 
 export class Plasma extends CorePlasma {
 
-    @inject(Authenticator)
-    compose(authenticator: Authenticator) {
+    @inject(Authenticator, Kernel)
+    compose(authenticator: Authenticator, kernel: Kernel) {
 
         this.tokamak.fuse(AuthenticatePlasma);
 
@@ -20,7 +22,17 @@ export class Plasma extends CorePlasma {
             .supporting('proton.oauth2', options => new Gateway(new KoaOAuth2(options)))
             .supporting('proton.token', (() => new Gateway(new KoaToken())))
             .supporting('proton.local', options => new Gateway(new KoaLocal(options)))
-            .supporting('proton.session', (options => new Gateway(new KoaSession(options))))
+            .supporting('proton.session', (() => new Gateway(new KoaSession('identity'))))
         ;
+
+        kernel.use(async (context, next) => {
+            context.login = (authenticable: Authenticable) => {
+                context.session.identity = authenticable.identity();
+            };
+            context.logout = () => {
+                context.session.identity = undefined;
+            };
+            await next();
+        });
     }
 }

@@ -30,7 +30,8 @@
     "@fusion.io/integrations-knex": "^3.0.1-alpha.44",
     "@fusion.io/proton": "^3.0.1-alpha.44",
     "@fusion.io/neutron": "^3.0.1-alpha.44",
-    "knex": "^0.19.1"
+    "knex": "^0.19.1",
+    "koa-session": "^5.12.3"
   },
   "devDependencies": {
     "@fusion.io/cli": "^3.0.1-alpha.40"

@@ -8,6 +8,11 @@ export default class Plasma extends CorePlasma {
     @inject(Kernel, Router)
     boot(kernel: Kernel, router: Router) {
 
+        kernel.use(require('koa-session')({
+            key: 'koa:sess',
+            autoCommit: true
+        }, kernel));
+
         kernel.use(router.routes());
         kernel.use(router.allowedMethods());
 

@@ -9,9 +9,9 @@ export default class HttpSession implements Protocol {
 
     constructor(private readonly sessionKey = 'credential') { }
 
-    public async resolve({session, httpContext: {request}} : { session: any, httpContext: HttpContext }) {
+    public async resolve({ httpContext } : { httpContext: any }) {
 
-        session = session || request.session;
+        const session = httpContext.session || httpContext.request.session;
 
         if (!session) {
             throw new Error("Session is not started");
