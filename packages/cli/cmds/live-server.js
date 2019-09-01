@@ -98,7 +98,7 @@ exports.handler = (options) => {
                 })
             });
             process.nextTick(() => {
-                messageCtx.output(chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
+                messageCtx.output(chalk`{gray 🚀 It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
             });
         });
 
@@ -113,11 +113,11 @@ exports.handler = (options) => {
 
                 reloaded(request, response);
             } catch (e) {
-                messageCtx.output(chalk.red("Oops! " + e.message + '. \n') + chalk.gray('Waiting for change.'));
+                messageCtx.output(chalk.red(" 👽 Oops! " + e.message + '. \n') + chalk.gray('Waiting for change.'));
             }
 
         }).listen(mergeOptions.port);
 
-        messageCtx.output(chalk.gray('Started'));
+        messageCtx.output(chalk.gray(' 🚀 Started'));
     });
 };
