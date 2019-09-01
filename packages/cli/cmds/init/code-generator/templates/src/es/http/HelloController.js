@@ -1,4 +1,4 @@
-import { singleton, get, Controller } from "@fusion.io/proton";
+import { singleton, get } from "@fusion.io/proton";
 
 @singleton()
 export default class HelloController {
