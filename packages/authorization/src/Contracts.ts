@@ -1,6 +1,6 @@
 /**
  * In most of the types of Policy, we can grant an Identity with
- * some permission.
+ * some permissions.
  * If so, we called that type of Policy is a GrantablePolicy.
  *
  */

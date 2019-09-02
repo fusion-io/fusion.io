@@ -45,7 +45,22 @@ module.exports = {
         default: 'post',
 
         policies: {
-
+            "post": {
+                "driver": "grouped",
+                "options": {
+                    policies: [ "post.owner", "post.acl" ]
+                }
+            },
+            "post.owner": {
+                "driver": "owner"
+            },
+            "post.acl": {
+                "driver": "config",
+                "options": {
+                    "user": ["read"],
+                    "admin": ["read", "write"]
+                }
+            }
         }
     },
 

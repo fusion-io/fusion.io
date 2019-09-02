@@ -130,4 +130,11 @@ export class Manager<Adapter> {
         this.adapters.set(name, adapter);
         return this;
     }
+
+    /**
+     * Get the installed adapter
+     */
+    public installed() {
+        return this.adapters;
+    }
 }

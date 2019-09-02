@@ -66,9 +66,7 @@ export class Authorizer extends Manager<Policy<any>> {
      * @param byPolicy
      */
     public async verify(identity: any, action: string, byPolicy?: string) {
-        const accepted = await this.policy(byPolicy).check(identity, action);
-
-        if (!accepted) {
+        if (!await this.can(identity, action, byPolicy)) {
             throw new UnAuthorized("UnAuthorized");
         }
     }

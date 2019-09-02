@@ -8,7 +8,7 @@ import {
     Plasma as CorePlasma, Authorizer
 } from "@fusion.io/proton";
 import UserProvider from "./UserProvider";
-import PostPolicy from "./PostPolicy";
+import OwnerPolicy from "./OwnerPolicy";
 
 export default class Plasma extends CorePlasma {
 
@@ -21,7 +21,7 @@ export default class Plasma extends CorePlasma {
 
         authenticator.connect('session.users', () => [userIDP]);
 
-        authorizer.extends('post', new PostPolicy());
+        authorizer.supporting('owner', () => new OwnerPolicy());
     }
 
     @inject(ErrorHandlerManager)
@@ -36,7 +36,8 @@ export default class Plasma extends CorePlasma {
             .willHandle(UnAuthorized, async (error, context) => {
                 context.status = 401;
                 context.body = {
-                    message: 'You are not authorized to perform this action'
+                    message: 'You are not authorized to perform this action',
+                    authorization: context.authorization
                 }
             })
         ;
