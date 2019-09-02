@@ -1,7 +1,6 @@
 import {inject, Plasma as CorePlasma, Kernel, Router, Validator} from "@fusion.io/proton";
 
 import HelloController from "./HelloController";
-import FoobarController from "./FoobarController";
 
 export default class Plasma extends CorePlasma {
 
@@ -18,7 +17,6 @@ export default class Plasma extends CorePlasma {
 
         router
             .controller(HelloController)
-            .controller(FoobarController)
         ;
     }
 }
