@@ -18,7 +18,11 @@ import {
 
     loose,
 
-    MiddlewareDispatcher
+    MiddlewareDispatcher,
+
+    ParametersExpression,
+    parsedResult
+
 } from "@fusion.io/utils";
 
 export {
