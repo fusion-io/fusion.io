@@ -72,9 +72,9 @@ export default class ComposedPolicy<Identity> implements Policy<Identity> {
     /**
      * @inheritDoc
      *
-     * @param identity
+     * @param context
      */
-    granted(identity: Identity) {
-        return this.composedPolicy.granted(identity);
+    granted(context: AuthorizationContext<Identity>) {
+        return this.composedPolicy.granted(context);
     }
 }

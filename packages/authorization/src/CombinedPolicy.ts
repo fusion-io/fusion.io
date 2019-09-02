@@ -30,10 +30,10 @@ export default class CombinedPolicy<Identity> implements Policy<Identity> {
     /**
      * @inheritDoc
      *
-     * @param identity
+     * @param context
      */
-    async granted(identity: Identity) {
-        let grantedPermissions = await Promise.all(this.policies.map(policy => policy.granted(identity)));
+    async granted(context: AuthorizationContext<Identity>) {
+        let grantedPermissions = await Promise.all(this.policies.map(policy => policy.granted(context)));
         let firstPermissionSet = grantedPermissions.shift();
 
         if (!firstPermissionSet) {

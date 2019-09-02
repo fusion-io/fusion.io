@@ -81,11 +81,11 @@ export default class ACLConfigPolicy implements Policy<ACLIdentityOrRole> {
 
     /**
      *
-     * @param identityOrRole
+     * @param identity
      */
-    async granted(identityOrRole: HavingRoles): Promise<Permissions> {
+    async granted({ identity }: AuthorizationContext<ACLIdentityOrRole>): Promise<Permissions> {
 
-        const roles = ACLConfigPolicy.resolveRoles(identityOrRole);
+        const roles = ACLConfigPolicy.resolveRoles(identity);
 
         return roles
             .map(role => this.config.hasOwnProperty(role) ? this.config[role] : [])

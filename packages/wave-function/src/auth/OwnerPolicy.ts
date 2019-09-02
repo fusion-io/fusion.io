@@ -3,6 +3,11 @@ import { AuthorizationContext, Policy } from "@fusion.io/proton";
 
 export default class OwnerPolicy implements Policy<User> {
 
+    async isOwner(user: User, post: string) {
+        const postsByUser = await user.posts();
+        return postsByUser.includes(post);
+    }
+
     async check(context: AuthorizationContext<User>, permission: string) {
 
         context.authorization = {
@@ -11,16 +16,14 @@ export default class OwnerPolicy implements Policy<User> {
             byPolicy: 'owner'
         };
 
-        const postsByUser = await context.identity.posts();
-
         if (permission === 'write' || permission === "publish") {
-            return postsByUser.includes(context.params.postId)
+            return await this.isOwner(context.identity, context.params.postId);
         } else {
             return false;
         }
     }
 
-    async granted(identity: User) {
-        return []
+    async granted(context: AuthorizationContext<User>) {
+        return await this.isOwner(context.identity, context.params.postId) ? ['write', 'publish'] : [];
     }
 }

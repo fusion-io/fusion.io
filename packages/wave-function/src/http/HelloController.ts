@@ -1,4 +1,4 @@
-import {singleton, get, authenticate, authorize} from "@fusion.io/proton";
+import {singleton, get, authenticate, authorize, inject, Authorizer, AuthorizationContext} from "@fusion.io/proton";
 import { Context } from "koa";
 import User from "../User";
 
@@ -24,10 +24,11 @@ export default class HelloController {
         }
     }
 
-    @get('/permissions')
-    async permissions(context: Context) {
+    @inject(Authorizer)
+    @get('/permissions/:postId', authenticate('session.users'))
+    async permissions(context: Context, next: Function, authorizer: Authorizer) {
         context.body = {
-            view: context.session.views
+            permissions: await authorizer.granted({ ...context, identity: context.identity}, 'post')
         }
     }
 

@@ -29,10 +29,10 @@ export default class GroupedPolicy<Identity> implements Policy<Identity> {
     /**
      * @inheritDoc
      *
-     * @param identity
+     * @param context
      */
-    async granted(identity: any) {
-        const grantedPermissions = await Promise.all(this.policies.map(policy => policy.granted(identity)));
+    async granted(context: AuthorizationContext<Identity>) {
+        const grantedPermissions = await Promise.all(this.policies.map(policy => policy.granted(context)));
 
         return [...new Set(grantedPermissions.reduce((united: string[], granted: string[]) => [...united, ...granted], []))];
     };

@@ -38,5 +38,5 @@ export type Policy<Identity> = {
      *
      * @param identity
      */
-    granted(identity: Identity): Promise<string[]>
+    granted(identity: AuthorizationContext<Identity>): Promise<string[]>
 }

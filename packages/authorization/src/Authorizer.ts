@@ -75,10 +75,10 @@ export class Authorizer extends Manager<Policy<any>> {
      * Get actions that an identity can
      * perform by given policy
      *
-     * @param identity
+     * @param context
      * @param byPolicy
      */
-    public granted(identity: any, byPolicy?: string) {
-        return this.policy(byPolicy).granted(identity);
+    public granted(context: AuthorizationContext<any>, byPolicy?: string) {
+        return this.policy(byPolicy).granted(context);
     }
 }
