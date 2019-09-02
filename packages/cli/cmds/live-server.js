@@ -72,7 +72,7 @@ exports.handler = (options) => {
     const mergeOptions = {...options, ...options.live};
     const watcher = chokidar.watch(process.cwd(), { ignored: new RegExp(mergeOptions.excepts) });
 
-    console.log(chalk`{gray Starting the development server at {cyan ${mergeOptions.port}}}`);
+    console.log(chalk`{gray 🚀 Starting the development server at {cyan ${mergeOptions.port}}}`);
 
     const messageCtx = new MessageContext(mergeOptions.spin ? ora().start() : null);
 
@@ -98,7 +98,7 @@ exports.handler = (options) => {
                 })
             });
             process.nextTick(() => {
-                messageCtx.output(chalk`{gray 🚀 It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
+                messageCtx.output(chalk`{gray It\'s reloaded, {cyan ${faker.name.lastName()}}!}`);
             });
         });
 
@@ -118,6 +118,6 @@ exports.handler = (options) => {
 
         }).listen(mergeOptions.port);
 
-        messageCtx.output(chalk.gray('🚀 Started'));
+        messageCtx.output(chalk.gray('Started'));
     });
 };
