@@ -53,12 +53,18 @@ export default class RuleSet extends Map<string, Rule> {
     async validate(value: any): Promise<RuleSetValidationResult> {
 
         const entries = Array.from(this.entries());
-        const result  = await Promise.all(entries.map(async ([name, rule]: [string, Rule]) =>
-            ({
+        const result  = await Promise.all(entries.map(async ([name, rule]: [string, Rule]) => {
+            let context = { };
+            let valid   = await rule.validate(value, context);
+
+            return ({
                 rule    : rule.getName(),
                 args    : rule.getArguments(),
-                valid   : await rule.validate(value)
-            })));
+                valid,
+                context
+            });
+        }));
+
 
         const valids   = result.filter(({rule, valid}) =>  valid).map(valided   => valided.rule);
         const invalids = result.filter(({rule, valid}) => !valid).map(invalided => invalided.rule);

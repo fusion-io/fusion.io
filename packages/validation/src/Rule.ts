@@ -37,9 +37,10 @@ export default class Rule {
     /**
      *
      * @param value
+     * @param context
      */
-    async validate(value: any) {
-        return await this.validationFunction(value, ...this.ruleArguments);
+    async validate(value: any, context: any) {
+        return await this.validationFunction(value, ...this.ruleArguments, context);
     }
 
     /**
