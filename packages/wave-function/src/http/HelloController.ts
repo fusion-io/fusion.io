@@ -1,11 +1,12 @@
-import { singleton, get, authenticate } from "@fusion.io/proton";
+import {singleton, get, authenticate, validate, authorize} from "@fusion.io/proton";
 import { Context } from "koa";
 import User from "../User";
+import AjvValidator from "./AjvValidator";
 
 @singleton()
 export default class HelloController {
 
-    @get('/', authenticate('session.users'))
+    @get('/')
     async index(context: Context) {
         context.render('hello', { message: 'tokamak.fuse(ProtonPlasma);'});
     }
@@ -28,6 +29,13 @@ export default class HelloController {
     async permissions(context: Context) {
         context.body = {
             view: context.session.views
+        }
+    }
+
+    @get('/write/:postId', authenticate('session.users'), authorize('write', 'post'))
+    async readPost(context: Context) {
+        context.body = {
+            updatePost: context.params.postId
         }
     }
 }

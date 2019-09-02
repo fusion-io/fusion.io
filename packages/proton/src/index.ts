@@ -94,10 +94,12 @@ import {
     Environment as View
 } from "@fusion.io/integrations-handlebars";
 
-import { Kernel, Router, ErrorHandlerManager, HandleFunction, get, del, patch, put, post, route } from "./http";
+import { Kernel, Router, ErrorHandlerManager, HandleFunction, ContextAware, get, del, patch, put, post, route } from "./http";
 
 import { authenticate } from "./authentication/authenticate";
 import { authorize } from "./authorization/authorize";
+import { ContextAwarePolicy } from "./authorization/ContextAwarePolicy";
+
 import validate from "./validation/validate";
 import RequestRule from "./validation/RequestRule";
 
@@ -189,6 +191,7 @@ export {
     HavingRoles,
     UnAuthorized,
     ACLIdentityOrRole,
+    ContextAwarePolicy,
 
     // Localization package re-export
     Locale,
@@ -199,6 +202,7 @@ export {
     Router,
     ErrorHandlerManager,
     HandleFunction,
+    ContextAware,
     get,
     del,
     patch,

@@ -30,7 +30,7 @@ export class Plasma extends CorePlasma {
                 context.session.identity = authenticable.identity();
             };
             context.logout = () => {
-                context.session.identity = undefined;
+                delete context.session.identity;
             };
             await next();
         });

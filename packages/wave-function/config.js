@@ -42,38 +42,10 @@ module.exports = {
 
     authorization: {
 
-        default: 'message',
+        default: 'post',
 
         policies: {
-            message: {
-                policy: "acl",
-                options: {
-                    "admin": [ "view", "edit", "remove" ],
-                    "owner": [ "edit" ],
-                    "user": [ "view", "create" ]
-                }
-            },
 
-            post: {
-                policy: "acl",
-                options: {
-                    "user": [ "view", "share" ],
-                    "guest": [ "view" ]
-                }
-            },
-
-            media: {
-                policy: "group",
-                options: {
-                    policies: [ 'message', 'post' ]
-                }
-            },
-
-            // @@
-            crazy: {
-                policy: "composed",
-                options: ({ combine, group }) => group(combine('media', 'post'), 'message')
-            }
         }
     },
 
