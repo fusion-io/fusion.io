@@ -5,6 +5,11 @@ export default class PostPolicy extends ContextAwarePolicy<User> {
 
     async check(identity: User, permission: string) {
 
+        this.getContext().authorization = {
+            resource: `post.${this.getContext().params.postId}`,
+            action: permission
+        };
+
         const postsByUser = await identity.posts();
 
         if(permission === 'read') {
