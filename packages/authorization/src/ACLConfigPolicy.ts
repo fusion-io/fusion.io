@@ -1,4 +1,4 @@
-import { Policy } from "./Contracts";
+import { AuthorizationContext, Policy } from "./Contracts";
 
 /**
  * In this type of Policy, Permissions is just a list of strings
@@ -45,12 +45,12 @@ export default class ACLConfigPolicy implements Policy<ACLIdentityOrRole> {
     /**
      *
      * @inheritDoc
-     * @param authorizable
+     * @param context
      * @param permission
      */
-    public async check(authorizable: ACLIdentityOrRole, permission: string) {
+    public async check({ identity }: AuthorizationContext<ACLIdentityOrRole>, permission: string) {
 
-        let roles = ACLConfigPolicy.resolveRoles(authorizable);
+        let roles = ACLConfigPolicy.resolveRoles(identity);
 
         return roles.reduce(
             (allowing: boolean, role) => allowing || this.checkForRole(role, permission), false

@@ -1,4 +1,4 @@
-import { Policy } from "./Contracts";
+import { AuthorizationContext, Policy } from "./Contracts";
 
 /**
  * A CombinedPolicy is a policy type that will check 2 or more
@@ -19,11 +19,11 @@ export default class CombinedPolicy<Identity> implements Policy<Identity> {
     /**
      * @inheritDoc
      *
-     * @param identity
+     * @param context
      * @param permission
      */
-    async check(identity: Identity, permission: string) {
-        const result = await Promise.all(this.policies.map(policy => policy.check(identity, permission)));
+    async check(context : AuthorizationContext<Identity>, permission: string) {
+        const result = await Promise.all(this.policies.map(policy => policy.check(context, permission)));
         return result.reduce((attempt: boolean, current: boolean) => attempt && current, true);
     }
 

@@ -15,15 +15,23 @@ export type GrantablePolicy<Identity> = {
     grant(identity: Identity, permissions: string[]): Promise<void>
 }
 
+/**
+ * The context of authorization
+ */
+export type AuthorizationContext<Identity> = {
+    identity: Identity,
+    [key: string]: any
+}
+
 export type Policy<Identity> = {
 
     /**
      * Check if the given Identity have the permission
      *
-     * @param identity
+     * @param context
      * @param permission
      */
-    check(identity: Identity, permission: string): Promise<boolean>
+    check(context: AuthorizationContext<Identity>, permission: string): Promise<boolean>
 
     /**
      * Get the list of granted permission of the given identity

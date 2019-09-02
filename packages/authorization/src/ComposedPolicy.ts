@@ -1,4 +1,4 @@
-import { Policy } from "./Contracts";
+import { AuthorizationContext, Policy } from "./Contracts";
 import { Authorizer } from "./Authorizer";
 import GroupedPolicy from "./GroupedPolicy";
 import CombinedPolicy from "./CombinedPolicy";
@@ -62,11 +62,11 @@ export default class ComposedPolicy<Identity> implements Policy<Identity> {
     /**
      * @inheritDoc
      *
-     * @param identity
+     * @param context
      * @param permission
      */
-    check(identity: Identity, permission: string) {
-        return this.composedPolicy.check(identity, permission);
+    check(context: AuthorizationContext<Identity>, permission: string) {
+        return this.composedPolicy.check(context, permission);
     }
 
     /**

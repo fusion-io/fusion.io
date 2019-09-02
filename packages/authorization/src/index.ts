@@ -3,7 +3,7 @@ import Plasma from "./Plasma";
 import UnAuthorized from "./UnAuthorized";
 
 export { Authorizer, AuthorizerConfiguration } from "./Authorizer";
-export { GrantablePolicy, Policy } from "./Contracts";
+export { AuthorizationContext, GrantablePolicy, Policy } from "./Contracts";
 
 // Supported policies
 export {

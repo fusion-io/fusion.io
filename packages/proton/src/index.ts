@@ -85,7 +85,8 @@ import {
     ACLConfiguration,
     HavingRoles,
     UnAuthorized,
-    ACLIdentityOrRole
+    ACLIdentityOrRole,
+    AuthorizationContext
 } from "@fusion.io/authorization";
 
 import { Locale, Preset } from "@fusion.io/localization";
@@ -98,7 +99,6 @@ import { Kernel, Router, ErrorHandlerManager, HandleFunction, ContextAware, get,
 
 import { authenticate } from "./authentication/authenticate";
 import { authorize } from "./authorization/authorize";
-import { ContextAwarePolicy } from "./authorization/ContextAwarePolicy";
 
 import validate from "./validation/validate";
 import RequestRule from "./validation/RequestRule";
@@ -191,7 +191,7 @@ export {
     HavingRoles,
     UnAuthorized,
     ACLIdentityOrRole,
-    ContextAwarePolicy,
+    AuthorizationContext,
 
     // Localization package re-export
     Locale,

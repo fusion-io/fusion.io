@@ -1,20 +1,20 @@
-import { ContextAwarePolicy } from "@fusion.io/proton";
 import User from "../User";
+import { AuthorizationContext, Policy } from "@fusion.io/proton";
 
-export default class OwnerPolicy extends ContextAwarePolicy<User> {
+export default class OwnerPolicy implements Policy<User> {
 
-    async check(identity: User, permission: string) {
+    async check(context: AuthorizationContext<User>, permission: string) {
 
-        this.getContext().authorization = {
-            resource: `post.${this.getContext().params.postId}`,
+        context.authorization = {
+            resource: `post.${context.params.postId}`,
             action: permission,
             byPolicy: 'owner'
         };
 
-        const postsByUser = await identity.posts();
+        const postsByUser = await context.identity.posts();
 
         if (permission === 'write' || permission === "publish") {
-            return postsByUser.includes(this.getContext().params.postId)
+            return postsByUser.includes(context.params.postId)
         } else {
             return false;
         }

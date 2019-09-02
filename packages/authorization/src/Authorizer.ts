@@ -1,5 +1,5 @@
 import { Manager, singleton } from "@fusion.io/core";
-import { Policy } from "./Contracts";
+import { AuthorizationContext, Policy } from "./Contracts";
 import UnAuthorized from "./UnAuthorized";
 
 /**
@@ -48,12 +48,12 @@ export class Authorizer extends Manager<Policy<any>> {
      * Check if given identity can perform
      * an action by a given policy
      *
-     * @param identity
+     * @param context
      * @param action
      * @param byPolicy
      */
-    public can(identity: any, action: string, byPolicy?: string) {
-        return this.policy(byPolicy).check(identity, action);
+    public can(context: AuthorizationContext<any>, action: string, byPolicy?: string) {
+        return this.policy(byPolicy).check(context, action);
     }
 
     /**
@@ -61,12 +61,12 @@ export class Authorizer extends Manager<Policy<any>> {
      * an action by a given policy.
      * If fail, will throw an UnAuthorized error
      *
-     * @param identity
+     * @param context
      * @param action
      * @param byPolicy
      */
-    public async verify(identity: any, action: string, byPolicy?: string) {
-        if (!await this.can(identity, action, byPolicy)) {
+    public async verify(context: AuthorizationContext<any>, action: string, byPolicy?: string) {
+        if (!await this.can(context, action, byPolicy)) {
             throw new UnAuthorized("UnAuthorized");
         }
     }
