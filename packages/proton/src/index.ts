@@ -98,6 +98,8 @@ import { Kernel, Router, ErrorHandlerManager, HandleFunction, get, del, patch, p
 
 import { authenticate } from "./authentication/authenticate";
 import { authorize } from "./authorization/authorize";
+import validate from "./validation/validate";
+import RequestRule from "./validation/RequestRule";
 
 export {
 
@@ -210,5 +212,8 @@ export {
     // Package plasma
     ProtonPlasma,
 
-    View
+    View,
+
+    validate,
+    RequestRule
 }

@@ -63,36 +63,6 @@ export default class RuleSet extends Map<string, Rule> {
         const valids   = result.filter(({rule, valid}) =>  valid).map(valided   => valided.rule);
         const invalids = result.filter(({rule, valid}) => !valid).map(invalided => invalided.rule);
 
-
         return { value, valid: invalids.length === 0, valids, invalids, rules: result };
-    }
-
-    /**
-     * Serialize this rule into the Definition string.
-     */
-    serialize() {
-        return Array.from(this.values())
-            .map(rule => {
-                const argumentsDefinitionString = rule.getArguments().length ? rule.getArguments().join(':') : '';
-                return rule.getName() +
-                    (rule.getArguments().length ? (`:` + argumentsDefinitionString) : '')
-            }).join('|')
-        ;
-    }
-
-    /**
-     * Alias of serialize()
-     *
-     */
-    toString() {
-        return this.serialize()
-    }
-
-    /**
-     * Alias of serialize()
-     *
-     */
-    stringify() {
-        return this.serialize();
     }
 }

@@ -1,4 +1,4 @@
-import { Manager, singleton } from "@fusion.io/core";
+import { Manager, singleton, ParametersExpression } from "@fusion.io/core";
 import Rule, { ValidationFunction } from "./Rule";
 import RuleSet from "./RuleSet";
 import RuleSetMap, { RuleSetMapDefinition } from "./RuleSetMap";
@@ -33,8 +33,9 @@ export default class Validator extends Manager<ValidationFunction> {
         const ruleSet         = new RuleSet();
 
         ruleDefinitions.forEach(ruleDefinition => {
-            const [ruleName, ...args] = ruleDefinition.split(':');
-            ruleSet.set(ruleName, this.make(ruleName, args));
+            const { method, parameters } = ParametersExpression.parse(ruleDefinition);
+
+            ruleSet.set(method, this.make(method, parameters));
         });
 
         return ruleSet;

@@ -1,9 +1,7 @@
 import { inject, Plasma as CorePlasma } from "@fusion.io/core";
 import Validator from "./Validator";
 import {
-    length,
     nope,
-    range,
     required,
     array
 } from "./rules";
@@ -48,6 +46,7 @@ export default class Plasma extends CorePlasma {
             isJSON          : 'json',
             isJWT           : 'jwt',
             isLatLong       : 'latlong',
+            isLength        : 'length',
             isLowercase     : 'lowercase',
             isMACAddress    : 'macAddress',
             isMD5           : 'md5',
@@ -79,9 +78,7 @@ export default class Plasma extends CorePlasma {
         }
 
         validator
-            .extends('length', length)
             .extends('*', nope)
-            .extends('range', range)
             .extends('required', required)
             .extends('array', array)
         ;

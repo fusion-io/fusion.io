@@ -4,6 +4,7 @@ import RuleSet from "./RuleSet";
 import Validator from "./Validator";
 import { rules } from "./decorator";
 import Plasma from "./Plasma";
+import RuleSetMap, { RuleSetMapDefinition, RuleSetMapValidationResult } from "./RuleSetMap";
 
 export {
     Form,
@@ -11,6 +12,9 @@ export {
     Rule,
     Validator,
     Plasma,
+    RuleSetMap,
+    RuleSetMapDefinition,
+    RuleSetMapValidationResult,
     rules
 }
 

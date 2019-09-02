@@ -126,28 +126,6 @@ export default class RuleSetMap extends Map<string, RuleSet> {
     }
 
     /**
-     * Serialize this Map into a POJO. It will helpful when we
-     * work with transportation layer, such as QUEUE, JSON response.
-     *
-     */
-    public serialize(): RuleSetMapDefinition {
-        const serialized:RuleSetMapDefinition = { };
-
-        this.forEach((ruleSet, key) => {
-            serialized[key] = ruleSet.serialize();
-        });
-
-        return serialized;
-    }
-
-    /**
-     * Alias of serialize
-     */
-    public toJSON(): RuleSetMapDefinition {
-        return this.serialize();
-    }
-
-    /**
      * Hook on before validation step.
      * This listener will be triggered on both case:
      *  - This RuleSetMap
