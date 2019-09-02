@@ -5,7 +5,7 @@ import User from "../User";
 @singleton()
 export default class HelloController {
 
-    @get('/', authenticate('session.users'))
+    @get('/')
     async index(context: Context) {
         context.render('hello', { message: 'tokamak.fuse(ProtonPlasma);'});
     }

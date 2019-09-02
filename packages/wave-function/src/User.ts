@@ -5,7 +5,7 @@ export default class User implements HavingRoles, Identity {
     constructor(private payload: { roles: any }) { }
 
     getRoles() {
-        return ['admin'];
+        return ['user'];
     }
 
     name() {
