@@ -46,6 +46,9 @@ export {
 
     MiddlewareDispatcher,
 
+    ParametersExpression,
+    parsedResult,
+
     DependencyKey
 }
 
