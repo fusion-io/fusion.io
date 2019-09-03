@@ -1,0 +1,56 @@
+module.exports = {
+
+    debug: process.env.APP_DEBUG || false,
+
+    keys: process.env.APP_KEYS ? process.env.APP_KEYS.split(',') : [ 'some', 'random', 'keys' ],
+
+    services: {
+
+    },
+
+    authentication: {
+        gateways: {
+
+        }
+    },
+
+    authorization: {
+        policies: {
+
+        }
+    },
+
+    database: {
+        default: process.env.DATABASE_CONNECTION || 'development',
+        connections: {
+            development: {
+                client: 'sqlite3',
+                connection: process.env.DATABASE_SQLITE3 || (__dirname + '/../database/db.sqlite'),
+                useNullAsDefault: true
+            }
+        },
+        migration: {
+            directory: __dirname + '/../database/migration'
+        },
+        seeder: {
+            directory: __dirname + '/../database/seeder'
+        }
+    },
+
+    locale: {
+        presets: {
+
+        }
+    },
+
+    view: {
+        directory: __dirname + '/../:viewDirectory:'
+    },
+
+    validation: {
+        default: '',
+        adapters: {
+
+        }
+    }
+};

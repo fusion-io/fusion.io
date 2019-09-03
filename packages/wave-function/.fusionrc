@@ -1,15 +1,1 @@
-{
-  "app": "src/app",
-  "neutron": {
-    "spec": "APISpec.yaml",
-    "output": "src/api"
-  },
-  "live": {
-    "spin": true,
-    "server": "src/server",
-    "reloadFiles": [
-      "^((?!node_modules).)*$",
-      "@fusion.io"
-    ]
-  }
-}
+{"app":"src/app","live":{"spin":true,"port":"2512","server":"src/server","reloadFiles":["^((?!node_modules).)*$","@fusion.io"]}}

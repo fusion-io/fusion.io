@@ -1,7 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./lib"
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "build",
+    "target": "es6"
   },
   "include": [
     "./src"

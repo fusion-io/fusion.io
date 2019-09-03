@@ -16,13 +16,9 @@ class Proton {
             baseAppDirectory + '/' + viewDirectory
         );
 
-        const configPlaceHolder = require('./configPlaceHolder');
-
-        configPlaceHolder.view = viewDirectory;
-
-        const content = "module.exports = :config:;"
-            .replace(/:config:/, JSON.stringify(configPlaceHolder, null, 4))
-        ;
+        const content = fs.readFileSync(__dirname + '/templates/config.js.template')
+            .toString()
+            .replace(/:viewDirectory:/g, viewDirectory);
 
         await fs.outputFile(baseAppDirectory + '/' + 'config/index.js', content, 'utf8');
         await fs.outputJson(baseAppDirectory + '/' + '.fusionrc', {
@@ -51,7 +47,7 @@ class Proton {
   ]
 }
 `;
-        await fs.outputFile(baseAppDirectory + '/' + 'tsconfig.json', tsConfig);
+        fs.writeFileSync(baseAppDirectory + '/' + 'tsconfig.json', tsConfig);
     }
 
     static resolveTemplatePath(parentDirectory, language) {
