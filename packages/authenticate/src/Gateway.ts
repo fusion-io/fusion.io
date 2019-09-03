@@ -1,4 +1,4 @@
-import { IdentityProvider, MountableProtocol, Protocol } from "./Contracts";
+import { Protocol } from "./Contracts";
 import UnAuthenticated from "./UnAuthenticated";
 import {IdentityProviderChain} from "./index";
 /**

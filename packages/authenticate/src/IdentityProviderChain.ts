@@ -7,27 +7,13 @@ import { Credential, IdentityProvider } from "./Contracts";
 
 export default class IdentityProviderChain implements IdentityProvider {
 
-    /**
-     *
-     * @param {IdentityProvider[]} chains
-     */
     constructor(private chains: Array<IdentityProvider> = []) { }
 
-    /**
-     * Connect with an IdentityProvider
-     *
-     * @param provider
-     */
     public push(provider: IdentityProvider) {
         this.chains.push(provider);
         return this;
     }
 
-    /**
-     *
-     * @param credential
-     * @return {Promise<*>}
-     */
     public async provide(credential: Credential) {
         let identityChain: any = credential;
 

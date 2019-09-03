@@ -1,5 +1,5 @@
-import {Manager, AdapterConfiguration, singleton, ManagerError} from "@fusion.io/core";
-import {IdentityProvider, Mountable, Protocol} from "./Contracts";
+import { Manager, AdapterConfiguration, singleton } from "@fusion.io/core";
+import { IdentityProvider, Mountable, Protocol } from "./Contracts";
 import Gateway from "./Gateway";
 
 /**
