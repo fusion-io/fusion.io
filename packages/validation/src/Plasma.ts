@@ -82,5 +82,18 @@ export default class Plasma extends CorePlasma {
             .extends('required', required)
             .extends('array', array)
         ;
+
+        validator.supporting('ajv', ({ schemas, ...options }) => {
+            const Ajv = require('ajv');
+            const ajv = new Ajv(options);
+
+            Object.entries(schemas).forEach(([name, schema] : [ string, any ]) => {
+                ajv.addSchema(schema, name);
+            });
+
+            return async (value, schema) => {
+                return ajv.validate(schema, value);
+            }
+        });
     }
 }
