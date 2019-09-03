@@ -41,8 +41,6 @@
     "lodash.values": "^4.3.0",
     "validator": "^11.1.0"
   },
-  "devDependencies": {
-    "ajv": "^6.10.2"
-  },
+  "devDependencies": {},
   "gitHead": "f568fe663d48c5da0b2f4ba293ba8bc68f97e48a"
 }

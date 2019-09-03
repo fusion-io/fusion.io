@@ -1,4 +1,4 @@
-import { inject, Plasma as CorePlasma } from "@fusion.io/core";
+import { inject, Plasma as CorePlasma, loose } from "@fusion.io/core";
 import Validator from "./Validator";
 import {
     nope,
@@ -91,9 +91,19 @@ export default class Plasma extends CorePlasma {
                 ajv.addSchema(schema, name);
             });
 
-            return async (value, schema) => {
-                return ajv.validate(schema, value);
+            return async (value, schema, context) => {
+
+                const result = await ajv.validate(schema, value);
+
+                context.errors = ajv.errors;
+
+                return result;
             }
         });
+    }
+
+    @inject(Validator)
+    boot(validator: Validator): void {
+        validator.configure(this.config.validation);
     }
 }

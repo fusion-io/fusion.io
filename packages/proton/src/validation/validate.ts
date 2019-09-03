@@ -1,7 +1,7 @@
-import RequestRule, {RequestRuleConstructor} from "./RequestRule";
+import RequestRule, { RequestRuleConstructor } from "./RequestRule";
 import { tokamak } from "@fusion.io/core";
 import { Context } from "koa";
-import {Validator} from "@fusion.io/validation";
+import { Validator } from "@fusion.io/validation";
 
 export default function (rules: RequestRuleConstructor) {
     return async (context: Context, next: Function) => {

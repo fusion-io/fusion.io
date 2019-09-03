@@ -15,7 +15,8 @@
     "packages/proton",
     "packages/queue",
     "packages/utils",
-    "packages/validation"
+    "packages/validation",
+    "packages/wave-function"
   ],
   "version": "3.1.5"
 }

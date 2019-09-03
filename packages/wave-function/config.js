@@ -88,6 +88,34 @@ module.exports = {
         }
     },
 
+    validation: {
+
+        adapters: {
+            system: {
+                driver: "ajv",
+                options: {
+                    schemas: {
+                        foobar: {
+                            type: "object",
+                            required: [ "foo", "bar" ],
+                            properties: {
+                                foo: {
+                                    type: "string"
+                                },
+                                bar: {
+                                    type: "string"
+                                }
+
+                            }
+                        }
+                    },
+                    allErrors: true
+                }
+            }
+        }
+
+    },
+
     view: {
         directory: __dirname + '/views'
     }
