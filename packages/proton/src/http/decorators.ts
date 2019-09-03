@@ -1,4 +1,14 @@
+import { Middleware } from "koa";
+
 declare type availableMethods = "get" | "post" | "put" | "patch" | "del";
+
+/**
+ *
+ * @param middlewares
+ */
+export const middleware = (...middlewares: Middleware[]) => <T extends { new(...args: any[]): {}, middlewares?: Middleware[]}>(Controller: T) => {
+    Controller.middlewares = middlewares;
+};
 
 /**
  * Decorates a route action for the controller
