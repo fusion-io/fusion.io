@@ -18,11 +18,11 @@ export default class HttpTokenBearer implements Protocol {
         if (request.headers['authorization']) {
             let bearer: string = request.headers['authorization'];
 
-            if (!bearer.startsWith('bearer ')) {
+            if (!bearer.startsWith('Bearer ')) {
                 throw new UnAuthenticated("No token provided");
             }
 
-            return {token: bearer.replace('bearer ', '')};
+            return {token: bearer.replace('Bearer ', '')};
         }
 
         if (request.query['token']) {
